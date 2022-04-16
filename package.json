@@ -1,14 +1,22 @@
 {
-  "name": "thesis-frontend",
+  "name": "graduatework-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "react": "^17.0.2",
+    "bootstrap-daterangepicker": "^3.1.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "react": "^18.0.0",
+    "react-bootstrap-daterangepicker": "^7.0.0",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "react-shuffle": "^2.1.0",
+    "react-slick": "^0.28.1",
+    "react-tabs": "^4.0.1",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -34,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
