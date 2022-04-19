@@ -1,18 +1,29 @@
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import React, {useState} from "react";
-import SimpleSlider from "./Slider";
+import SimpleSlider from "../components/Slider";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import '../daterangepicker.css';
+import {useNavigate} from "react-router-dom"
+import Email from "../components/Email";
 
 function Apartment() {
-    const [tabIndexx, setTabIndexx] = useState(0);
+    const [tabIndex, setTabIndex] = useState(0);
+    const [destination, setDestination] = useState();
+    const [dateRange, setDateRange] = useState();
+    const navigate = useNavigate();
+
     const handleApply = (event, picker) => {
         picker.element.val(
             picker.startDate.format('MM/DD/YYYY') +
             ' - ' +
             picker.endDate.format('MM/DD/YYYY')
         );
+        setDateRange(picker.startDate.format('MM/DD/YYYY'))
     };
+
+    function handleClick() {
+        navigate(`/apartments/results?destination=${destination}&daterange=${dateRange}`);
+    }
 
     return (
         <div className="container p-0">
@@ -24,7 +35,8 @@ function Apartment() {
                             <div className="input-group">
                                 <div className="nav-icon house-gray"/>
                                 <input className="form-control no-icon" list="datalistOptions" id="exampleDataList"
-                                       placeholder="Куди бажаєте поїхати?" size="1"/>
+                                       placeholder="Куди бажаєте поїхати?" size="1"
+                                       onChange={e => setDestination(e.target.value)}/>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
                                     <option value="Славське"/>
@@ -35,11 +47,9 @@ function Apartment() {
                         </div>
                         <div className="step two"/>
                         <div className="col-sm">
-                            <label className="visually-hidden" htmlFor="defaultValue">Username</label>
+                            <label className="visually-hidden" htmlFor="defaultValue"/>
                             <div className="input-group">
                                 <div className="nav-icon event-gray rs-picker-toggle-caret rs-icon"/>
-                                {/*<input type="text" className="form-control" id="specificSizeInputGroupUsername"*/}
-                                {/*       placeholder="Дата" value="чт, 10 березня - пн, 14 березня"/>*/}
                                 <DateRangePicker
                                     initialSettings={{
                                         autoUpdateInput: false,
@@ -47,12 +57,10 @@ function Apartment() {
                                         locale: {
                                             applyLabel: "Прийняти",
                                             cancelLabel: 'Скасувати',
-                                            // format: 'MM/dd/yyyy',
                                             format: 'DD/MM/YY',
                                             fromLabel: "Fromm",
                                             daysOfWeek: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
                                             monthNames: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
-                                            //monthNames: moment.months(),
                                             firstDay: 1
                                         },
                                     }}
@@ -77,13 +85,13 @@ function Apartment() {
                         </div>
                     </div>
                     <div className="col-auto">
-                        <button type="submit" className="btn btn-blue">Знайти</button>
+                        <button type="submit" className="btn btn-blue" onClick={handleClick}>Знайти</button>
                     </div>
                 </form>
             </div>
             <div className="ideas">
                 <span className="heading">Ідеї для вашої подорожі</span>
-                <Tabs selectedIndex={tabIndexx} onSelect={index => setTabIndexx(index)}>
+                <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)} forceRenderTabPanel={true}>
                     <TabList className="nav nav-pills">
                         <Tab className="nav-item">
                             <button className="nav-link" aria-current="page">
@@ -107,24 +115,16 @@ function Apartment() {
                         </Tab>
                     </TabList>
                     <TabPanel>
-                        <div className="container-md">
-                            <SimpleSlider/>
-                        </div>
+                        <SimpleSlider/>
                     </TabPanel>
                     <TabPanel>
-                        <div className="container-md">
-                            <SimpleSlider/>
-                        </div>
+                        <SimpleSlider order={"desc"}/>
                     </TabPanel>
                     <TabPanel>
-                        <div className="container-md">
-                            <SimpleSlider/>
-                        </div>
+                        <SimpleSlider location_type={"area"}/>
                     </TabPanel>
                     <TabPanel>
-                        <div className="container-md">
-                            <SimpleSlider/>
-                        </div>
+                        <SimpleSlider location_type={"city"}/>
                     </TabPanel>
                 </Tabs>
             </div>
@@ -247,50 +247,9 @@ function Apartment() {
                             </div>
                         </a>
                     </div>
-                    {/*<div className="card-cover col-3" key="1">*/}
-                    {/*    <div className="card">*/}
-                    {/*        <img src={"./mariupol.png"} className="card-img-top" alt="..."/>*/}
-                    {/*        <div className="card-body">*/}
-                    {/*            <div className="location-icon"/>*/}
-                    {/*            <div className="text-part">*/}
-                    {/*                <p className="city">Маріуполь</p><br/>*/}
-                    {/*                <p className="region">Донецька область</p>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    {/*<div className="card-cover col-3" key="2">*/}
-                    {/*    <div className="card">*/}
-                    {/*        <img src={"./truskavets.png"} className="card-img-top" alt="..."/>*/}
-                    {/*        <div className="card-body">*/}
-                    {/*            <div className="location-icon"/>*/}
-                    {/*            <div className="text-part">*/}
-                    {/*                <p className="city">Трускавець</p>*/}
-                    {/*                <p className="region">Львівська область</p>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
                 </div>
             </div>
-            <div className="email">
-                <span className="heading">Збережіть ваш час!</span>
-                <p className="subheading">Підпишіться, і ми надішлемо вам найкращі пропозиції</p>
-                <div className="email-block">
-                    <img src={"./email-bg.svg"} alt="email-background" className="email-background"/>
-                    <form action="" className="email-form">
-                        <div className="input-group">
-                            <div className="nav-icon email-gray"/>
-                            <input type="text" className="form-control" id="emailSubscription"
-                                   placeholder="Ваш e-mail"/>
-                        </div>
-                        <div className="col-auto">
-                            <button type="submit" className="btn btn-blue">Підписатися</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <Email/>
         </div>
     );
 }

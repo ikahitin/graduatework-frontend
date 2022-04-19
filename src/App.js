@@ -1,39 +1,17 @@
 import './App.css';
 import React, {useState} from "react";
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import Apartment from "./components/Apartment";
+import Apartment from "./views/Apartment";
+import Car from "./views/Car";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    NavLink
+} from "react-router-dom";
+import ApartmentResult from "./views/ApartmentResult";
+import {loginUser, registerUser} from "./utils/auth";
 
-
-function ComponentB() {
-    return (
-        <div className="text-white">
-            <p>b component</p>
-        </div>
-    );
-}
-async function loginUser(credentials) {
-    return fetch('http://127.0.0.1:8000/auth/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    })
-        .then(data => data.json())
-}
-async function registerUser(credentials) {
-    credentials.email = credentials.username;
-    delete credentials.username;
-    return fetch('http://127.0.0.1:8000/auth/signup', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    })
-}
 function App() {
-    const [tabIndex, setTabIndex] = useState(0);
     const token = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
     const [username, setUserName] = useState();
@@ -60,7 +38,6 @@ function App() {
             username,
             password
         });
-        console.log(response)
         if (response.ok) {
             window.location.href = "";
         } else {
@@ -189,7 +166,7 @@ function App() {
                                         <input type="checkbox" id="theme-switch"/>
                                         <label className="switch" htmlFor="theme-switch">
                                             <div className="input-slider round">
-                                                <img src={"./light_theme.svg"} alt="light theme switch" className="input-slider-img"/>
+                                                <img src={`${process.env.PUBLIC_URL}/light_theme.svg`} alt="light theme switch" className="input-slider-img"/>
                                             </div>
                                         </label>
                                     </div>
@@ -216,45 +193,45 @@ function App() {
             </div>
             <div className="section container">
                 <div className="section-nav">
-                    <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
-                        <TabList className="nav nav-pills">
-                            <Tab className="nav-item">
+                        <Router>
+                        <div className="nav nav-pills">
+                            <NavLink className="nav-item" to="/apartments">
                                 <button className="nav-link" aria-current="page">
                                     <div className="nav-icon house"/>
                                     <span>Житло</span>
                                 </button>
-                            </Tab>
-                            <Tab className="nav-item">
+                            </NavLink>
+                            <NavLink className="nav-item" to="/cars">
                                 <button className="nav-item nav-link">
                                     <div className="nav-icon car"/>
                                     <span>Оренда автомобіля</span>
                                 </button>
-                            </Tab>
-                            <Tab className="nav-item">
+                            </NavLink>
+                            <NavLink className="nav-item" to="/taxi">
                                 <button className="nav-link">
                                     <div className="nav-icon taxi"/>
                                     <span>Таксі</span>
                                 </button>
-                            </Tab>
-                            <Tab className="nav-item">
+                            </NavLink>
+                            <NavLink className="nav-item" to="/vacation">
                                 <button className="nav-link">
                                     <div className="nav-icon travel"/>
                                     <span>Відпочинок за обміном</span>
                                 </button>
-                            </Tab>
-                            <Tab className="nav-item">
+                            </NavLink>
+                            <NavLink className="nav-item" to="/events">
                                 <button className="nav-link">
                                     <div className="nav-icon event"/>
                                     <span>Івенти</span>
                                 </button>
-                            </Tab>
-                        </TabList>
-                        <TabPanel><Apartment/></TabPanel>
-                        <TabPanel><ComponentB/></TabPanel>
-                        <TabPanel></TabPanel>
-                        <TabPanel></TabPanel>
-                        <TabPanel></TabPanel>
-                    </Tabs>
+                            </NavLink>
+                        </div>
+                            <Routes>
+                                <Route path='/apartments' element={<Apartment/>} />
+                                <Route path='/apartments/results' element={<ApartmentResult/>} />
+                                <Route path='/cars' element={<Car/>} />
+                            </Routes>
+            </Router>
                 </div>
             </div>
             <footer className="container d-flex col-10">
