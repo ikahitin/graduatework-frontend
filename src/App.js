@@ -228,7 +228,7 @@ function App() {
                         </div>
                             <Routes>
                                 <Route path='/apartments' element={<Apartment/>} />
-                                <Route path='/apartments/results' element={<ApartmentResult/>} />
+                                <Route path='/apartments/search' element={<ApartmentResult/>} />
                                 <Route path='/cars' element={<Car/>} />
                             </Routes>
             </Router>

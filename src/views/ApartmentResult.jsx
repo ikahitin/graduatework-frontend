@@ -1,10 +1,13 @@
 import {useSearchParams} from "react-router-dom";
 
 export default function ApartmentResult() {
-    let [searchParams, setSearchParams] = useSearchParams();
-    let destination = searchParams.get("destination");
-    let date = searchParams.get("daterange");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const destination = searchParams.get("destination");
+    const startDate = searchParams.get("start");
+    const endDate = searchParams.get("start");
+    const adults = searchParams.get("adults")
+
     return(
-        <div className="text-light">{destination} - {date}</div>
+        <div className="text-light">{destination} - {startDate} to {endDate}</div>
     )
 }

@@ -432,8 +432,6 @@
   background-color: #fff;
   border-radius: 0 2.81rem 2.81rem 2.81rem;
   font-size: 0.95rem;
-  padding-top: 3.85rem;
-  padding-bottom: 3.4rem;
   box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
 }
 
@@ -470,7 +468,7 @@
   align-items: center;
   border-radius: 2.81rem;
   /*padding: 0.9rem 2rem;*/
-  border: 1px solid #C4C4C4;
+  flex-direction: row-reverse;
 }
 
 .search-block input::placeholder, .search-block input, .search-block select, .email-block input, .email-block input::placeholder {
@@ -506,19 +504,6 @@ select {
   height: 1.45rem;
   background-size: contain;
   background-repeat: no-repeat;
-}
-.one {
-  background-image: url("../public/1.svg");
-}
-
-.two {
-  width: 3rem;
-  background-image: url("../public/2.svg");
-}
-
-.three {
-  width: 3rem;
-  background-image: url("../public/3.svg");
 }
 
 .inputs {
@@ -846,7 +831,7 @@ button:focus {
 }
 
 .form-control:focus, .form-select:focus, .rs-picker-toggle-textbox input:focus {
-  border: initial!important;
+  /*border: initial!important;*/
   box-shadow: none;
 }
 
@@ -872,7 +857,7 @@ button:focus {
 }
 
 .form-control, .form-select, .rs-picker-toggle-textbox input {
-  padding: 0.8rem 2rem 0.8rem 0;
+  padding: 1rem 2rem 1rem 0;
   border-radius: 2.81rem!important;
 }
 
@@ -904,7 +889,6 @@ button:focus {
 .email-background {
   position: absolute;
   top: -25%;
-  left: 2.5%;
   width: 95%;
   z-index: -1;
 }
@@ -1236,4 +1220,204 @@ input::-webkit-calendar-picker-indicator {
   height: auto;
   width: auto;
   margin: 3rem 0;
+}
+.dots {
+  color: #C4C4C4;
+}
+.step-control+span:before {
+  content: "";
+  font-size: 0.75rem;
+  border: 1px dotted #C4C4C4;
+  border-radius: 50%;
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #C4C4C4;
+  padding-top: 1px;
+}
+
+.step-control:focus ~ span:before {
+  border: 1px solid #FEEE9E!important;
+  background-color: #FEEE9E;
+  color: #404040!important;
+  box-shadow: -1px 1px 10px rgba(213, 213, 213, 0.49);
+}
+
+.step-control:not(:placeholder-shown) ~ span:before{
+  border: 1px solid #FFD500!important;
+  color: #fff!important;
+  background-color: #FFD500;
+}
+
+.step-control:not(:placeholder-shown) {
+  color: #404040!important;
+}
+.form-control, .form-select {
+  border: 1px solid #C4C4C4!important;
+  padding-left: 2.9rem;
+  background-repeat: no-repeat!important;
+  background-position: 1rem 1rem!important;
+}
+
+.house-icon {
+  background: url("../public/fa6-solid_house_gray.svg");
+  background-size: 1.25rem;
+}
+
+.calendar-icon {
+  background: url("../public/bi_calendar-event-fill_gray.svg");
+  background-size: 1.1rem;
+}
+
+.person-icon {
+  background: url("../public/bi_person-fill.svg");
+  background-size: 1.25rem;
+}
+
+select + span:before{
+  font-size: 0.75rem;
+  border: 1px dotted #C4C4C4;
+  border-radius: 50%;
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #C4C4C4;
+  padding-top: 1px;
+}
+
+
+select:focus ~ span:before {
+  border: 1px solid #FEEE9E!important;
+  background-color: #FEEE9E;
+  color: #404040!important;
+  box-shadow: -1px 1px 10px rgba(213, 213, 213, 0.49);
+}
+
+.one:before {
+  content: "1"!important;
+}
+
+.two:before {
+  content: "2"!important;
+}
+
+.three:before {
+  content: "3"!important;
+}
+
+.form-control:focus, .form-control:focus::placeholder {
+  color: #C4C4C4;
+}
+
+/*.react-datalist-input__container label:before {*/
+/*  content: "1";*/
+/*  font-size: 0.75rem;*/
+/*  border: 1px dotted #C4C4C4;*/
+/*  border-radius: 50%;*/
+/*  display: inline-block;*/
+/*  width: 1.25rem;*/
+/*  height: 1.25rem;*/
+/*  color: #C4C4C4;*/
+/*  padding-top: 1px;*/
+/*}*/
+
+/*.react-datalist-input__container {*/
+/*  display: flex;*/
+/*}*/
+
+/*.react-datalist-input__container label:after {*/
+/*  content: "···";*/
+/*}*/
+
+/*.react-datalist-input__container label {*/
+/*  order: 2;*/
+/*}*/
+
+/*.react-datalist-input__textbox:focus ~ label {*/
+/*  background-color: red!important;*/
+/*}*/
+
+/*.react-datalist-input__textbox:focus ~ .react-datalist-input__container label:before{*/
+/*  border: 1px solid #FEEE9E!important;*/
+/*  background-color: #FEEE9E;*/
+/*  color: #404040!important;*/
+/*  box-shadow: -1px 1px 10px rgba(213, 213, 213, 0.49);*/
+/*}*/
+
+.apartment-details {
+  position: absolute;
+  z-index: 1;
+  background: #FFFFFF;
+  box-shadow: -2px 2px 4px rgba(197, 197, 197, 0.25), 2px 2px 4px rgba(197, 197, 197, 0.25);
+  border-radius: 1.25rem;
+  padding: 1.3rem;
+  left: 2.5rem;
+}
+
+.apartment-details .form-control {
+  border: none!important;
+  min-width: auto!important;
+  background: none;
+  padding: 0;
+  width: 2rem;
+  font-weight: 700;
+  color: #404040;
+}
+
+.apartment-details .form-control:focus {
+  border: none!important;
+  min-width: auto!important;
+  background: none;
+}
+
+.apartment-details button {
+  border: none;
+  border-radius: 0.63rem;
+  font-size: 0.6rem;
+  width: 2rem;
+  height: 2rem;
+  background: #EEEEEE;
+  font-weight: 700;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.apartment-details label {
+  display: none;
+}
+
+.apartment-details span {
+  font-weight: 700;
+  color: #404040;
+  padding-right: 3.5rem;
+}
+
+.sub {
+  font-size: 0.88rem;
+  font-weight: 400!important;
+  color: #404040;
+}
+
+.input-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inputs-search:first-child {
+  flex: 1;
+}
+
+form.row {
+  padding: 2.3rem;
+}
+
+.form-control[readonly] {
+  background-color: #fff;
+  opacity: 1;
 }

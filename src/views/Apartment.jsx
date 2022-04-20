@@ -1,42 +1,87 @@
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import SimpleSlider from "../components/Slider";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import '../daterangepicker.css';
 import {useNavigate} from "react-router-dom"
 import Email from "../components/Email";
+import 'react-datalist-input/dist/styles.css';
+import '@lion/input-stepper/define';
+import localization from 'moment/locale/uk'
+import QuantityInputs from "../components/QuantityInputs";
+
 
 function Apartment() {
-    const [tabIndex, setTabIndex] = useState(0);
-    const [destination, setDestination] = useState();
-    const [dateRange, setDateRange] = useState();
     const navigate = useNavigate();
 
+    const [detailQuantity, setDetailQuantity] = useState(['0', '0', '0']);
+    const [detailsInputValue, setDetailsInputValue] = React.useState('')
+    const [showResults, setShowResults] = React.useState(false)
+    const [tabIndex, setTabIndex] = useState(0);
+    const [destination, setDestination] = useState();
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const quantityInputRef = useRef(null);
+    const detailsInput = useRef(null);
+    const dateInput = useRef(null);
+
+    const onClick = () => setShowResults(true)
+
     const handleApply = (event, picker) => {
-        picker.element.val(
-            picker.startDate.format('MM/DD/YYYY') +
+        picker.element.find('input:first').val(
+            picker.startDate.format('dd, D MMMM') +
             ' - ' +
-            picker.endDate.format('MM/DD/YYYY')
+            picker.endDate.format('ddd, D MMMM')
         );
-        setDateRange(picker.startDate.format('MM/DD/YYYY'))
+        setStartDate(picker.startDate.format('YYYY-MM-DD'));
+        setEndDate(picker.endDate.format('YYYY-MM-DD'));
     };
 
-    function handleClick() {
-        navigate(`/apartments/results?destination=${destination}&daterange=${dateRange}`);
+    function handleFocus(e) {
+        if (e.relatedTarget == null){
+            dateInput.current.focus();
+        }
+    }
+
+    function handleDetailsBlur(e) {
+        if (e.relatedTarget !== null){
+            detailsInput.current.focus();
+        }
+        else {
+            const isZero = (currentValue) => currentValue === '0';
+            const inputValues = Object.values(quantityInputRef.current.getValues());
+            setDetailQuantity(inputValues)
+            if (inputValues.every(isZero)) {
+                setDetailsInputValue('');
+            }
+            else {
+                const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина - ${inputValues[2]} номер`;
+                setDetailsInputValue(inputString);
+            }
+            setShowResults(false);
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const dest = `destination=${destination}`
+        const dateRange = `&start=${startDate}&end=${endDate}`
+        const details = `&adults=${detailQuantity[0]}&children=${detailQuantity[1]}&rooms=${detailQuantity[2]}`
+        navigate(`/apartments/search?${dest}${dateRange}${details}`);
     }
 
     return (
         <div className="container p-0">
             <div className="search-block">
-                <form className="row gx-3 gy-2 align-items-center">
-                    <div className="inputs">
-                        <div className="step one"/>
+                <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
+                    <div className="inputs inputs-search">
                         <div className="col-sm">
                             <div className="input-group">
-                                <div className="nav-icon house-gray"/>
-                                <input className="form-control no-icon" list="datalistOptions" id="exampleDataList"
+                                <input className="form-control step-control house-icon" list="datalistOptions" id="input"
                                        placeholder="Куди бажаєте поїхати?" size="1"
-                                       onChange={e => setDestination(e.target.value)}/>
+                                       onChange={e => setDestination(e.target.value)} required/>
+                                <span className="dots one">···</span>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
                                     <option value="Славське"/>
@@ -45,11 +90,9 @@ function Apartment() {
                                 </datalist>
                             </div>
                         </div>
-                        <div className="step two"/>
                         <div className="col-sm">
                             <label className="visually-hidden" htmlFor="defaultValue"/>
                             <div className="input-group">
-                                <div className="nav-icon event-gray rs-picker-toggle-caret rs-icon"/>
                                 <DateRangePicker
                                     initialSettings={{
                                         autoUpdateInput: false,
@@ -65,27 +108,27 @@ function Apartment() {
                                         },
                                     }}
                                     onApply={handleApply}>
-                                    <input type="text" className="form-control"
-                                           defaultValue="Оберіть заплановану дату"/>
+                                    <div className="input-group">
+                                        <input type="text" className="form-control step-control calendar-icon"
+                                               placeholder="Оберіть заплановану дату" required readOnly ref={dateInput} onBlur={handleFocus}/>
+                                        <span className="dots two">···</span>
+                                        <span className="dots">···</span>
+                                    </div>
                                 </DateRangePicker>
                             </div>
                         </div>
-                        <div className="step three"/>
-                        <div className="col-sm">
+                        <div className="col-sm position-relative">
                             <div className="input-group">
-                                <div className="nav-icon person-gray"/>
-                                <label className="visually-hidden" htmlFor="specificSizeSelect">Preference</label>
-                                <select className="form-select" id="specificSizeSelect">
-                                    <option defaultValue>Вкажіть кількість осіб</option>
-                                    <option value="1">2 дорослих - без дітей - 1 номер</option>
-                                    <option value="2">2 дорослих - 2 дітей - 1 номер</option>
-                                    <option value="3">2 дорослих - 2 дітей - 2 номери</option>
-                                </select>
+                                <input className="form-control step-control person-icon"
+                                       placeholder="Вкажіть кількість осіб" size="1" required readOnly ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick} value={detailsInputValue}/>
+                                <span className="dots three">···</span>
+                                <span className="dots">···</span>
                             </div>
+                            { showResults ? <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/> : null }
                         </div>
                     </div>
-                    <div className="col-auto">
-                        <button type="submit" className="btn btn-blue" onClick={handleClick}>Знайти</button>
+                    <div className="col-auto inputs-search">
+                        <button type="submit" className="btn btn-blue">Знайти</button>
                     </div>
                 </form>
             </div>
