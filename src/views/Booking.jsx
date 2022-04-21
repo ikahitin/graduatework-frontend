@@ -4,9 +4,9 @@ import React from "react";
 
 export default function Booking() {
     return(
-        <div>
-            <NavigationPanel />
+        <div className="section-nav">
             <Outlet/>
+            <NavigationPanel />
         </div>
     )
 }

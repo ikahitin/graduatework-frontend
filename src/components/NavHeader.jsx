@@ -1,11 +1,9 @@
 import Header from "./Header";
 import React, {useState} from "react";
 import {loginUser, registerUser} from "../utils/auth";
-import {useLocation} from "react-router-dom";
 
 export default function NavHeader() {
     const token = localStorage.getItem('accessToken');
-    const location = useLocation().pathname
     const user = localStorage.getItem('user');
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -48,12 +46,11 @@ export default function NavHeader() {
     }
 
     return (
-        <div>
-            <div className="background"/>
-            <div className="background gradient"/>
-            <div className="background gradient2"/>
             <div className="intro">
-                <nav className="navbar navbar-expand-lg navbar-dark bg-transparent container mt-4">
+                <div className="background"/>
+                <div className="background gradient"/>
+                <div className="background gradient2"/>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-transparent container">
                     <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered">
@@ -192,8 +189,8 @@ export default function NavHeader() {
                         </div>
                     </div>
                 </nav>
-                {!(location.match(/^\/booking\/apartments\/search.*$/gim)) && <Header/>}
-            </div>
+                <Header />
+
         </div>
     )
 }

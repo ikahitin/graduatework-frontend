@@ -28,10 +28,10 @@ export default function NavigationPanel() {
                     <span>Відпочинок за обміном</span>
                 </button>
             </NavLink>
-            <NavLink className="nav-item" to="/booking/events">
-                <button className="nav-link">
-                    <div className="nav-icon event"/>
-                    <span>Івенти</span>
+            <div className="line"/>
+            <NavLink className="nav-item yellow-item" to="/booking/events">
+                <button className="nav-link yellow">
+                    <span>Забронювати за один крок</span>
                 </button>
             </NavLink>
         </div>

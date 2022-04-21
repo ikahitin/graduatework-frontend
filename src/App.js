@@ -9,9 +9,7 @@ function App() {
         <div className="App">
             <NavHeader/>
             <div className="section container">
-                <div className="section-nav">
-                    <Outlet/>
-                </div>
+                <Outlet/>
             </div>
             <Footer/>
         </div>

@@ -1,6 +1,11 @@
 import React from "react";
+import {useLocation} from "react-router-dom";
 
 export default function Header() {
+    let location = useLocation();
+    if (location.pathname.match('/search')){
+        return null;
+    }
     return (
         <header className="App-header">
             <h2>Подорожуй зручно по Україні</h2>

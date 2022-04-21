@@ -3,7 +3,7 @@ import React from "react";
 
 function Car() {
     return (
-        <div className="container p-0">
+        <div className="container p-0 c-child">
             <div className="search-block">
                 <form className="row gx-3 gy-2 align-items-center">
                     <div className="inputs">

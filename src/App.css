@@ -260,14 +260,14 @@
 }
 
 .App-header {
-  height: 100%;
+  height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white!important;
-  margin-top: 19rem;
+  margin-top: -9.9rem;
 }
 
 .intro {
@@ -275,6 +275,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .background {
@@ -282,9 +283,9 @@
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 100vh;
-  position: absolute;
   z-index: -1;
+  height: 100%;
+  position: absolute;
 }
 
 .gradient {
@@ -299,11 +300,27 @@
 .navbar {
   align-self: flex-start;
   width: 100%;
-  position: absolute;
+  margin: 3.3rem auto 4.3rem auto;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+
+}
+
+.c-child + .nav {
+  margin-top: -7rem;
+  border-radius: 2.81rem 2.81rem 0 0;
+  filter: none;
+  padding-bottom: 0;
+  z-index: 1;
 }
 
 @keyframes App-logo-spin {
@@ -360,9 +377,10 @@
 
 .nav-pills {
   background-color: #fff;
-  width: fit-content;
-  border-radius: 2.81rem 2.81rem 0 0;
-  padding: 1rem 1rem;
+  border-radius: 2.81rem;
+  padding: 0.9rem 1rem;
+  width: 100%;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
 }
 
 .nav-pills .nav-item {
@@ -416,7 +434,7 @@
 }
 
 .nav-pills {
-  align-items: center;
+  align-items: stretch;
 }
 
 .active .nav-link {
@@ -425,12 +443,18 @@
 }
 
 .section {
-  margin-top: 9rem;
+  margin-top: -3rem;
 }
 
 .search-block {
   background-color: #fff;
-  border-radius: 0 2.81rem 2.81rem 2.81rem;
+  border-radius: 0 0 2.81rem 2.81rem;
+  padding-top: 1rem;
+}
+
+.search-block form{
+  background-color: #fff;
+  border-radius: 2.81rem;
   font-size: 0.95rem;
   box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
 }
@@ -482,8 +506,9 @@
   color: #fff;
   border-radius: 2.50rem;
   font-size: 0.94rem;
-  height: 3.2rem;
-  padding: 0 1.4rem;
+  height: 3.5rem;
+  padding: 0 2rem;
+  font-weight: 700;
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -528,6 +553,7 @@ form.row {
   padding: 0.2rem 1.4rem;
   font-weight: 700;
   margin: auto;
+  width: fit-content;
 }
 
 .ideas .react-tabs__tab--selected .nav-link {
@@ -1359,7 +1385,7 @@ select:focus ~ span:before {
   min-width: auto!important;
   background: none;
   padding: 0;
-  width: 2rem;
+  width: 2.4rem;
   font-weight: 700;
   color: #404040;
 }
@@ -1374,8 +1400,8 @@ select:focus ~ span:before {
   border: none;
   border-radius: 0.63rem;
   font-size: 0.6rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   background: #EEEEEE;
   font-weight: 700;
 }
@@ -1401,6 +1427,7 @@ select:focus ~ span:before {
   font-size: 0.88rem;
   font-weight: 400!important;
   color: #404040;
+  display: contents;
 }
 
 .input-desc {
@@ -1420,4 +1447,26 @@ form.row {
 .form-control[readonly] {
   background-color: #fff;
   opacity: 1;
+}
+
+.search-block form{
+  margin: 0;
+}
+
+.yellow-item {
+  border-radius: 2.81rem;
+  flex: 1;
+  text-align: center;
+}
+
+.yellow {
+  background: #FFD500!important;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.line {
+  padding-right: 1.4rem;
+  border-left: 1px solid #E7E7E7;
 }

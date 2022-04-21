@@ -8,6 +8,7 @@ import Email from "../components/Email";
 import '@lion/input-stepper/define';
 import localization from 'moment/locale/uk'
 import QuantityInputs from "../components/QuantityInputs";
+import Header from "../components/Header";
 
 
 function Apartment() {
@@ -69,7 +70,7 @@ function Apartment() {
     }
 
     return (
-        <div className="container p-0">
+        <div className="container p-0 c-child">
             <div className="search-block">
                 <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="inputs inputs-search">
