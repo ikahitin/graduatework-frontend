@@ -48,7 +48,7 @@ export default function SimpleSlider(data) {
                         <a href="">
                             <div className="card">
                                 <div className="rating">
-                                    <img src={"./star.svg"} alt="star" className="star"/>
+                                    <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                     <span>{item.rating}</span>
                                 </div>
                                 <div className="card-img-top" style={{backgroundImage: `url("${item.image_url}")`}}/>

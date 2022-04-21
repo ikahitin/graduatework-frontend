@@ -6,7 +6,7 @@ export default function Email() {
             <span className="heading">Збережіть ваш час!</span>
             <p className="subheading">Підпишіться, і ми надішлемо вам найкращі пропозиції</p>
             <div className="email-block">
-                <img src={"./email-bg.svg"} alt="email-background" className="email-background"/>
+                <img src={`${process.env.PUBLIC_URL}/email-bg.svg`} alt="email-background" className="email-background"/>
                 <form action="" className="email-form">
                     <div className="input-group">
                         <div className="nav-icon email-gray"/>

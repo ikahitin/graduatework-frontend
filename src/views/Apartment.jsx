@@ -5,7 +5,6 @@ import DateRangePicker from 'react-bootstrap-daterangepicker';
 import '../daterangepicker.css';
 import {useNavigate} from "react-router-dom"
 import Email from "../components/Email";
-import 'react-datalist-input/dist/styles.css';
 import '@lion/input-stepper/define';
 import localization from 'moment/locale/uk'
 import QuantityInputs from "../components/QuantityInputs";
@@ -39,23 +38,21 @@ function Apartment() {
     };
 
     function handleFocus(e) {
-        if (e.relatedTarget == null){
+        if (e.relatedTarget == null) {
             dateInput.current.focus();
         }
     }
 
     function handleDetailsBlur(e) {
-        if (e.relatedTarget !== null){
+        if (e.relatedTarget !== null) {
             detailsInput.current.focus();
-        }
-        else {
+        } else {
             const isZero = (currentValue) => currentValue === '0';
             const inputValues = Object.values(quantityInputRef.current.getValues());
             setDetailQuantity(inputValues)
             if (inputValues.every(isZero)) {
                 setDetailsInputValue('');
-            }
-            else {
+            } else {
                 const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина - ${inputValues[2]} номер`;
                 setDetailsInputValue(inputString);
             }
@@ -68,7 +65,7 @@ function Apartment() {
         const dest = `destination=${destination}`
         const dateRange = `&start=${startDate}&end=${endDate}`
         const details = `&adults=${detailQuantity[0]}&children=${detailQuantity[1]}&rooms=${detailQuantity[2]}`
-        navigate(`/apartments/search?${dest}${dateRange}${details}`);
+        navigate(`/booking/apartments/search?${dest}${dateRange}${details}`);
     }
 
     return (
@@ -78,7 +75,8 @@ function Apartment() {
                     <div className="inputs inputs-search">
                         <div className="col-sm">
                             <div className="input-group">
-                                <input className="form-control step-control house-icon" list="datalistOptions" id="input"
+                                <input className="form-control step-control house-icon" list="datalistOptions"
+                                       id="input"
                                        placeholder="Куди бажаєте поїхати?" size="1"
                                        onChange={e => setDestination(e.target.value)} required/>
                                 <span className="dots one">···</span>
@@ -110,7 +108,8 @@ function Apartment() {
                                     onApply={handleApply}>
                                     <div className="input-group">
                                         <input type="text" className="form-control step-control calendar-icon"
-                                               placeholder="Оберіть заплановану дату" required readOnly ref={dateInput} onBlur={handleFocus}/>
+                                               placeholder="Оберіть заплановану дату" required readOnly ref={dateInput}
+                                               onBlur={handleFocus}/>
                                         <span className="dots two">···</span>
                                         <span className="dots">···</span>
                                     </div>
@@ -120,11 +119,14 @@ function Apartment() {
                         <div className="col-sm position-relative">
                             <div className="input-group">
                                 <input className="form-control step-control person-icon"
-                                       placeholder="Вкажіть кількість осіб" size="1" required readOnly ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick} value={detailsInputValue}/>
+                                       placeholder="Вкажіть кількість осіб" size="1" required readOnly
+                                       ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick}
+                                       value={detailsInputValue}/>
                                 <span className="dots three">···</span>
                                 <span className="dots">···</span>
                             </div>
-                            { showResults ? <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/> : null }
+                            {showResults ?
+                                <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/> : null}
                         </div>
                     </div>
                     <div className="col-auto inputs-search">
@@ -175,16 +177,16 @@ function Apartment() {
                 <span className="heading">Випробуй долю</span>
                 <p className="subheading">Наш генератор сам запропонує місце для відпочинку</p>
                 <button className="random-button">
-                    <img src={"./ion_dice.svg"} alt=""/>
+                    <img src={`${process.env.PUBLIC_URL}/ion_dice.svg`} alt=""/>
                 </button>
-                <div className="point"><img src={"./Vector.svg"} alt=""/></div>
+                <div className="point"><img src={`${process.env.PUBLIC_URL}/Vector.svg`} alt=""/></div>
                 <p className="subheading">Клікни на кубик</p>
                 <div className="container random-slider slider">
                     <div className="card-cover third-layer">
                         <a href="">
                             <div className="card">
                                 <div className="rating">
-                                    <img src={"./star.svg"} alt="star" className="star"/>
+                                    <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                     <span>4.9</span>
                                 </div>
                                 <div className="card-img-top" style={{backgroundImage: `url("/118317.jpeg")`}}/>
@@ -203,7 +205,7 @@ function Apartment() {
                             <a href="">
                                 <div className="card">
                                     <div className="rating">
-                                        <img src={"./star.svg"} alt="star" className="star"/>
+                                        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                         <span>4.1</span>
                                     </div>
                                     <div className="card-img-top" style={{backgroundImage: `url("/truskavets.png")`}}/>
@@ -221,7 +223,7 @@ function Apartment() {
                             <a href="">
                                 <div className="card">
                                     <div className="rating">
-                                        <img src={"./star.svg"} alt="star" className="star"/>
+                                        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                         <span>4.5</span>
                                     </div>
                                     <div className="card-img-top" style={{backgroundImage: `url("/dzh.png")`}}/>
@@ -239,7 +241,7 @@ function Apartment() {
                             <a href="">
                                 <div className="card">
                                     <div className="rating">
-                                        <img src={"./star.svg"} alt="star" className="star"/>
+                                        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                         <span>4.2</span>
                                     </div>
                                     <div className="card-img-top" style={{backgroundImage: `url("/slavske.png")`}}/>
@@ -257,7 +259,7 @@ function Apartment() {
                             <a href="">
                                 <div className="card">
                                     <div className="rating">
-                                        <img src={"./star.svg"} alt="star" className="star"/>
+                                        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                         <span>4.5</span>
                                     </div>
                                     <div className="card-img-top" style={{backgroundImage: `url("/sinevir.png")`}}/>

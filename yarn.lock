@@ -7127,11 +7127,6 @@ react-bootstrap-daterangepicker@^7.0.0:
   resolved "https://registry.yarnpkg.com/react-bootstrap-daterangepicker/-/react-bootstrap-daterangepicker-7.0.0.tgz#172228cccaa3b0f4a42e84eb6d646b4988a0df64"
   integrity sha512-lZ5/Foj3Y6wbfOtIBmKbb+6PSFu2NGzpLw4WC7J/C/SRinNpYShzyNkFMULw0hCpUNVlllfFjqQCCI39KDnHCA==
 
-react-datalist-input@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-datalist-input/-/react-datalist-input-3.0.5.tgz#1693cb55ab68f9a390319bc5df1576b8d8396519"
-  integrity sha512-N8lMHGU2qTHzmq+RknYu9CKseYFedhiAvwQW000K3Tx9twKBkdXygMHrKdm1hhO7wf4pEolM8sHH6DC5X1SrVw==
-
 react-dev-utils@^12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.0.tgz#4eab12cdb95692a077616770b5988f0adf806526"
