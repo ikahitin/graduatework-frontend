@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NavigationPanel() {
     return(
-        <div className="nav nav-pills">
+        <div className="nav nav-pills col-11">
             <NavLink className="nav-item" to="/booking/apartments">
                 <button className="nav-link" aria-current="page">
                     <div className="nav-icon house"/>

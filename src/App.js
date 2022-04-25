@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App">
             <NavHeader/>
-            <div className="section container">
+            <div className="section container-xxl">
                 <Outlet/>
             </div>
             <Footer/>

@@ -76,8 +76,7 @@ function Apartment() {
                     <div className="inputs inputs-search">
                         <div className="col-sm">
                             <div className="input-group">
-                                <input className="form-control step-control house-icon" list="datalistOptions"
-                                       id="input"
+                                <input className="form-control step-control with-icon house-icon" list="datalistOptions"
                                        placeholder="Куди бажаєте поїхати?" size="1"
                                        onChange={e => setDestination(e.target.value)} required/>
                                 <span className="dots one">···</span>
@@ -95,12 +94,9 @@ function Apartment() {
                                 <DateRangePicker
                                     initialSettings={{
                                         autoUpdateInput: false,
-                                        format: 'ddd DD MMMM',
                                         locale: {
                                             applyLabel: "Прийняти",
                                             cancelLabel: 'Скасувати',
-                                            format: 'DD/MM/YY',
-                                            fromLabel: "Fromm",
                                             daysOfWeek: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
                                             monthNames: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
                                             firstDay: 1
@@ -108,7 +104,7 @@ function Apartment() {
                                     }}
                                     onApply={handleApply}>
                                     <div className="input-group">
-                                        <input type="text" className="form-control step-control calendar-icon"
+                                        <input type="text" className="form-control step-control with-icon calendar-icon"
                                                placeholder="Оберіть заплановану дату" required readOnly ref={dateInput}
                                                onBlur={handleFocus}/>
                                         <span className="dots two">···</span>
@@ -119,7 +115,7 @@ function Apartment() {
                         </div>
                         <div className="col-sm position-relative">
                             <div className="input-group">
-                                <input className="form-control step-control person-icon"
+                                <input className="form-control step-control with-icon person-icon"
                                        placeholder="Вкажіть кількість осіб" size="1" required readOnly
                                        ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick}
                                        value={detailsInputValue}/>
@@ -178,7 +174,7 @@ function Apartment() {
                 <span className="heading">Випробуй долю</span>
                 <p className="subheading">Наш генератор сам запропонує місце для відпочинку</p>
                 <button className="random-button">
-                    <img src={`${process.env.PUBLIC_URL}/ion_dice.svg`} alt=""/>
+                    <img src={`${process.env.PUBLIC_URL}/ion_dice.svg`} alt="dice"/>
                 </button>
                 <div className="point"><img src={`${process.env.PUBLIC_URL}/Vector.svg`} alt=""/></div>
                 <p className="subheading">Клікни на кубик</p>

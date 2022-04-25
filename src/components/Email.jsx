@@ -9,8 +9,7 @@ export default function Email() {
                 <img src={`${process.env.PUBLIC_URL}/email-bg.svg`} alt="email-background" className="email-background"/>
                 <form action="" className="email-form">
                     <div className="input-group">
-                        <div className="nav-icon email-gray"/>
-                        <input type="text" className="form-control" id="emailSubscription"
+                        <input type="text" className="form-control with-icon email-icon" id="emailSubscription"
                                placeholder="Ваш e-mail"/>
                     </div>
                     <div className="col-auto">
