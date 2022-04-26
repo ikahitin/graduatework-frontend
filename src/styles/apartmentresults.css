@@ -71,18 +71,18 @@
 }
 
 .house-icon-dark {
-    background: url("../public/fa6-solid_house-dark.svg") #fff;
+    background: url("../../public/fa6-solid_house-dark.svg") #fff;
     background-size: 1.25rem;
 }
 
 .calendar-icon-dark {
-    background: url("../public/bi_calendar-event-fill-dark.svg") #fff ;
+    background: url("../../public/bi_calendar-event-fill-dark.svg") #fff ;
     background-size: 1rem;
     background-position: 1rem 0.7rem!important;
 }
 
 .person-icon-dark {
-    background: url("../public/person-dark.svg") #fff ;
+    background: url("../../public/person-dark.svg") #fff ;
     background-size: 1rem;
 }
 
@@ -165,7 +165,7 @@
 
 .image-content {
     position: relative;
-    background-image: url("../public/room.png");
+    background-image: url("../../public/room.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -247,7 +247,7 @@
 }
 
 .arrow:after {
-    content: url("../public/arrow-right.svg");
+    content: url("../../public/arrow-right.svg");
     display: flex;
     align-items: end;
     padding-left: 0.5rem;

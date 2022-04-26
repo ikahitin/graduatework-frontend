@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Booking() {
     return(
-        <div className="section-nav container-xxl">
+        <div className="section-nav container-xxl p-0">
             <Outlet/>
             <NavigationPanel />
         </div>

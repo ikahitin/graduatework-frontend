@@ -1,0 +1,134 @@
+.car-icon {
+    background: url("../../public/fa6-solid_car_gray.svg") 1rem 1rem;
+    background-size: 1.25rem;
+}
+
+.company-card {
+    height: 8.69rem;
+    padding: 0 0.8rem;
+}
+
+.company-image-cover {
+    box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
+    border-radius: 2.81rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.company-image {
+    flex-basis: 30%;
+}
+
+.popular-companies .slider {
+    margin-top: 3.5rem;
+}
+
+.features-list {
+    display: flex;
+    height: 10rem;
+    background-image: url("../../public/curve.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 5.5rem;
+}
+
+.features {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.f-text {
+    font-size: 1.00rem;
+    color: #404040;
+    font-weight: 700;
+}
+
+.sub-f-text {
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.f-txt {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.feature img {
+    width: 1.81rem;
+}
+
+.faq-content {
+    display: flex;
+    margin: auto;
+    padding-top: 2.6rem;
+}
+
+.questions {
+    flex-basis: 62.5%;
+    padding-right: 2rem;
+    padding-top: 1rem;
+}
+
+.faq-images {
+    flex-basis: 37.5%;
+}
+
+.faq-images img{
+    width: 100%;
+    padding-left: 2rem;
+}
+
+.questions-number {
+    background: #3D86F5;
+    border-radius: 1.56rem;
+    padding: 0.3rem 1.3em;
+    color: #FFFFFF;
+    width: fit-content;
+    font-size: 0.75rem;
+}
+
+.accordion-item {
+    border-radius: 2vw!important;
+    border: 1px solid #C4C4C4!important;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.accordion-header {
+    border-radius: 2vw!important;
+}
+
+.accordion-button {
+    border-radius: 4.91rem!important;
+    font-size: 0.94rem!important;
+    color: #404040;
+    padding: 0.8rem 1.25rem
+}
+
+.accordion button, .accordion button:focus {
+    outline: none!important;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #3D86F5;
+    background-color: #fff;
+    box-shadow: none
+}
+
+.accordion-body {
+    text-align: left;
+}
+
+.fill-width {
+    flex: 1 1 auto;
+}
+
+.min-width {
+    flex: 0 0 auto;
+    min-width: 16.25rem;
+}

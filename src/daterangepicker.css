@@ -256,10 +256,11 @@
 .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
     width: 50px;
     margin: 0 auto;
-    background: #eee;
-    border: 1px solid #eee;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
     padding: 2px;
     outline: 0;
+    border-radius: 2.81rem;
 }
 
 .daterangepicker .calendar-time {

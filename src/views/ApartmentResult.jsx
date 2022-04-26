@@ -1,5 +1,5 @@
 import {NavLink, useSearchParams} from "react-router-dom";
-import '../apartmentresults.css'
+import '../styles/apartmentresults.css'
 import React from "react";
 import moment from "moment/moment";
 import Filters from "../components/Filters";

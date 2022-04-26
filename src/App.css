@@ -959,7 +959,7 @@ form.row {
   padding: 0 0.7rem;
 }
 
-.ideas {
+.ideas, .popular-companies, .faq, .email {
   padding-top: 8.6rem;
 }
 
@@ -1008,10 +1008,6 @@ form.row {
   justify-content: space-between;
   padding-top: 3rem;
   align-items: center;
-}
-
-.random {
-  margin-bottom: 9.7rem;
 }
 
 .email-block {
@@ -1208,7 +1204,7 @@ button:focus {
 }
 
 .card-img-top {
-  height: 18.15rem;
+  height: 16rem;
   border-radius: 2.25rem;
   background-position: center;
   background-size: cover;

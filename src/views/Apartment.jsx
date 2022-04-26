@@ -8,7 +8,6 @@ import Email from "../components/Email";
 import '@lion/input-stepper/define';
 import localization from 'moment/locale/uk'
 import QuantityInputs from "../components/QuantityInputs";
-import Header from "../components/Header";
 
 
 function Apartment() {
@@ -74,7 +73,7 @@ function Apartment() {
             <div className="search-block">
                 <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="inputs inputs-search">
-                        <div className="col-sm">
+                        <div className="col-sm min-width">
                             <div className="input-group">
                                 <input className="form-control step-control with-icon house-icon" list="datalistOptions"
                                        placeholder="Куди бажаєте поїхати?" size="1"
@@ -275,7 +274,7 @@ function Apartment() {
                         <a href="">
                             <div className="card">
                                 <div className="rating">
-                                    <img src={"./star.svg"} alt="star" className="star"/>
+                                    <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
                                     <span>4.9</span>
                                 </div>
                                 <div className="card-img-top" style={{backgroundImage: `url("/118317.jpeg")`}}/>
