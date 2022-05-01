@@ -73,7 +73,7 @@ function Apartment() {
             <div className="search-block">
                 <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="inputs inputs-search">
-                        <div className="col-sm min-width">
+                        <div className="col-sm min-width medium">
                             <div className="input-group">
                                 <input className="form-control step-control with-icon house-icon" list="datalistOptions"
                                        placeholder="Куди бажаєте поїхати?" size="1"

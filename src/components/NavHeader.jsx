@@ -1,6 +1,7 @@
 import Header from "./Header";
 import React, {useState} from "react";
 import {loginUser, registerUser} from "../utils/auth";
+import {NavLink} from "react-router-dom";
 
 export default function NavHeader() {
     const token = localStorage.getItem('accessToken');
@@ -140,7 +141,9 @@ export default function NavHeader() {
                     <div className="container-fluid">
                         <ul className="navbar-nav mb-2 mb-lg-0 additional">
                             <li className="nav-item">
-                                <a className="nav-link text-white" aria-current="page" href="#">Logo</a>
+                                <NavLink className="nav-link text-white" to="/booking/apartments">
+                                    Logo
+                                </NavLink>
                             </li>
                         </ul>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -190,7 +193,6 @@ export default function NavHeader() {
                     </div>
                 </nav>
                 <Header />
-
         </div>
     )
 }

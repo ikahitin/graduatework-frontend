@@ -72,7 +72,7 @@ function Car() {
                                     }}
                                     onApply={handleApply}>
                                     <div className="input-group">
-                                        <input type="text" className="form-control step-control with-icon calendar-icon"
+                                        <input type="text" className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Отримання" required onBlur={handleFocus} ref={dateInput}
                                                />
                                         <span className="dots two">···</span>
@@ -100,7 +100,7 @@ function Car() {
                                     }}
                                     onApply={handleApply}>
                                     <div className="input-group">
-                                        <input type="text" className="form-control step-control with-icon calendar-icon"
+                                        <input type="text" className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Повернення"
                                         />
                                         <span className="dots two">···</span>

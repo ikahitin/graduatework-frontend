@@ -1,0 +1,231 @@
+.top-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.images {
+    flex-wrap: wrap;
+    width: 100%;
+    float: left;
+    padding-top: 1.3rem;
+}
+
+.apartment-img {
+    display: block;
+    padding-bottom: 0.65rem;
+}
+
+.apartment-img:nth-child(1) {
+    height: 22.13rem;
+    width: 40%;
+    float: left;
+    padding-right: 0.65rem;
+}
+
+.apartment-img:nth-child(n + 2) {
+    height: 11.065rem;
+    width: 30%;
+    float: right;
+    padding-left: 0.65rem;
+}
+
+.apartment-img:nth-child(n + 6) {
+    height: 5.81rem;
+    width: 14%;
+    float: left;
+    padding-left: 0;
+    padding-top: 0.65rem;
+    padding-right: 1.3rem;
+}
+
+.apartment-img:nth-child(2), .apartment-img:nth-child(4) {
+    padding-left: 1.3rem;
+}
+
+.apartment-img:nth-child(3), .apartment-img:nth-child(2) {
+    padding-bottom: 1.3rem;
+}
+
+.apartment-img-inner {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.94rem;
+}
+
+.apartment-desc {
+    display: flex;
+    width: 100%;
+    padding-top: 2rem;
+}
+
+.apartment-specifics {
+    flex-basis: 30%;
+    background: #F5F5F5;
+    border-radius: 1.25rem;
+    padding: 1.3rem;
+}
+
+.desc {
+    flex-basis: 70%;
+}
+
+.specifics {
+    color: #3D86F5;
+    font-size: 0.94rem;
+    font-weight: 700;
+    padding-bottom: 0.8rem;
+}
+
+.specifics-desc {
+    color: #404040;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding-bottom: 0.8rem;
+}
+
+.apartment-location {
+    color: #404040;
+    font-size: 0.88rem;
+    padding-bottom: 0.8rem;
+}
+
+.breakfast-h {
+    color: #404040;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.breakfast-spec {
+    color: #404040;
+    font-size: 0.88rem;
+}
+
+.breakfast-info {
+    padding-bottom: 0.8rem;
+}
+
+.location-icon {
+    width: 1.19rem;
+    height: 1.38rem;
+    margin-right: 0.3rem;
+}
+
+.apartment-location {
+    display: flex;
+    line-height: 1rem;
+}
+
+.map {
+    height: 6.19rem;
+    background-image: url("../../public/map.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.94rem;
+    position: relative;
+    margin-top: 0.875rem;
+}
+
+.blur {
+    background: rgba(49, 49, 49, 0.63);
+    width: 100%;
+    height: 100%;
+    border-radius: 0.94rem;
+}
+
+.show-map-btn {
+    font-size: 0.63rem;
+    color: #FFFFFF;
+    border: 1px solid #3D86F5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 0.43rem 0.93rem;
+    border-radius: 0.94rem;
+}
+
+.show-map-btn:hover {
+    color: #FFFFFF;
+}
+
+.ap-desc {
+    padding-bottom: 1.3rem;
+}
+
+.amenities {
+    display: flex;
+    font-size: 0.88rem;
+    color: #404040;
+    flex-wrap: wrap;
+}
+
+.amenities>* {
+    padding-right: 1.75rem;
+}
+
+.review {
+    box-shadow: 0px 0px 6px rgba(34, 34, 34, 0.14);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #404040;
+    padding: 1.125rem 2.125rem;
+    border-radius: 1.25rem;
+    line-height: 0.875rem;
+}
+
+.review-wrap {
+    padding: 0 0.8rem;
+    height: 9.63rem;
+}
+
+.up-review-part {
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer img {
+    width: 1.19rem;
+    height: 1.19rem;
+    margin-right: 0.3rem;
+}
+.review-body {
+    font-size: 0.75rem;
+}
+
+.review-date {
+    font-size: 0.63rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review-rating {
+    display: flex;
+    padding: 0.4375rem 0;
+}
+
+.review-rating img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 0.3rem;
+}
+
+.review-rating img:nth-child(1) {
+    margin-left: 0;
+}
+
+.reviews {
+    padding-top: 4.8rem;
+    flex-wrap: wrap;
+}

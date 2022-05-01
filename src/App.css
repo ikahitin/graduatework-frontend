@@ -959,7 +959,7 @@ form.row {
   padding: 0 0.7rem;
 }
 
-.ideas, .popular-companies, .faq, .email {
+.ideas, .popular-companies, .faq, .email, .flow {
   padding-top: 8.6rem;
 }
 
@@ -1571,7 +1571,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .with-icon {
-  padding: 1rem 2rem 1rem 2.9rem;
+  padding: 1rem 1.2rem 1rem 2.9rem;
 }
 
 .house-icon {
@@ -1787,4 +1787,16 @@ form.row {
   .c-child + .nav {
     max-width: 1140px;
   }
+}
+
+.extra-small {
+  min-width: auto!important;
+  flex: 0 0 auto!important;
+}
+
+.small-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #404040;
+  padding-bottom: 1.2rem;
 }
