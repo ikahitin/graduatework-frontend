@@ -3,25 +3,41 @@ import React, {useRef, useState} from "react";
 import '../styles/car.css'
 import Slider from "react-slick";
 import Email from "../components/Email";
+import {useNavigate} from "react-router-dom";
 
 function Car() {
+    const navigate = useNavigate();
+
     const [destination, setDestination] = useState();
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const dateInput = useRef();
 
-    const handleApply = (event, picker) => {
-        console.log(picker)
+    const handleApplyStartDate = (event, picker) => {
         picker.element.find('input:first').val(
             picker.startDate.format('dd, D MMMM, HH:mm')
         );
-        setStartDate(picker.startDate.format('dd, D MMMM, HH:mm'));
+        setStartDate(picker.startDate.format('YYYYMMDDThhmm'));
+    };
+
+    const handleApplyEndDate = (event, picker) => {
+        picker.element.find('input:first').val(
+            picker.endDate.format('dd, D MMMM, HH:mm')
+        );
+        setEndDate(picker.endDate.format('YYYYMMDDThhmm'));
     };
 
     function handleFocus(e) {
         if (e.relatedTarget == null) {
             dateInput.current.focus();
         }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const loc = `location=${destination}`
+        const dateRange = `&start=${startDate}&end=${endDate}`
+        navigate(`/booking/cars/search?${loc}${dateRange}`);
     }
 
     const sliderSettings = {
@@ -36,7 +52,7 @@ function Car() {
     return (
         <div className="container-xxl p-0 c-child">
             <div className="search-block container px-0">
-                <form className="row gx-3 gy-2 align-items-center">
+                <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="inputs inputs-search">
                         <div className="col-sm fill-width">
                             <div className="input-group">
@@ -70,7 +86,7 @@ function Car() {
                                             firstDay: 1
                                         },
                                     }}
-                                    onApply={handleApply}>
+                                    onApply={handleApplyStartDate}>
                                     <div className="input-group">
                                         <input type="text" className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Отримання" required onBlur={handleFocus} ref={dateInput}
@@ -98,7 +114,7 @@ function Car() {
                                             firstDay: 1
                                         },
                                     }}
-                                    onApply={handleApply}>
+                                    onApply={handleApplyEndDate}>
                                     <div className="input-group">
                                         <input type="text" className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Повернення"

@@ -6,6 +6,7 @@ import Filters from "../components/Filters";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import ScrollToTop from "../components/ScrollToTop";
 import getStars from "../utils/utils";
+import Email from "../components/Email";
 
 export default function ApartmentResult() {
     const navigate = useNavigate();
@@ -214,6 +215,7 @@ export default function ApartmentResult() {
                     </div>
                 }
             </div>
+            <Email/>
         </div>
     )
 }

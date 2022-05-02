@@ -10,6 +10,7 @@ import ApartmentResult from "./views/ApartmentResult";
 import Car from "./views/Car";
 import Taxi from "./views/Taxi";
 import ApartmentUnit from "./views/ApartmentUnit";
+import CarResult from "./views/CarResults";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
                         <Route path="apartments/search" element={<ApartmentResult/>}/>
                         <Route path="apartments/:apartment_id" element={<ApartmentUnit/>}/>
                         <Route path="cars" element={<Car/>}/>
+                        <Route path="cars/search" element={<CarResult/>}/>
                         <Route path="taxi" element={<Taxi/>}/>
                 </Route>
                 <Route

@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 
 export default function Header() {
     let location = useLocation();
-    if (location.pathname.match('/apartments/')){
+    if (location.pathname.match('/apartments/') || location.pathname.match('/cars/')){
         return null;
     }
     return (

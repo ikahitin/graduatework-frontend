@@ -97,7 +97,7 @@ export default function ApartmentUnit() {
                 </div>
             </div>
             {apartment.reviews.length > 0 &&
-                <div className="reviews">
+                <div className="reviews-block">
                     <div className="small-heading w-100">Відгуки</div>
                     <Slider {...sliderSettings}>
                         {apartment.reviews.map((review, key) =>

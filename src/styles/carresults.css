@@ -1,0 +1,169 @@
+.car-results .react-tabs__tab {
+    list-style-type: none;
+}
+
+.category-image {
+    height: 3.75rem;
+    flex-basis: auto;
+    margin-bottom: 1.25rem;;
+}
+
+.car-category {
+    font-size: 0.75rem;
+    color: #000000;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.25rem;
+    box-shadow: 0px 0px 7px rgba(45, 45, 45, 0.25);
+    padding: 2.25rem 1.25rem 0.7rem 1.25rem;
+    height: 100%;
+    text-align: center;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.car-results .react-tabs__tab {
+    flex: 1 1 0px;
+    width: 0;
+    outline: none;
+}
+
+.car-results .react-tabs__tab-list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    padding-left: 0;
+}
+
+.car-results {
+    flex-basis: 70%;
+}
+
+.car-results .react-tabs__tab--selected .car-category{
+    opacity: 1;
+}
+
+.car-heading {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #404040;
+    padding: 1rem 0 1.5rem 0.6rem;
+}
+
+.car-category-name {
+    font-weight: 600;
+    color: #404040;
+    font-size: 0.88rem;
+    padding-bottom: 1.2rem;
+}
+
+.car-specs {
+    display: flex;
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.car-specs img{
+    height: 1rem;
+    margin-right: 0.4rem;
+}
+
+.car-specs>* {
+    display: flex;
+    align-items: center;
+    padding-right: 0.9rem;
+}
+
+.price-addition {
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.price-includes {
+    font-weight: 600;
+}
+
+.price-addition img {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.75rem;
+}
+
+.insurance {
+    display: flex;
+    align-items: center;
+}
+
+.car-location div:first-child, .car-mileage div:first-child {
+    font-weight: 600;
+}
+
+.location-and-mileage {
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.location-and-mileage img {
+    width: 1rem;
+    margin-right: 0.68rem;
+}
+
+.location-and-mileage {
+    display: flex;
+    gap: 4.3rem;
+    padding: 2.3rem 0;
+}
+
+.car-card .right-content {
+    padding-top: 2rem;
+}
+
+.car-card .image-content{
+    height: 8.88rem;
+    background-size: contain;
+}
+
+.car-card {
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.car-card .image-side {
+    flex-basis: 28%;
+    padding-top: 3rem;
+}
+
+.car-card .content-side {
+    flex-basis: 72%;
+}
+
+.image-side {
+    font-weight: 600;
+}
+
+.provider img {
+    width: 3.69rem;
+}
+
+.provider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.25rem;
+}
+
+.car-list .results-len{
+    padding-bottom: 1.3rem;
+}
+
+.car-results {
+    padding-left: 1.1rem;
+}
+
+.location-icon-dark {
+    background: url("../../public/dark_location.svg") #fff;
+    background-size: 1.25rem;
+}

@@ -1516,7 +1516,7 @@ input::-webkit-calendar-picker-indicator {
   border-radius: 2.81rem;
 }
 
-.react-tabs__tab-panel {
+.ideas .react-tabs__tab-panel {
   width: 0;
   height: 0;
   padding: 0;
@@ -1524,7 +1524,7 @@ input::-webkit-calendar-picker-indicator {
   overflow: hidden;
 }
 
-.react-tabs__tab-panel--selected {
+.ideas .react-tabs__tab-panel--selected {
   visibility: visible;
   z-index: 999;
   height: auto;
@@ -1799,4 +1799,8 @@ form.row {
   font-weight: 700;
   color: #404040;
   padding-bottom: 1.2rem;
+}
+
+.email {
+  text-align: center;
 }
