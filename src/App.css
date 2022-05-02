@@ -546,6 +546,11 @@
   box-shadow: none;
 }
 
+body {
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
 .App {
   text-align: center;
 }
@@ -772,6 +777,14 @@
 .search-block input, .search-block select, .email-block input {
   border: none;
   min-width: 12rem!important;
+}
+
+.search-block input.extra-small {
+  min-width: 5rem!important;
+}
+
+input.left-half, input.right-half {
+  min-width: 6rem!important;
 }
 
 .search-block .input-group, .email-block .input-group{
@@ -1283,15 +1296,15 @@ a:hover {
   border-radius: 50%;
 }
 
-input:checked + .input-slider {
+#theme-switch:checked + .input-slider {
   background-color: #2196F3;
 }
 
-input:focus + .input-slider {
+#theme-switch:focus + .input-slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked ~ label .input-slider-img {
+#theme-switch:checked ~ label .input-slider-img {
   -webkit-transform: translateX(1rem);
   -ms-transform: translateX(1rem);
   transform: translateX(1rem);
