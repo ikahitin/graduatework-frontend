@@ -20,7 +20,7 @@
     padding: 2.25rem 1.25rem 0.7rem 1.25rem;
     height: 100%;
     text-align: center;
-    opacity: 0.4;
+    border: 1.5px solid #fff;
     cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .car-results .react-tabs__tab--selected .car-category{
-    opacity: 1;
+    border: 1.5px solid #3D86F5;
 }
 
 .car-heading {

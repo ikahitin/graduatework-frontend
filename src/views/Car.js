@@ -88,9 +88,10 @@ function Car() {
                                     }}
                                     onApply={handleApplyStartDate}>
                                     <div className="input-group">
-                                        <input type="text" className="form-control step-control with-icon calendar-icon small"
+                                        <input type="text"
+                                               className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Отримання" required onBlur={handleFocus} ref={dateInput}
-                                               />
+                                        />
                                         <span className="dots two">···</span>
                                         <span className="dots">···</span>
                                     </div>
@@ -116,7 +117,8 @@ function Car() {
                                     }}
                                     onApply={handleApplyEndDate}>
                                     <div className="input-group">
-                                        <input type="text" className="form-control step-control with-icon calendar-icon small"
+                                        <input type="text"
+                                               className="form-control step-control with-icon calendar-icon small"
                                                placeholder="Повернення"
                                         />
                                         <span className="dots two">···</span>
@@ -134,27 +136,27 @@ function Car() {
             <div className="popular-companies container">
                 <span className="heading">Популярні прокатні компанії</span>
                 <Slider {...sliderSettings}>
-                        <div className="company-card" >
-                            <div className="company-image-cover">
-                                <img src={`${process.env.PUBLIC_URL}/company1.png`} alt="" className="company-image"/>
-                            </div>
+                    <div className="company-card">
+                        <div className="company-image-cover">
+                            <img src={`${process.env.PUBLIC_URL}/company1.png`} alt="" className="company-image"/>
                         </div>
-                    <div className="company-card" >
+                    </div>
+                    <div className="company-card">
                         <div className="company-image-cover">
                             <img src={`${process.env.PUBLIC_URL}/company2.png`} alt="" className="company-image"/>
                         </div>
                     </div>
-                    <div className="company-card" >
+                    <div className="company-card">
                         <div className="company-image-cover">
                             <img src={`${process.env.PUBLIC_URL}/company3.png`} alt="" className="company-image"/>
                         </div>
                     </div>
-                    <div className="company-card" >
+                    <div className="company-card">
                         <div className="company-image-cover">
                             <img src={`${process.env.PUBLIC_URL}/company4.png`} alt="" className="company-image"/>
                         </div>
                     </div>
-                    <div className="company-card" >
+                    <div className="company-card">
                         <div className="company-image-cover">
                             <img src={`${process.env.PUBLIC_URL}/company1.png`} alt="" className="company-image"/>
                         </div>
@@ -206,9 +208,13 @@ function Car() {
                                 </h2>
                                 <div id="flush-collapseOne" className="accordion-collapse collapse"
                                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div className="accordion-body">Placeholder content for this accordion, which is
-                                        intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                        first item's accordion body.
+                                    <div className="accordion-body">
+                                        <p>При бронюванні автомобіля вам знадобиться лише кредитна або дебетова
+                                            картка.</p>
+                                        <p>У пункті прокату вам знадобляться такі документи:</p>
+                                        Паспорт.<br/>
+                                        Ваучер.<br/>
+                                        Посвідчення водія для кожного з водіїв.
                                     </div>
                                 </div>
                             </div>
@@ -222,10 +228,9 @@ function Car() {
                                 </h2>
                                 <div id="flush-collapseTwo" className="accordion-collapse collapse"
                                      aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div className="accordion-body">Placeholder content for this accordion, which is
-                                        intended to demonstrate the class. This is the
-                                        second item's accordion body. Let's imagine this being filled with some actual
-                                        content.
+                                    <div className="accordion-body">Більшість прокатних компаній дає автомобілі в оренду
+                                        водіям від 21 року (а іноді й молодше). Якщо вам менше 25 років, можливо,
+                                        доведеться сплатити збір за молодого водія.
                                     </div>
                                 </div>
                             </div>
@@ -239,12 +244,8 @@ function Car() {
                                 </h2>
                                 <div id="flush-collapseThree" className="accordion-collapse collapse"
                                      aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div className="accordion-body">Placeholder content for this accordion, which is
-                                        intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                        third item's accordion body. Nothing more exciting happening here in terms of
-                                        content, but just filling up the space to make it look, at least at first
-                                        glance, a bit more representative of how this would look in a real-world
-                                        application.
+                                    <div className="accordion-body">Звісно. Просто введіть дані іншої людини під час
+                                        бронювання в розділі «Інформація про водія».
                                     </div>
                                 </div>
                             </div>
@@ -258,10 +259,9 @@ function Car() {
                                 </h2>
                                 <div id="flush-collapseFour" className="accordion-collapse collapse"
                                      aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                    <div className="accordion-body">Placeholder content for this accordion, which is
-                                        intended to demonstrate the class. This is the
-                                        second item's accordion body. Let's imagine this being filled with some actual
-                                        content.
+                                    <div className="accordion-body">Дізнайтесь, що думають інші. На нашому сайті багато
+                                        відгуків та оцінок, так що ви зможете дізнатися, що сподобалося та не
+                                        сподобалося клієнтам різних прокатних компаній.
                                     </div>
                                 </div>
                             </div>
@@ -275,10 +275,11 @@ function Car() {
                                 </h2>
                                 <div id="flush-collapseFive" className="accordion-collapse collapse"
                                      aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                    <div className="accordion-body">Placeholder content for this accordion, which is
-                                        intended to demonstrate the class. This is the
-                                        second item's accordion body. Let's imagine this being filled with some actual
-                                        content.
+                                    <div className="accordion-body">У вартість, яку ви бачите, входить автомобіль,
+                                        обов'язкові страхові покриття (наприклад, Покриття на випадок ДТП та пошкоджень
+                                        (CDW) та Покриття на випадок угону) та можливі збори, які зазвичай оплачуються
+                                        при отриманні автомобіля (такі як збір за оренду в один бік) , аеропортовий збір
+                                        та місцеві податки).
                                     </div>
                                 </div>
                             </div>

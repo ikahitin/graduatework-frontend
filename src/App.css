@@ -549,6 +549,7 @@
 body {
   font-size: 0.88rem;
   font-weight: 400;
+  color: #404040;
 }
 
 .App {
@@ -1397,7 +1398,7 @@ button.show {
   padding-bottom: 1.4rem;
 }
 
-.dropdown-menu {
+.lang-control .dropdown-menu {
   margin: 0!important;
   border: none;
   min-width: auto;
@@ -1406,7 +1407,7 @@ button.show {
   padding-bottom: 0;
 }
 
-.dropdown-item {
+.lang-control .dropdown-item {
   padding: 0.25rem 0.7rem 0.5rem 0.7rem;
   border-radius: 0 0 2.81rem 2.81rem;
 }
@@ -1424,8 +1425,40 @@ button.show {
   padding: 0.5rem 0.7rem 0.25rem 0.7rem;
 }
 
-.dropdown-menu.show {
+.lang-control .dropdown-menu.show {
   width: -webkit-fill-available;
+}
+
+.login .dropdown-menu.show {
+  left: auto;
+  right: 0;
+  border-radius: 1.25rem;
+  font-size: 0.88rem;
+  margin-top: 0.75rem;
+  padding: 1.1rem 0;
+}
+
+.login .dropdown-item:hover {
+  background-color: #e9ecef87;
+}
+
+.login .dropdown-item.active, .login .dropdown-item:active {
+  background-color: #3D86F5;
+}
+
+.login .dropdown-item img {
+  width: 0.94rem;
+  margin-right: 0.6rem;
+}
+
+.login .dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 1.5rem 0.25rem 1rem;
+}
+
+.login button.show {
+  color: #fff!important;
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -1502,6 +1535,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   margin-left: 2rem;
+  position: relative;
 }
 
 .profile-btn:before {
@@ -1816,4 +1850,9 @@ form.row {
 
 .email {
   text-align: center;
+}
+
+.location-icon-gray {
+  background: url("../public/location_gray.svg") 1rem 1rem;
+  background-size: 1.25rem;
 }

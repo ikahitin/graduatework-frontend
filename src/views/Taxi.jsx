@@ -47,11 +47,11 @@ function Taxi() {
                     <div className="inputs inputs-search p-0">
                         <div className="col-sm fill-width">
                             <div className="input-group">
-                                <input className="form-control step-control with-icon car-icon right-half" list="datalistOptions"
+                                <input className="form-control step-control with-icon location-icon-gray right-half" list="datalistOptions"
                                        placeholder="Місце подачі" size="1"
                                        onChange={e => setDestination(e.target.value)} required/>
                                 <div className="vertical-line">&nbsp;</div>
-                                <input className="form-control step-control with-icon car-icon left-half" list="datalistOptions"
+                                <input className="form-control step-control with-icon location-icon-gray left-half" list="datalistOptions"
                                        placeholder="Місце призначення" size="1"
                                        onChange={e => setDestination(e.target.value)} required/>
                                 <span className="dots one">···</span>

@@ -1,0 +1,313 @@
+.fw-600 {
+    font-weight: 600;
+}
+
+.apartment-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.apartment-info .result-card-cover {
+    flex-basis: 65%;
+}
+
+.booking-info .small-heading {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.general-info-block {
+    display: flex;
+    gap: 3.3rem;
+}
+
+.gi-child {
+    flex: 1 1 0px;
+}
+
+.gi-child:nth-child(1), .gi-child:nth-child(2) {
+    border-right: 1px solid #E7E7E7;
+}
+
+.gi-child.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.detail-row img {
+    width: 1.06rem;
+    height: 1.06rem;
+    margin-right: 0.6rem;
+}
+
+.info-h {
+    font-size: 0.88rem;
+    color: #404040;
+    font-weight: 600;
+}
+
+.info-text {
+    font-size: 0.88rem;
+    color: #404040;
+}
+
+.info-text.b-space {
+    padding-bottom: 1.1rem;
+}
+
+.detail-row {
+    display: flex;
+}
+
+.up-content, .down-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-row a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #3D86F5;
+}
+
+.info-text.edit {
+    padding-bottom: 0.5rem;
+}
+
+.gi-child.details.bottom-space {
+    padding-bottom: 2rem;
+    padding-right: 3.3rem;
+}
+
+.total-amount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #404040;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 1.25rem;
+    border: 1px solid #C4C4C4;
+    width: fit-content;
+    padding: 1.1rem 1.8rem;
+}
+
+.amount {
+    font-size: 1.31rem;
+    color: #3D86F5;
+    font-weight: 600;
+    padding-left: 0.7rem;
+}
+
+.detail-price {
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #404040;
+    padding-top: 0.75rem;
+}
+
+.price-details {
+    display: flex;
+    gap: 7rem;
+}
+
+.price-heading {
+    font-weight: 600;
+    color: #404040;
+    font-size: 0.94rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+.continue-booking {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1.4rem;
+    padding-right: 1.8rem;
+}
+
+.info-text img {
+    margin-right: 0.5rem;
+    width: 1.25rem;
+}
+
+.acc-input {
+    font-weight: 700;
+    width: 16rem;
+    padding-right: 1rem;
+}
+
+.account-inputs {
+    padding-top: 0.5rem;
+}
+
+.acc-input-row {
+    display: flex;
+    padding-top: 1.5rem;
+}
+
+.acc-input div {
+    padding-left: 0.7rem;
+    margin-bottom: 0.4rem;
+}
+
+.sub-text {
+    font-size: 0.75rem;
+    color: #8D8D8D;
+    font-weight: 400;
+}
+
+.radio-booking .form-check-input {
+    border: 1px solid #C4C4C4;
+}
+
+.radio-booking{
+    margin-left: 0.7rem;
+    margin-top: 0.9rem;
+}
+
+.radio-booking label {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.info-text .sub-text {
+    margin-left: 1.75rem;
+}
+
+.account-inputs .info-text {
+    padding-top: 1.1rem;
+}
+
+.account-inputs .amenities {
+    padding: 1.6rem 0 1.6rem 0.7rem;
+}
+
+.input-heading {
+    font-weight: 700;
+    padding-left: 0.7rem;
+    padding-bottom: 0.5rem;
+}
+
+textarea {
+    border: 1px solid #C4C4C4;
+    border-radius: 2.81rem;
+    resize: none;
+    padding: 1rem 2rem;
+}
+
+.light {
+    color: #8D8D8D;
+    font-weight: 400;
+}
+
+.acc-input.wide {
+    width: 19.56rem;
+}
+
+.apartment-additional-info {
+    width: 65%;
+}
+
+.apartment-form {
+    border-radius: 1.25rem;
+    box-shadow: 0px 0px 7px rgba(45, 45, 45, 0.25);
+    padding: 0.1rem 1.8rem 2.5rem 1.8rem;
+    margin-top: 4.8rem;
+}
+
+.apartment-form .form-control {
+    font-size: 0.88rem;
+}
+
+.user-data-info .acc-input div{
+    font-weight: 600;
+    padding-left: 0;
+}
+
+.user-data-info p {
+    font-weight: 400;
+}
+
+.user-data-info .acc-input {
+    width: 12rem;
+}
+
+.user-data-info {
+    border-radius: 1.25rem;
+    box-shadow: 0px 0px 7px rgba(45, 45, 45, 0.25);
+    padding: 0.1rem 1.8rem 1rem 1.8rem;
+}
+
+.edit-data {
+    font-weight: 600;
+    color: #3D86F5;
+    text-decoration: underline;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+}
+
+.cvv {
+    width: 7rem;
+}
+
+select.expiration {
+    width: 4.63rem;
+}
+
+.selects {
+    display: flex;
+    padding-left: 0!important;
+    gap: 0.9rem;
+}
+
+.payments {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-left: 0.7rem;
+    font-weight: 700;
+}
+
+.payments img:first-child {
+    padding-left: 1rem;
+}
+
+.payment-info {
+    border-radius: 1.25rem;
+    box-shadow: 0px 0px 7px rgb(45 45 45 / 25%);
+    padding: 0.1rem 1.8rem 1rem 1.8rem;
+    margin-top: 5rem;
+}
+
+.payment {
+    width: 70%;
+}
+
+.submit-block {
+    display: flex;
+    padding-top: 1.4rem;
+    justify-content: space-between;
+}
+
+.submit-block a {
+    padding-right: 1.8rem;
+}
+
+.user-data-block {
+    width: 70%;
+    padding-top: 1.5rem;
+}
+
+.price-info.confirm {
+    padding-top: 3rem;
+}
+
+.submit-block .info-text {
+    display: flex;
+}

@@ -202,7 +202,9 @@ export default function ApartmentResult() {
                                                             className="duration">{getNumberOfNights()} ночей, {adults} дорослих
                                                         </div>
                                                         <div className="book">
-                                                            <button className="btn btn-light arrow">Забронювати</button>
+                                                            <NavLink to={{
+                                                                pathname: `/booking/apartments/${item.id}/booking`
+                                                            }} state={{ startDate: startDate, endDate: endDate }} className="btn btn-light arrow">Забронювати</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -24,6 +24,13 @@ export default function NavHeader() {
         }
     }
 
+    const handleLogout = async e => {
+        e.preventDefault();
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        window.location.href = "";
+    }
+
     const handleRegister = async e => {
         e.preventDefault();
         const response = await registerUser({
@@ -155,7 +162,7 @@ export default function NavHeader() {
                              id="navbarTogglerDemo02">
                             <ul className="navbar-nav mb-2 mb-lg-0 additional align-items-center">
                                 <li className="nav-item">
-                                    <div className="btn-group">
+                                    <div className="btn-group lang-control">
                                         <button className="btn btn-transparent btn-sm dropdown-toggle text-white lang"
                                                 type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -179,7 +186,25 @@ export default function NavHeader() {
                                 </li>
                                 {token ?
                                     <li className="nav-item login">
-                                        <button className="nav-link profile-btn text-white">{handleName(user)}</button>
+                                        <button className="nav-link profile-btn text-white" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{handleName(user)}</button>
+                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a className="dropdown-item" href="#">
+                                                <img src={`${process.env.PUBLIC_URL}/bi_person-fill.svg`} alt="profile"/>
+                                                Керування акаунтом
+                                            </a></li>
+                                            <li><a className="dropdown-item" href="#">
+                                                <img src={`${process.env.PUBLIC_URL}/trips.svg`} alt="trips"/>
+                                                Поїздки
+                                            </a></li>
+                                            <li><a className="dropdown-item" href="#">
+                                                <img src={`${process.env.PUBLIC_URL}/heart.svg`} alt="heart"/>
+                                                Збережене
+                                            </a></li>
+                                            <li><a className="dropdown-item" href="#" onClick={handleLogout}>
+                                                <img src={`${process.env.PUBLIC_URL}/logout.svg`} alt="logout"/>
+                                                Вийти
+                                            </a></li>
+                                        </ul>
                                     </li>
                                     :
                                     <li className="nav-item">
