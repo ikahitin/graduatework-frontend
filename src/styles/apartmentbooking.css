@@ -310,4 +310,5 @@ select.expiration {
 
 .submit-block .info-text {
     display: flex;
+    align-items: flex-start;
 }

@@ -1856,3 +1856,34 @@ form.row {
   background: url("../public/location_gray.svg") 1rem 1rem;
   background-size: 1.25rem;
 }
+
+.payment-confirmation.waiting {
+  padding-top: 8.6rem;
+  text-align: center;
+}
+
+.payment-confirmation.waiting .status {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation:first-child {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.wait {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 4.1rem;
+}
+
+.wait span {
+  font-weight: 700;
+}
+
+.payment-confirmation a {
+  text-decoration: underline;
+  color: #3D86F5;
+  font-weight: 600;
+}

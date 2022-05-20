@@ -6,18 +6,13 @@ import getStars from "../utils/utils";
 import moment from "moment/moment";
 
 export default function ApartmentBooking() {
-    const location = useLocation()
-    const {startDate, endDate} = location.state
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
-
     const navigate = useNavigate();
+    const location = useLocation()
+    const {startDate, endDate, name, phone, email, comment, arrivingHour} = location.state
+
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
 
-    const emailInput = useRef();
-    const phoneInput = useRef();
 
     function getNumberOfNights() {
         if (startDate !== null && endDate !== null) {
@@ -28,6 +23,22 @@ export default function ApartmentBooking() {
 
     function getTotalPrice(price) {
         return getNumberOfNights() * price
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        const form = e.target;
+        const stateObj = {
+            startDate: startDate,
+            endDate: endDate,
+            name: form.name.value,
+            phone: form.phone.value,
+            email: form.email.value,
+            comment: form.comment.value,
+            arrivingHour: form.arrivingHour.value
+        };
+
+        navigate(`/booking/apartments/${apartment_id}/booking/confirmation`, {state: stateObj});
     }
 
     React.useEffect(() => {
@@ -222,7 +233,7 @@ export default function ApartmentBooking() {
                     </div>
                 </div>
                 <div className="apartment-additional-info">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="apartment-form">
                             <div className="small-heading pb-0">Заповніть ваші дані</div>
                             <div className="info-text">
@@ -233,21 +244,22 @@ export default function ApartmentBooking() {
                                 <div className="acc-input-row">
                                     <div className="acc-input">
                                         <div>Ім’я</div>
-                                        <input type="text" className="form-control"></input>
+                                        <input type="text" className="form-control"/>
                                     </div>
                                     <div className="acc-input">
                                         <div>Прізвище</div>
-                                        <input type="text" className="form-control"></input>
+                                        <input type="text" className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="acc-input-row">
                                     <div className="acc-input">
                                         <div>E-mail</div>
-                                        <input type="email" className="form-control" onChange={e => setEmail(e.target.value)}></input>
+                                        <input type="email" name="email" className="form-control" required
+                                               defaultValue={email}/>
                                     </div>
                                     <div className="acc-input">
                                         <div>Підтвердіть ваш E-mail</div>
-                                        <input type="email" className="form-control"></input>
+                                        <input type="email" className="form-control" required defaultValue={email}/>
                                     </div>
                                 </div>
                                 <div className="acc-input-row pt-1">
@@ -289,11 +301,13 @@ export default function ApartmentBooking() {
                                 <div className="acc-input-row pt-2">
                                     <div className="acc-input">
                                         <div>Ім’я та прізвище гостя</div>
-                                        <input type="email" className="form-control" required onChange={e => setName(e.target.value)}></input>
+                                        <input type="text" name="name" className="form-control" required
+                                               defaultValue={name}/>
                                     </div>
                                     <div className="acc-input">
                                         <div>Номер телефону</div>
-                                        <input type="phone" className="form-control" onChange={e => setPhone(e.target.value)}></input>
+                                        <input type="phone" name="phone" className="form-control" required
+                                               defaultValue={phone}/>
                                     </div>
                                 </div>
                                 <div className="acc-input-row pt-1">
@@ -312,7 +326,8 @@ export default function ApartmentBooking() {
                                     <div className="input-heading">Напишіть свій коментар <span className="light">(за бажанням)</span>
                                     </div>
                                     <div className="acc-input">
-                                        <textarea name="comment" id="comment" cols="65" rows="3"></textarea>
+                                        <textarea name="comment" id="comment" cols="65" rows="3"
+                                                  defaultValue={comment}/>
                                     </div>
                                 </div>
                                 <div className="small-heading pb-0 pt-4">Час прибуття</div>
@@ -323,12 +338,13 @@ export default function ApartmentBooking() {
                                 <div className="input-heading">Вкажіть орієнтовний час прибуття</div>
                                 <div className="acc-input-row pt-0">
                                     <div className="acc-input wide">
-                                        <select name="arriving_time" id="arriving_time" className="form-control">
-                                            <option disabled selected value>Оберіть ...</option>
-                                            <option value="h_14">14:00</option>
-                                            <option value="h_15">15:00</option>
-                                            <option value="h_16">16:00</option>
-                                            <option value="h_17">17:00</option>
+                                        <select name="arrivingHour" id="arriving_time" className="form-control" required
+                                                defaultValue={arrivingHour}>
+                                            <option disabled selected value="">Оберіть ...</option>
+                                            <option value="14">14:00</option>
+                                            <option value="15">15:00</option>
+                                            <option value="16">16:00</option>
+                                            <option value="17">17:00</option>
                                             <option value="later">Пізніше 17:00</option>
                                         </select>
                                     </div>
@@ -336,11 +352,7 @@ export default function ApartmentBooking() {
                             </div>
                         </div>
                         <div className="continue-booking">
-                            <NavLink to={{
-                                pathname: `/booking/apartments/${apartment.id}/booking/confirmation`
-                            }} state={{ startDate: startDate, endDate: endDate, name: name, phone: phone, email: email }}>
-                                <button type="submit" className="btn btn-blue">Продовжити бронювання</button>
-                            </NavLink>
+                            <button type="submit" className="btn btn-blue">Продовжити бронювання</button>
                         </div>
                     </form>
                 </div>

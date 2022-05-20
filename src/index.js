@@ -14,6 +14,7 @@ import CarResult from "./views/CarResults";
 import ExchangeVacation from "./views/ExchangeVacation";
 import ApartmentBooking from "./views/ApartmentBooking";
 import ApartmentBookingConfirmation from "./views/apartment/ApartmentBookingConfirmation";
+import PaymentLoading from "./views/PaymentLoading";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -31,8 +32,9 @@ root.render(
                         <Route path="cars/search" element={<CarResult/>}/>
                         <Route path="taxi" element={<Taxi/>}/>
                         <Route path="vacation" element={<ExchangeVacation/>}/>
-                </Route>
-                <Route
+                    </Route>
+                    <Route path="payment" element={<PaymentLoading/>}/>
+                    <Route
                     path="*"
                     element={
                         <main style={{padding: "1rem"}}>

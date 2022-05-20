@@ -5,8 +5,9 @@ import ScrollToTop from "../../components/ScrollToTop";
 import moment from "moment/moment";
 
 export default function ApartmentBookingConfirmation() {
+    const navigate = useNavigate();
     const location = useLocation()
-    const {startDate, endDate, name, phone, email} = location.state
+    const {startDate, endDate, name, phone, email, comment, arrivingHour} = location.state
 
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
@@ -20,6 +21,37 @@ export default function ApartmentBookingConfirmation() {
 
     function getTotalPrice(price) {
         return getNumberOfNights() * price
+    }
+
+    function handleBooking(e) {
+        e.preventDefault()
+        const url = `http://127.0.0.1:8000/apartment/${apartment_id}/reservation`;
+        const data = {
+            "from_date": startDate,
+            "to_date": endDate,
+            "guest_name": name,
+            "guest_phone": phone,
+            "user_email": email,
+            "comment": comment,
+            "arriving_hour": arrivingHour,
+            "apartment_id": Number(apartment_id)
+        }
+        const makeReservation = async () => {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const json = await response.json();
+                navigate("/payment");
+            } catch (error) {
+                console.log("error", error);
+            }
+        };
+        makeReservation();
     }
 
     React.useEffect(() => {
@@ -50,7 +82,7 @@ export default function ApartmentBookingConfirmation() {
                 }}>{apartment.name}</NavLink>
                 <NavLink end={true} to={{
                     pathname: `/booking/apartments/${apartment_id}/booking`
-                }}>Бронювання</NavLink>
+                }} state={{startDate: startDate, endDate: endDate}}>Бронювання</NavLink>
                 <NavLink end={true} to={{
                     pathname: `/booking/apartments/${apartment_id}/booking/confirmation`
                 }}>Оплата</NavLink>
@@ -59,7 +91,7 @@ export default function ApartmentBookingConfirmation() {
                 <div className="apartment-info">
                     <div className="user-data-block">
                         <div className="user-data-info">
-                            <div className="small-heading pb-0">Інформація про особу яка бронює </div>
+                            <div className="small-heading pb-0">Інформація про особу яка бронює</div>
                             <div className="info-text">
                                 <img src={`${process.env.PUBLIC_URL}/yellow-exclamation.svg`} alt=""/>
                                 Важливо! Буль ласка, введіть ім’я, яке вказано у вашому паспорті
@@ -82,7 +114,8 @@ export default function ApartmentBookingConfirmation() {
                         <div className="edit-data">
                             <NavLink to={{
                                 pathname: `/booking/apartments/${apartment.id}/booking`
-                            }}>Змінити данні</NavLink>
+                            }} state={{startDate, endDate, name, phone, email, comment, arrivingHour}}>Змінити
+                                данні</NavLink>
                         </div>
                     </div>
                 </div>
@@ -115,7 +148,7 @@ export default function ApartmentBookingConfirmation() {
                 </div>
                 <div className="payment">
                     <div className="payment-info">
-                        <form action="">
+                        <form>
                             <div className="small-heading pb-0 pt-0">Дані про номер</div>
                             <div className="payments">
                                 Спосіб оплати
@@ -136,7 +169,8 @@ export default function ApartmentBookingConfirmation() {
                                 <div className="acc-input">
                                     <div>Термін закінчення (мм/рр)</div>
                                     <div className="selects">
-                                        <select name="arriving_time" id="arriving_time" className="form-control expiration">
+                                        <select name="arriving_time" id="month_expiry"
+                                                className="form-control expiration">
                                             <option disabled selected value></option>
                                             <option value="h_14">14:00</option>
                                             <option value="h_15">15:00</option>
@@ -144,8 +178,9 @@ export default function ApartmentBookingConfirmation() {
                                             <option value="h_17">17:00</option>
                                             <option value="later">Пізніше 17:00</option>
                                         </select>
-                                        <select name="arriving_time" id="arriving_time" className="form-control expiration">
-                                            <option disabled selected value> </option>
+                                        <select name="arriving_time" id="year_expiry"
+                                                className="form-control expiration">
+                                            <option disabled selected value></option>
                                             <option value="h_14">14:00</option>
                                             <option value="h_15">15:00</option>
                                             <option value="h_16">16:00</option>
@@ -156,19 +191,20 @@ export default function ApartmentBookingConfirmation() {
                                 </div>
                                 <div className="acc-input">
                                     <div>CVV код</div>
-                                    <input type="text" className="form-control cvv"></input>
+                                    <input type="text" name="cvv" className="form-control cvv"></input>
                                 </div>
                             </div>
+
                         </form>
+
                     </div>
                     <div className="submit-block">
                         <div className="info-text">
                             <img src={`${process.env.PUBLIC_URL}/yellow-exclamation.svg`} alt=""/>
-                            Настискаючи кнопку ”Підтвердити”, ви приймаєте умови бронювання, загальні положення, та положення про конфіденційність.
+                            Настискаючи кнопку ”Підтвердити”, ви приймаєте умови бронювання, загальні положення, та
+                            положення про конфіденційність.
                         </div>
-                        <NavLink to={{
-                            pathname: `/booking/apartments/${apartment.id}/booking/confirmation`
-                        }}><button type="submit" className="btn btn-blue">Підтвердити</button></NavLink>
+                        <button type="submit" className="btn btn-blue" onClick={handleBooking}>Підтвердити</button>
                     </div>
                 </div>
             </div>
