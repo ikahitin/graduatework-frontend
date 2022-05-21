@@ -4,6 +4,7 @@ import '../styles/apartmentunit.css'
 import Slider from "react-slick";
 import getStars from "../utils/utils";
 import moment from "moment/moment";
+import API from "../api";
 
 export default function ApartmentUnit() {
     const {apartment_id} = useParams();
@@ -19,12 +20,12 @@ export default function ApartmentUnit() {
     }
 
     React.useEffect(() => {
-        const url = `http://127.0.0.1:8000/apartment/${apartment_id}`;
+        const url = `apartment/${apartment_id}`;
 
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const json = await response.json();
+                const response = await API.get(url);
+                const json = await response.data;
                 setApartment(json)
             } catch (error) {
                 console.log("error", error);

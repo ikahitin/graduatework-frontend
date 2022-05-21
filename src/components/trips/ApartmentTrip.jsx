@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import getStars from "../../utils/utils";
 import moment from "moment/moment";
+import API from "../../api";
 
 export default function ApartmentTrip(data) {
     const [isLoading, setIsLoading] = useState(true);
@@ -19,14 +20,15 @@ export default function ApartmentTrip(data) {
         let url = `http://127.0.0.1:8000/reservation?reservation_status=${data["status"]}&reservation_type=apartment`;
         const fetchData = async () => {
             try {
-                const response = await fetch(url, {
-                    method: "GET",
+                const response = await API({
+                    method: 'get',
+                    url: url,
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
+                        "Authorization": `Bearer ${token}`,
+                    }
                 });
-                const json = await response.json();
+                const json = await response.data;
                 setReservations(json)
                 setIsLoading(false)
             } catch (error) {

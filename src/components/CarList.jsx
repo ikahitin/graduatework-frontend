@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {NavLink, useSearchParams} from "react-router-dom";
 import moment from "moment/moment";
+import API from "../api";
 
 export default function CarList(data) {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -23,11 +24,11 @@ export default function CarList(data) {
     }
 
     React.useEffect(() => {
-        let url = `http://127.0.0.1:8000/car?car_classification=${data["category"]}`;
+        let url = `car?car_classification=${data["category"]}`;
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const json = await response.json();
+                const response = await API.get(url);
+                const json = await response.data;
                 setCars(json)
                 setIsLoading(false)
             } catch (error) {

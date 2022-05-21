@@ -1,21 +1,25 @@
+import API from "../api";
+
 export async function loginUser(credentials) {
-    return fetch('http://127.0.0.1:8000/auth/token', {
-        method: 'POST',
+    return API({
+        method: 'post',
+        url: 'auth/token',
+        data: JSON.stringify(credentials),
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
+        }
     })
-        .then(data => data.json())
+        .then(response => response.data)
 }
 export async function registerUser(credentials) {
     credentials.email = credentials.username;
     delete credentials.username;
-    return fetch('http://127.0.0.1:8000/auth/signup', {
-        method: 'POST',
+    return API({
+        method: 'post',
+        url: 'auth/signup',
+        data: JSON.stringify(credentials),
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
+        }
     })
 }

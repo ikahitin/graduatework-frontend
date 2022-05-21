@@ -7,6 +7,7 @@ import DateRangePicker from "react-bootstrap-daterangepicker";
 import ScrollToTop from "../components/ScrollToTop";
 import getStars from "../utils/utils";
 import Email from "../components/Email";
+import API from "../api";
 
 export default function ApartmentResult() {
     const navigate = useNavigate();
@@ -55,12 +56,12 @@ export default function ApartmentResult() {
         const city = `city=${destination}`
         const dates = `start=${startDate}&end=${moment(endDate).format('YYYY-MM-DD')}`
         const details = `adults=${adults}&children=${children}&rooms=${rooms}`
-        const url = `http://127.0.0.1:8000/apartment?${city}&${dates}&${details}`;
+        const url = `apartment?${city}&${dates}&${details}`;
 
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const json = await response.json();
+                const response = await API.get(url);
+                const json = await response.data;
                 setResults(json)
             } catch (error) {
                 console.log("error", error);

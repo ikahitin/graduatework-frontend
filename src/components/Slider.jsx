@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import API from '../api';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
@@ -15,18 +16,18 @@ export default function SimpleSlider(data) {
     let emptyArray = Array(5).fill(place)
     const [ideas, setIdeas] = React.useState(emptyArray);
     React.useEffect(() => {
-        let url = "http://127.0.0.1:8000/location";
+        let url = "location";
         const keys = Object.keys(data)
         keys.forEach(element => {
             url += `?${element}=${data[element]}`
         });
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const json = await response.json();
-                setIdeas(json)
+                const response = await API.get(url);
+                const json = await response.data;
+                setIdeas(json);
             } catch (error) {
-                console.log("error", error);
+                console.error(error);
             }
         };
 

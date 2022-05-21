@@ -3,6 +3,7 @@ import '../../styles/apartmentbooking.css'
 import React, {useState} from "react";
 import ScrollToTop from "../../components/ScrollToTop";
 import moment from "moment/moment";
+import API from "../../api";
 
 export default function ApartmentBookingConfirmation() {
     const navigate = useNavigate();
@@ -38,14 +39,14 @@ export default function ApartmentBookingConfirmation() {
         }
         const makeReservation = async () => {
             try {
-                const response = await fetch(url, {
-                    method: 'POST',
+                await API({
+                    method: 'post',
+                    url: url,
+                    data: JSON.stringify(data),
                     headers: {
                         'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                    }
                 });
-                const json = await response.json();
                 navigate("/payment");
             } catch (error) {
                 console.log("error", error);
@@ -55,12 +56,12 @@ export default function ApartmentBookingConfirmation() {
     }
 
     React.useEffect(() => {
-        const url = `http://127.0.0.1:8000/apartment/${apartment_id}`;
+        const url = `apartment/${apartment_id}`;
 
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const json = await response.json();
+                const response = await API.get(url);
+                const json = await response.data;
                 setApartment(json)
             } catch (error) {
                 console.log("error", error);
