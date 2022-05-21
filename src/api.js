@@ -24,9 +24,9 @@ instance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
     if (error.response && error.response.data) {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
-        window.location.href = "";
+        // localStorage.removeItem('accessToken');
+        // localStorage.removeItem('user');
+        // window.location.href = "";
         return Promise.reject(error.response.data);
     }
     return Promise.reject(error.message);
