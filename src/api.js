@@ -1,5 +1,35 @@
 import axios from 'axios';
+let headers = {
+    'cache-control': 'no-cache'
+};
+let accessToken = localStorage.getItem('accessToken');
 
-export default axios.create({
-    baseURL: `http://127.0.0.1:8000/`
+if (accessToken && accessToken !== '') {
+    headers.Authorization = accessToken;
+
+};
+
+const instance = axios.create({
+    baseURL: 'http://localhost:8000/',
+    headers: headers
 });
+
+instance.interceptors.response.use((response) => {
+    if(response.status === 401) {
+        alert("You are not authorized");
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        window.location.href = "";
+    }
+    return response;
+}, (error) => {
+    if (error.response && error.response.data) {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        window.location.href = "";
+        return Promise.reject(error.response.data);
+    }
+    return Promise.reject(error.message);
+});
+
+export default instance;
