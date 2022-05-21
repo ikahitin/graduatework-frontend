@@ -10,7 +10,7 @@ if (accessToken && accessToken !== '') {
 };
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8000/',
+    baseURL: 'https://graduate-work-aelnc.ondigitalocean.app/api/',
     headers: headers
 });
 

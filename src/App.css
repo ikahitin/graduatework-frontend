@@ -1611,7 +1611,7 @@ input::-webkit-calendar-picker-indicator {
 
 .step-control:not(:placeholder-shown) ~ span:before{
   border: 1px solid #FFD500!important;
-  color: #fff!important;
+  color: #404040!important;
   background-color: #FFD500;
 }
 
@@ -1895,4 +1895,8 @@ form.row {
   text-decoration: underline;
   color: #3D86F5;
   font-weight: 600;
+}
+
+.name a {
+  color: #404040;
 }
