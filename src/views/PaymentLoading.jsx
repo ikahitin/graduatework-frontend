@@ -1,4 +1,4 @@
-import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import '../styles/apartmentbooking.css'
 import React, {useState} from "react";
 import ScrollToTop from "../components/ScrollToTop";

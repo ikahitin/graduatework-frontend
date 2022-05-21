@@ -15,6 +15,8 @@ import ExchangeVacation from "./views/ExchangeVacation";
 import ApartmentBooking from "./views/ApartmentBooking";
 import ApartmentBookingConfirmation from "./views/apartment/ApartmentBookingConfirmation";
 import PaymentLoading from "./views/PaymentLoading";
+import Trips from "./views/profile/Trips";
+import PrivateRouter from "./components/PrivateRouter";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -33,12 +35,15 @@ root.render(
                         <Route path="taxi" element={<Taxi/>}/>
                         <Route path="vacation" element={<ExchangeVacation/>}/>
                     </Route>
+                    <Route path="profile" element={<PrivateRouter/>}>
+                        <Route path="trips" element={<Trips/>}/>
+                    </Route>
                     <Route path="payment" element={<PaymentLoading/>}/>
                     <Route
                     path="*"
                     element={
-                        <main style={{padding: "1rem"}}>
-                            <p>There's nothing here!</p>
+                        <main style={{padding: "1rem"}} className="pt-5 mt-5">
+                            <h4>There's nothing here!</h4>
                         </main>
                     }
                 /></Route>

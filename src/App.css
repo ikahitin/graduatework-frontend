@@ -588,7 +588,7 @@ body {
 
 .background {
   background-image: url("../public/background.png");
-  background-position: center;
+  background-position-y: 70%;
   background-size: cover;
   width: 100%;
   z-index: -1;
@@ -871,7 +871,7 @@ form.row {
 }
 
 .heading {
-  font-size: 2.00rem;
+  font-size: 1.75rem;
   font-weight: 700;
 }
 
@@ -1442,13 +1442,22 @@ button.show {
   background-color: #e9ecef87;
 }
 
-.login .dropdown-item.active, .login .dropdown-item:active {
+.login .dropdown-item:active {
   background-color: #3D86F5;
+}
+
+.login .dropdown-item.active {
+  background-color: #fff;
+  color: #404040;
 }
 
 .login .dropdown-item img {
   width: 0.94rem;
   margin-right: 0.6rem;
+}
+
+.login .dropdown-item:hover img{
+  filter: brightness(0) saturate(100%) invert(80%) sepia(18%) saturate(3285%) hue-rotate(360deg) brightness(105%) contrast(110%);
 }
 
 .login .dropdown-item {

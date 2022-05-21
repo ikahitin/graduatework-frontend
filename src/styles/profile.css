@@ -1,0 +1,88 @@
+.trip-types .react-tabs__tab--selected, .trip-types .react-tabs__tab--selected span{
+    background: #3D86F5;
+    color: #FFFFFF!important;
+}
+
+.trips {
+    margin-top: 4rem;
+}
+
+.trip-types .nav{
+    font-weight: 700;
+    font-size: 0.94rem;
+    margin-top: 2.4rem;
+}
+
+.trip-types .nav-item {
+    border-radius: 1.88rem;
+}
+
+.tablist .nav-link {
+    padding: 0.5rem 1rem;
+}
+
+.tablist .nav {
+    padding: 0.4rem;
+    filter: none;
+    box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
+    width: fit-content;
+    margin-left: 0;
+}
+
+.tablist {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.chat-link {
+    display: flex;
+    align-items: center;
+    background: #3D86F5;
+    color: #fff;
+    padding: 0.5rem 1.4rem;
+    border-radius: 1.88rem;
+    font-size: 0.94rem;
+}
+
+.chat-link img {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+}
+
+.trip-panel .react-tabs__tab--selected, .trip-panel .react-tabs__tab--selected span {
+    background: #EAF0FF;
+    color: #404040!important;
+}
+
+.trip-panel .nav-pills {
+    filter: none;
+    box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
+    margin-left: 0;
+    margin-top: 2.8rem;
+}
+
+.reservation-block .apartment-info {
+    margin-top: 4.3rem;
+}
+
+.reservation-block .general-info-block {
+    margin-top: 5rem;
+}
+
+.without-edit {
+    padding-bottom: 2rem;
+}
+
+.no-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.7rem;
+}
+
+.cancel-block {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 2.7rem;
+}

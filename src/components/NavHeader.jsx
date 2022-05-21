@@ -188,18 +188,18 @@ export default function NavHeader() {
                                     <li className="nav-item login">
                                         <button className="nav-link profile-btn text-white" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{handleName(user)}</button>
                                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a className="dropdown-item" href="#">
+                                            <li><NavLink to="profile/edit" className="dropdown-item" href="#">
                                                 <img src={`${process.env.PUBLIC_URL}/bi_person-fill.svg`} alt="profile"/>
                                                 Керування акаунтом
-                                            </a></li>
-                                            <li><a className="dropdown-item" href="#">
+                                            </NavLink></li>
+                                            <li><NavLink to="profile/trips" className="dropdown-item" href="#">
                                                 <img src={`${process.env.PUBLIC_URL}/trips.svg`} alt="trips"/>
                                                 Поїздки
-                                            </a></li>
-                                            <li><a className="dropdown-item" href="#">
+                                            </NavLink></li>
+                                            <li><NavLink to="profile/favoutite" className="dropdown-item" href="#">
                                                 <img src={`${process.env.PUBLIC_URL}/heart.svg`} alt="heart"/>
                                                 Збережене
-                                            </a></li>
+                                            </NavLink></li>
                                             <li><a className="dropdown-item" href="#" onClick={handleLogout}>
                                                 <img src={`${process.env.PUBLIC_URL}/logout.svg`} alt="logout"/>
                                                 Вийти

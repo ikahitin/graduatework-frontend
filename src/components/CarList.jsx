@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {NavLink, useSearchParams} from "react-router-dom";
 import moment from "moment/moment";
-import Email from "./Email";
 
 export default function CarList(data) {
     const [isLoading, setIsLoading] = React.useState(true);
