@@ -2,8 +2,8 @@ import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
 import '../../styles/apartmentbooking.css'
 import React, {useState} from "react";
 import ScrollToTop from "../../components/ScrollToTop";
-import moment from "moment/moment";
 import API from "../../api";
+import {getTotalPrice} from "../../components/helpers";
 
 export default function ApartmentBookingConfirmation() {
     const navigate = useNavigate();
@@ -12,17 +12,6 @@ export default function ApartmentBookingConfirmation() {
 
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
-
-    function getNumberOfNights() {
-        if (startDate !== null && endDate !== null) {
-            const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
-            return Math.ceil(timeDiff / (1000 * 3600 * 24));
-        }
-    }
-
-    function getTotalPrice(price) {
-        return getNumberOfNights() * price
-    }
 
     function handleBooking(e) {
         e.preventDefault()
@@ -125,7 +114,7 @@ export default function ApartmentBookingConfirmation() {
                     <div className="total-amount">
                         <img src={`${process.env.PUBLIC_URL}/price-amount.svg`} alt=""/>
                         <span>Загальна сума</span>
-                        <span className="amount">UAH {getTotalPrice(apartment.price) + 70}</span>
+                        <span className="amount">UAH {getTotalPrice(apartment.price, startDate, endDate) + 70}</span>
                     </div>
                     <div className="price-heading">Ціна включає в себе оплату за:</div>
                     <div className="price-details">

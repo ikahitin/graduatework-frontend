@@ -12,7 +12,6 @@ export default function CarList(data) {
 
     function getNumberOfDays() {
         if (startDate !== null && endDate !== null) {
-            console.log(startDate, endDate)
             const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
             return Math.ceil(timeDiff / (1000 * 3600 * 24));
         }

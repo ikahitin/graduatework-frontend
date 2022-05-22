@@ -1,20 +1,13 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-import getStars from "../../utils/utils";
 import moment from "moment/moment";
 import API from "../../api";
+import {getNumberOfNights, getStars} from "../helpers";
 
 export default function ApartmentTrip(data) {
     const [isLoading, setIsLoading] = useState(true);
     const token = localStorage.getItem('accessToken');
     const [reservations, setReservations] = useState([]);
-
-    function getNumberOfNights(startDate, endDate) {
-        if (startDate !== null && endDate !== null) {
-            const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
-            return Math.ceil(timeDiff / (1000 * 3600 * 24));
-        }
-    }
 
     React.useEffect(() => {
         let url = `reservation?reservation_status=${data["status"]}&reservation_type=apartment`;
@@ -52,7 +45,7 @@ export default function ApartmentTrip(data) {
     return (
         <div>
             {reservations.map((item, key) =>
-                <div className="reservation-block">
+                <div className="reservation-block" key={key}>
                     <div className="apartment-info">
                         <div className="result-card-cover">
                             <div className="result-card">

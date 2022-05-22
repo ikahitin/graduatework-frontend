@@ -1,8 +1,8 @@
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import React, {useRef, useState} from "react";
-import '../styles/car.css'
+import '../../styles/car.css'
 import Slider from "react-slick";
-import Email from "../components/Email";
+import Email from "../../components/Email";
 import {useNavigate} from "react-router-dom";
 
 function Car() {

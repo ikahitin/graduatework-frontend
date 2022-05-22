@@ -1,39 +1,25 @@
 import {NavLink, useNavigate, useSearchParams} from "react-router-dom";
-import '../styles/apartmentresults.css'
+import '../../styles/apartmentresults.css'
 import React, {useState} from "react";
 import moment from "moment/moment";
-import Filters from "../components/Filters";
+import Filters from "../../components/Filters";
 import DateRangePicker from "react-bootstrap-daterangepicker";
-import ScrollToTop from "../components/ScrollToTop";
-import getStars from "../utils/utils";
-import Email from "../components/Email";
-import API from "../api";
+import ScrollToTop from "../../components/ScrollToTop";
+import Email from "../../components/Email";
+import API from "../../api";
+import {getNumberOfNights, getStars, getTotalPrice} from "../../components/helpers";
 
 export default function ApartmentResult() {
     const navigate = useNavigate();
 
-    const [searchParams, setSearchParams] = useSearchParams();
-    // const destination = searchParams.get("destination");
+    const [searchParams] = useSearchParams();
     const [destination, setDestination] = useState(searchParams.get("destination"));
     const [startDate, setStartDate] = useState(searchParams.get("start"));
-    //const startDate = searchParams.get("start");
-    // const endDate = searchParams.get("end");
     const [endDate, setEndDate] = useState(searchParams.get("end"));
     const adults = searchParams.get("adults")
     const children = searchParams.get("children")
     const quantity = `${adults} дорослих, ${children} дітей`
     const [results, setResults] = React.useState([]);
-
-    function getNumberOfNights() {
-        if (startDate !== null && endDate !== null) {
-            const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
-            return Math.ceil(timeDiff / (1000 * 3600 * 24));
-        }
-    }
-
-    function getTotalPrice(price) {
-        return getNumberOfNights() * price
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -51,6 +37,7 @@ export default function ApartmentResult() {
     function handleEndCallback(start, end, label) {
         setEndDate(end.format('YYYY-MM-DD'));
     }
+
     React.useEffect(() => {
         const city = `city=${destination}`
         const dates = `start=${startDate}&end=${moment(endDate).format('YYYY-MM-DD')}`
@@ -70,9 +57,9 @@ export default function ApartmentResult() {
         fetchData();
     }, []);
 
-    return(
+    return (
         <div className="container col-10 search">
-            <ScrollToTop />
+            <ScrollToTop/>
             <div className="breadcrumb">
                 <NavLink end to="/">Головна</NavLink>
                 <NavLink end={true} to="/booking/apartments">Житло</NavLink>
@@ -85,8 +72,9 @@ export default function ApartmentResult() {
                         <div className="search-options">
                             <div className="input-block">
                                 <span className="input-tip">Місце</span>
-                                <input type="text" className="form-control simple house-icon-dark" defaultValue={destination}
-                                        list="datalistOptions" onChange={e => setDestination(e.target.value)}/>
+                                <input type="text" className="form-control simple house-icon-dark"
+                                       defaultValue={destination}
+                                       list="datalistOptions" onChange={e => setDestination(e.target.value)}/>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
                                     <option value="Славське"/>
@@ -97,15 +85,17 @@ export default function ApartmentResult() {
                             <div className="input-block">
                                 <span className="input-tip">Дата заїзду</span>
                                 <DateRangePicker onCallback={handleStartCallback}
-                                initialSettings={{
-                                        singleDatePicker: true,
-                                        startDate: moment(startDate).format('DD.MM.YYYY'),
-                                        locale: {
-                                            applyLabel: "Прийняти",
-                                            format: 'DD.MM.YYYY'
-                                        }
-                                    }}>
-                                    <input type="text" className="form-control simple calendar-icon-dark" placeholder="Вкажіть дату заїзду" onChange={e => setStartDate(e.target.value)}/>
+                                                 initialSettings={{
+                                                     singleDatePicker: true,
+                                                     startDate: moment(startDate).format('DD.MM.YYYY'),
+                                                     locale: {
+                                                         applyLabel: "Прийняти",
+                                                         format: 'DD.MM.YYYY'
+                                                     }
+                                                 }}>
+                                    <input type="text" className="form-control simple calendar-icon-dark"
+                                           placeholder="Вкажіть дату заїзду"
+                                           onChange={e => setStartDate(e.target.value)}/>
                                 </DateRangePicker>
                             </div>
                             <div className="input-block">
@@ -120,12 +110,14 @@ export default function ApartmentResult() {
                                             format: 'DD.MM.YYYY'
                                         }
                                     }}>
-                                    <input type="text" className="form-control simple calendar-icon-dark" placeholder="Вкажіть дату виїзду"/>
+                                    <input type="text" className="form-control simple calendar-icon-dark"
+                                           placeholder="Вкажіть дату виїзду"/>
                                 </DateRangePicker>
                             </div>
                             <div className="input-block">
                                 <span className="input-tip">Кількість людей</span>
-                                <input type="text" className="form-control simple person-icon-dark" placeholder="Вкажіть дату виїзду"
+                                <input type="text" className="form-control simple person-icon-dark"
+                                       placeholder="Вкажіть дату виїзду"
                                        defaultValue={quantity}/>
                             </div>
                         </div>
@@ -159,10 +151,11 @@ export default function ApartmentResult() {
                                                 </div>
                                                 <div className="location">
                                                     <div className="location-city">
-                                                        <a href="#">{item.city}</a>
+                                                        <a href="src/views/apartment/ApartmentResult#">{item.city}</a>
                                                     </div>
                                                     <div className="show-on-map">
-                                                        <a href="#">Показати на карті</a>
+                                                        <a href="src/views/apartment/ApartmentResult#">Показати на
+                                                            карті</a>
                                                     </div>
                                                     <div className="centre-distance">{item.distance_from_center} км від
                                                         центру
@@ -197,14 +190,15 @@ export default function ApartmentResult() {
                                                         </div>
                                                     </div>
                                                     <div className="right-content">
-                                                        <div className="price">UAH {getTotalPrice(item.price)}</div>
+                                                        <div className="price">UAH {getTotalPrice(item.price, startDate, endDate)}</div>
                                                         <div
-                                                            className="duration">{getNumberOfNights()} ночей, {adults} дорослих
+                                                            className="duration">{getNumberOfNights(startDate, endDate)} ночей, {adults} дорослих
                                                         </div>
                                                         <div className="book">
                                                             <NavLink to={{
                                                                 pathname: `/booking/apartments/${item.id}/booking`
-                                                            }} state={{ startDate: startDate, endDate: endDate }} className="btn btn-light arrow">Забронювати</NavLink>
+                                                            }} state={{startDate: startDate, endDate: endDate}}
+                                                                     className="btn btn-light arrow">Забронювати</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>

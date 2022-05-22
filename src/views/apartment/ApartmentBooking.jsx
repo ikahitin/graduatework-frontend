@@ -1,11 +1,11 @@
 import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
-import '../styles/apartmentbooking.css'
-import React, {useRef, useState} from "react";
-import ScrollToTop from "../components/ScrollToTop";
-import getStars from "../utils/utils";
+import '../../styles/apartmentbooking.css'
+import React, {useState} from "react";
+import ScrollToTop from "../../components/ScrollToTop";
 import moment from "moment/moment";
-import API from "../api";
-import amenities from "../utils/amenities.json";
+import API from "../../api";
+import amenities from "../../utils/amenities.json";
+import {getNumberOfNights, getStars, getTotalPrice} from "../../components/helpers";
 
 export default function ApartmentBooking() {
     const navigate = useNavigate();
@@ -14,18 +14,6 @@ export default function ApartmentBooking() {
 
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
-
-
-    function getNumberOfNights() {
-        if (startDate !== null && endDate !== null) {
-            const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
-            return Math.ceil(timeDiff / (1000 * 3600 * 24));
-        }
-    }
-
-    function getTotalPrice(price) {
-        return getNumberOfNights() * price
-    }
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -92,10 +80,10 @@ export default function ApartmentBooking() {
                                     </div>
                                     <div className="location">
                                         <div className="location-city">
-                                            <a href="#">{apartment.city}</a>
+                                            <a href="src/views/apartment/ApartmentBooking#">{apartment.city}</a>
                                         </div>
                                         <div className="show-on-map">
-                                            <a href="#">Показати на карті</a>
+                                            <a href="src/views/apartment/ApartmentBooking#">Показати на карті</a>
                                         </div>
                                         <div className="centre-distance">{apartment.distance_from_center} км від
                                             центру
@@ -200,7 +188,7 @@ export default function ApartmentBooking() {
                             </div>
                             <div className="map">
                                 <div className="blur"></div>
-                                <a href="#" className="show-map-btn">
+                                <a href="src/views/apartment/ApartmentBooking#" className="show-map-btn">
                                     Показати на карті
                                 </a>
                             </div>
@@ -212,7 +200,7 @@ export default function ApartmentBooking() {
                     <div className="total-amount">
                         <img src={`${process.env.PUBLIC_URL}/price-amount.svg`} alt=""/>
                         <span>Загальна сума</span>
-                        <span className="amount">UAH {getTotalPrice(apartment.price) + 70}</span>
+                        <span className="amount">UAH {getTotalPrice(apartment.price, startDate, endDate) + 70}</span>
                     </div>
                     <div className="price-heading">Ціна включає в себе оплату за:</div>
                     <div className="price-details">

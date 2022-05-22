@@ -1,8 +1,6 @@
-import NavigationPanel from "./NavigatinPanel";
-import {NavLink} from "react-router-dom";
 import React, {useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import ApartmentTrip from "./trips/ApartmentTrip";
+import ApartmentTrip from "./ApartmentTrip";
 
 export default function TripPanel(data) {
     const [tripTypeIndex, setTripTypeIndex] = useState(0);

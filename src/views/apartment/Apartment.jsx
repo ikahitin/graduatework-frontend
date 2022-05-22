@@ -1,13 +1,12 @@
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import React, {useRef, useState} from "react";
-import SimpleSlider from "../components/Slider";
+import SimpleSlider from "../../components/Slider";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
-import '../daterangepicker.css';
+import '../../daterangepicker.css';
 import {useNavigate} from "react-router-dom"
-import Email from "../components/Email";
+import Email from "../../components/Email";
 import '@lion/input-stepper/define';
-import localization from 'moment/locale/uk'
-import QuantityInputs from "../components/QuantityInputs";
+import QuantityInputs from "../../components/QuantityInputs";
 
 
 function Apartment() {
@@ -179,7 +178,7 @@ function Apartment() {
                 <p className="subheading">Клікни на кубик</p>
                 <div className="container random-slider slider">
                     <div className="card-cover third-layer">
-                        <a href="">
+                        <a href="src/views/apartment/Apartment">
                             <div className="card">
                                 <div className="rating">
                                     <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -198,7 +197,7 @@ function Apartment() {
                     </div>
                     <div className="slider-center-block">
                         <div className="card-cover second-layer left">
-                            <a href="">
+                            <a href="src/views/apartment/Apartment">
                                 <div className="card">
                                     <div className="rating">
                                         <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -216,7 +215,7 @@ function Apartment() {
                             </a>
                         </div>
                         <div className="card-cover second-layer right">
-                            <a href="">
+                            <a href="src/views/apartment/Apartment">
                                 <div className="card">
                                     <div className="rating">
                                         <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -234,7 +233,7 @@ function Apartment() {
                             </a>
                         </div>
                         <div className="card-cover middle">
-                            <a href="">
+                            <a href="src/views/apartment/Apartment">
                                 <div className="card">
                                     <div className="rating">
                                         <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -252,7 +251,7 @@ function Apartment() {
                             </a>
                         </div>
                         <div className="card-cover middle">
-                            <a href="">
+                            <a href="src/views/apartment/Apartment">
                                 <div className="card">
                                     <div className="rating">
                                         <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -271,7 +270,7 @@ function Apartment() {
                         </div>
                     </div>
                     <div className="card-cover third-layer">
-                        <a href="">
+                        <a href="src/views/apartment/Apartment">
                             <div className="card">
                                 <div className="rating">
                                     <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>

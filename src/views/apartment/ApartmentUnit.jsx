@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {NavLink, useParams} from "react-router-dom";
-import '../styles/apartmentunit.css'
+import '../../styles/apartmentunit.css'
 import Slider from "react-slick";
-import getStars from "../utils/utils";
 import moment from "moment/moment";
-import API from "../api";
-import amenities from "../utils/amenities.json"
+import API from "../../api";
+import amenities from "../../utils/amenities.json"
+import {getStars} from "../../components/helpers";
 
 export default function ApartmentUnit() {
     const {apartment_id} = useParams();
@@ -40,7 +40,7 @@ export default function ApartmentUnit() {
             <div className="breadcrumb">
                 <NavLink end to="/">Головна</NavLink>
                 <NavLink end={true} to="/booking/apartments">Житло</NavLink>
-                <NavLink end={true} to="/booking/apartments/search" >Результати пошуку</NavLink>
+                <NavLink end={true} to="/booking/apartments/search">Результати пошуку</NavLink>
                 <NavLink end={true} to={{
                     pathname: `/booking/apartments/${apartment_id}`
                 }}>{apartment.name}</NavLink>
@@ -49,8 +49,10 @@ export default function ApartmentUnit() {
                 <div className="top-part">
                     <div className="name">{apartment.name}</div>
                     <div className="location">
-                        <div className="location-city"><a href="#">{apartment.city}</a></div>
-                        <div className="show-on-map"><a href="#">Показати на карті</a></div>
+                        <div className="location-city"><a href="src/views/apartment/ApartmentUnit#">{apartment.city}</a>
+                        </div>
+                        <div className="show-on-map"><a href="src/views/apartment/ApartmentUnit#">Показати на карті</a>
+                        </div>
                         <div className="centre-distance">{apartment.distance_from_center} км від центру</div>
                     </div>
                 </div>
@@ -77,15 +79,17 @@ export default function ApartmentUnit() {
                                 {item}
                             </div>
                         )}
-                        </div>
+                    </div>
                 </div>
                 <div className="details-specs">
                     <div className="apartment-specifics">
                         <div className="specifics">Особливості помешкання</div>
                         <div className="specifics-desc">Ідеально підходить для того, щоб гарно відпочити</div>
                         <div className="apartment-location">
-                            <img src={`${process.env.PUBLIC_URL}/location.svg`} alt="location" className="location-icon"/>
-                            16 Kamanina Street flor 23, Одеса, 65000, Україна </div>
+                            <img src={`${process.env.PUBLIC_URL}/location.svg`} alt="location"
+                                 className="location-icon"/>
+                            16 Kamanina Street flor 23, Одеса, 65000, Україна
+                        </div>
                         <div className="breakfast-info">
                             <div className="breakfast-h">Інформація про сніданок</div>
                             <div className="breakfast-spec">Американський</div>
@@ -93,7 +97,7 @@ export default function ApartmentUnit() {
                     </div>
                     <div className="map">
                         <div className="blur"></div>
-                        <a href="#"  className="show-map-btn">
+                        <a href="src/views/apartment/ApartmentUnit#" className="show-map-btn">
                             Показати на карті
                         </a>
                     </div>
@@ -104,7 +108,7 @@ export default function ApartmentUnit() {
                     <div className="small-heading w-100">Відгуки</div>
                     <Slider {...sliderSettings}>
                         {apartment.reviews.map((review, key) =>
-                            <div className="review-wrap">
+                            <div className="review-wrap" key={key}>
                                 <div className="review">
                                     <div className="up-review-part">
                                         <div className="reviewer">

@@ -1,12 +1,12 @@
-import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import '../../styles/profile.css'
 import React, {useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import TripPanel from "../../components/TripPanel";
+import TripPanel from "../../components/trips/TripPanel";
 
 export default function Trips() {
     const [tabIndex, setTabIndex] = useState(0);
-    return(
+    return (
         <div className="container col-10 search trips">
             <div className="heading fw-600">Інформація про ваші бронювання</div>
             <div className="trip-types">

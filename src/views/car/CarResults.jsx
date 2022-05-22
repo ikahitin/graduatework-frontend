@@ -1,13 +1,13 @@
 import {NavLink, useNavigate, useSearchParams} from "react-router-dom";
-import '../styles/carresults.css'
+import '../../styles/carresults.css'
 import React, {useState} from "react";
 import moment from "moment/moment";
-import Filters from "../components/Filters";
+import Filters from "../../components/Filters";
 import DateRangePicker from "react-bootstrap-daterangepicker";
-import ScrollToTop from "../components/ScrollToTop";
+import ScrollToTop from "../../components/ScrollToTop";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import CarList from "../components/CarList";
-import Email from "../components/Email";
+import CarList from "../../components/CarList";
+import Email from "../../components/Email";
 
 export default function CarResult() {
     const navigate = useNavigate();

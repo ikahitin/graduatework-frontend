@@ -4,19 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Apartment from "./views/Apartment";
+import Apartment from "./views/apartment/Apartment";
 import Booking from "./views/Booking";
-import ApartmentResult from "./views/ApartmentResult";
-import Car from "./views/Car";
-import Taxi from "./views/Taxi";
-import ApartmentUnit from "./views/ApartmentUnit";
-import CarResult from "./views/CarResults";
-import ExchangeVacation from "./views/ExchangeVacation";
-import ApartmentBooking from "./views/ApartmentBooking";
+import ApartmentResult from "./views/apartment/ApartmentResult";
+import Car from "./views/car/Car";
+import Taxi from "./views/taxi/Taxi";
+import ApartmentUnit from "./views/apartment/ApartmentUnit";
+import CarResult from "./views/car/CarResults";
+import ExchangeVacation from "./views/exchangeVacation/ExchangeVacation";
+import ApartmentBooking from "./views/apartment/ApartmentBooking";
 import ApartmentBookingConfirmation from "./views/apartment/ApartmentBookingConfirmation";
 import PaymentLoading from "./views/PaymentLoading";
 import Trips from "./views/profile/Trips";
 import PrivateRouter from "./components/PrivateRouter";
+import localization from 'moment/locale/uk'
 
 const root = createRoot(document.getElementById("root"));
 root.render(
