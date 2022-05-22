@@ -26,7 +26,7 @@ export default function ApartmentBookingConfirmation() {
 
     function handleBooking(e) {
         e.preventDefault()
-        const url = `http://127.0.0.1:8000/apartment/${apartment_id}/reservation`;
+        const url = `apartment/${apartment_id}/reservation`;
         const data = {
             "from_date": startDate,
             "to_date": endDate,
