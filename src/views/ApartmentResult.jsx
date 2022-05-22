@@ -21,8 +21,7 @@ export default function ApartmentResult() {
     const [endDate, setEndDate] = useState(searchParams.get("end"));
     const adults = searchParams.get("adults")
     const children = searchParams.get("children")
-    const rooms = searchParams.get("rooms")
-    const quantity = `${adults} дорослих, ${rooms} номер`
+    const quantity = `${adults} дорослих, ${children} дітей`
     const [results, setResults] = React.useState([]);
 
     function getNumberOfNights() {
@@ -40,7 +39,7 @@ export default function ApartmentResult() {
         e.preventDefault();
         const dest = `destination=${destination}`
         const dateRange = `&start=${startDate}&end=${endDate}`
-        const details = `&adults=${adults}&children=${children}&rooms=${rooms}`
+        const details = `&adults=${adults}&children=${children}`
         navigate(`/booking/apartments/search?${dest}${dateRange}${details}`);
         window.location.reload(false);
     }
@@ -55,7 +54,7 @@ export default function ApartmentResult() {
     React.useEffect(() => {
         const city = `city=${destination}`
         const dates = `start=${startDate}&end=${moment(endDate).format('YYYY-MM-DD')}`
-        const details = `adults=${adults}&children=${children}&rooms=${rooms}`
+        const details = `adults=${adults}&children=${children}`
         const url = `apartment?${city}&${dates}&${details}`;
 
         const fetchData = async () => {

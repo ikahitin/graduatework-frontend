@@ -17,7 +17,7 @@ export default function ApartmentTrip(data) {
     }
 
     React.useEffect(() => {
-        let url = `http://127.0.0.1:8000/reservation?reservation_status=${data["status"]}&reservation_type=apartment`;
+        let url = `reservation?reservation_status=${data["status"]}&reservation_type=apartment`;
         const fetchData = async () => {
             try {
                 const response = await API({

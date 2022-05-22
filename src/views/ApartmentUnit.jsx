@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import getStars from "../utils/utils";
 import moment from "moment/moment";
 import API from "../api";
+import amenities from "../utils/amenities.json"
 
 export default function ApartmentUnit() {
     const {apartment_id} = useParams();
@@ -71,7 +72,8 @@ export default function ApartmentUnit() {
                     <div className="small-heading">Зручності</div>
                     <div className="amenities">
                         {apartment.amenities.map((item, key) =>
-                            <div key={key}>
+                            <div key={key} className="amenities-row">
+                                <img src={`${process.env.PUBLIC_URL}/${amenities[item]}`} alt="amenity"/>
                                 {item}
                             </div>
                         )}

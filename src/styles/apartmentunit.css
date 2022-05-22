@@ -155,6 +155,7 @@
 
 .ap-desc {
     padding-bottom: 1.3rem;
+    padding-right: 1.9rem;
 }
 
 .amenities {
@@ -228,4 +229,13 @@
 .reviews-block {
     padding-top: 4.8rem;
     flex-wrap: wrap;
+}
+
+.amenities-row {
+    display: flex;
+    align-items: center;
+}
+
+.amenities-row img {
+    margin-right: 0.5rem;
 }

@@ -53,7 +53,7 @@ function Apartment() {
             if (inputValues.every(isZero)) {
                 setDetailsInputValue('');
             } else {
-                const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина - ${inputValues[2]} номер`;
+                const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина`;
                 setDetailsInputValue(inputString);
             }
             setShowResults(false);
@@ -64,7 +64,7 @@ function Apartment() {
         e.preventDefault();
         const dest = `destination=${destination}`
         const dateRange = `&start=${startDate}&end=${endDate}`
-        const details = `&adults=${detailQuantity[0]}&children=${detailQuantity[1]}&rooms=${detailQuantity[2]}`
+        const details = `&adults=${detailQuantity[0]}&children=${detailQuantity[1]}`
         navigate(`/booking/apartments/search?${dest}${dateRange}${details}`);
     }
 

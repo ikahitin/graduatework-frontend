@@ -3,13 +3,11 @@ import React, {forwardRef, useImperativeHandle, useRef} from "react";
 function QuantityInputs(props, ref) {
     const adultsInputRef = useRef(null);
     const childrenInputRef = useRef(null);
-    const roomInputRef = useRef(null);
     useImperativeHandle(ref,() => ({
         getValues: () => {
             return {
                 adultsInput: adultsInputRef.current.value,
-                childrenInput: childrenInputRef.current.value,
-                roomInput: roomInputRef.current.value,
+                childrenInput: childrenInputRef.current.value
             };
         }
     }))
@@ -28,13 +26,6 @@ function QuantityInputs(props, ref) {
                     <span className="sub">0-17 років</span>
                 </div>
                 <lion-input-stepper max="10" min="0" name="count" value={props.detailQuantity[1]} ref={childrenInputRef}>
-                </lion-input-stepper>
-            </div>
-            <div className="input-row">
-                <div className="input-desc">
-                    <span>Номери</span>
-                </div>
-                <lion-input-stepper max="5" min="0" name="count" value={props.detailQuantity[2]} ref={roomInputRef}>
                 </lion-input-stepper>
             </div>
         </div>
