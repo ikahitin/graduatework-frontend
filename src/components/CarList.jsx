@@ -2,13 +2,24 @@ import React, {useState} from "react";
 import {NavLink, useSearchParams} from "react-router-dom";
 import moment from "moment/moment";
 import API from "../api";
+import ReactPaginate from "react-paginate";
 
-export default function CarList(data) {
+export default function CarList({category, itemsPerPage}) {
     const [isLoading, setIsLoading] = React.useState(true);
     const [cars, setCars] = React.useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [startDate, setStartDate] = useState(searchParams.get("start"));
-    const [endDate, setEndDate] = useState(searchParams.get("end"));
+    const [searchParams] = useSearchParams();
+    const [startDate] = useState(searchParams.get("start"));
+    const [endDate] = useState(searchParams.get("end"));
+
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const [results, setResults] = useState()
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % cars.length;
+        window.scrollTo(0, 0);
+        setItemOffset(newOffset);
+    };
 
     function getNumberOfDays() {
         if (startDate !== null && endDate !== null) {
@@ -23,12 +34,15 @@ export default function CarList(data) {
     }
 
     React.useEffect(() => {
-        let url = `car?car_classification=${data["category"]}`;
+        let url = `car?car_classification=${category}`;
         const fetchData = async () => {
             try {
                 const response = await API.get(url);
                 const json = await response.data;
                 setCars(json)
+                const endOffset = itemOffset + itemsPerPage;
+                setResults(json.slice(itemOffset, endOffset));
+                setPageCount(Math.ceil(json.length / itemsPerPage));
                 setIsLoading(false)
             } catch (error) {
                 console.log("error", error);
@@ -36,7 +50,7 @@ export default function CarList(data) {
         };
 
         fetchData();
-    }, []);
+    }, [itemOffset, itemsPerPage]);
     if (isLoading) {
         return (
             <div className="container d-flex justify-content-center pt-5">
@@ -51,7 +65,7 @@ export default function CarList(data) {
             <div className="results-len">
                 Знайдено: <span className="len">{cars.length} результатів</span>
             </div>
-            {cars.map((car, key) =>
+            {results.map((car, key) =>
                 <div className="result-card-cover" key={key}>
                     <div className="result-card car-card">
                         <div className="image-side">
@@ -144,6 +158,16 @@ export default function CarList(data) {
                     </div>
                 </div>
             )}
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                className="pagination"
+            />
         </div>
     )
 }

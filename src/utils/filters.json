@@ -1,0 +1,241 @@
+{
+  "apartment": [
+    {
+      "title": "Ваш бюджет (за ніч)",
+      "elements": [
+        {
+          "name": "uah_0_2000",
+          "value": "UAH 0 - 2 000"
+        },
+        {
+          "name": "uah_2000_4000",
+          "value": "UAH 2 000 - 4 000"
+        },
+        {
+          "name": "uah_4000_6000",
+          "value": "UAH 4 000 - 6 000"
+        },
+        {
+          "name": "uah_6000_8000",
+          "value": "UAH 6 000 - 8 000"
+        },
+        {
+          "name": "uah_10000_12000",
+          "value": "UAH 10 000 - 12 000"
+        }
+      ]
+    },
+    {
+      "title": "Тип помешкання",
+      "elements": [
+        {
+          "name": "apartments",
+          "value": "Апартаменти"
+        },
+        {
+          "name": "hotels",
+          "value": "Готелі"
+        },
+        {
+          "name": "hostels",
+          "value": "Хостели"
+        },
+        {
+          "name": "guest_houses",
+          "value": "Гостьові будинки"
+        },
+        {
+          "name": "courort_hotels",
+          "value": "Курортні готелі"
+        }
+      ]
+    },
+    {
+      "title": "Кількість зірок",
+      "elements": [
+        {
+          "name": "three_star",
+          "value": "3 зірки"
+        },
+        {
+          "name": "four_star",
+          "value": "4 зірки"
+        },
+        {
+          "name": "five_star",
+          "value": "5 зірок"
+        },
+        {
+          "name": "no_star",
+          "value": "Без зіркові категорії"
+        }
+      ]
+    },
+    {
+      "title": "Зручності",
+      "elements": [
+        {
+          "name": "parking",
+          "value": "Автостоянка"
+        },
+        {
+          "name": "breakfast_included",
+          "value": "Сніданок включено"
+        },
+        {
+          "name": "jacuzzi",
+          "value": "Джакузі"
+        },
+        {
+          "name": "with_animals",
+          "value": "З тваринами"
+        },
+        {
+          "name": "family_rooms",
+          "value": "Сімейні номери"
+        },
+        {
+          "name": "free_wifi",
+          "value": "Безкоштовний Wi-fi"
+        },
+        {
+          "name": "swimming_pool",
+          "value": "Басейн"
+        },
+        {
+          "name": "bbq",
+          "value": "Барбекю"
+        }
+      ]
+    },
+    {
+      "title": "Зручності у номері",
+      "elements": [
+        {
+          "name": "kitchen",
+          "value": "Кухня"
+        },
+        {
+          "name": "tv",
+          "value": "Телевізор"
+        },
+        {
+          "name": "coffee_machine",
+          "value": "Кавоварка"
+        },
+        {
+          "name": "balcony",
+          "value": "Балкон"
+        },
+        {
+          "name": "view",
+          "value": "Вид"
+        },
+        {
+          "name": "terrace",
+          "value": "Тераса"
+        }
+      ]
+    }
+  ],
+  "car": [
+    {
+      "title": "Постачальник",
+      "elements": [
+        {
+          "name": "avis",
+          "value": "Avis"
+        },
+        {
+          "name": "rental",
+          "value": "Rental.ua"
+        }
+      ]
+    },
+    {
+      "title": "Специцікація автомобіля",
+      "elements": [
+        {
+          "name": "ac_included",
+          "value": "З кондиціонером"
+        },
+        {
+          "name": "automatic_transmission",
+          "value": "Автоматична коробка передач"
+        },
+        {
+          "name": "manual_transmission",
+          "value": "Механічна коробка передач"
+        },
+        {
+          "name": "4_doors",
+          "value": "4 дверей"
+        }
+      ]
+    },
+    {
+      "title": "Група пасажирів",
+      "elements": [
+        {
+          "name": "1_to_2_people",
+          "value": "1 або 2 особи"
+        },
+        {
+          "name": "small_group",
+          "value": "Мала група"
+        },
+        {
+          "name": "big_group",
+          "value": "Велика група"
+        }
+      ]
+    },
+    {
+      "title": "Франшиза на випадок пошкодження",
+      "elements": [
+        {
+          "name": "less_than_500_usd",
+          "value": "500. 00 $ або менше"
+        },
+        {
+          "name": "less_than_600_usd",
+          "value": "600. 00 $ або менще"
+        },
+        {
+          "name": "less_than_1800_usd",
+          "value": "800. 00 $ або менше"
+        }
+      ]
+    },
+    {
+      "title": "Застава при отриманні",
+      "elements": [
+        {
+          "name": "up_to_9650_uah",
+          "value": "До 9.650 UAH"
+        },
+        {
+          "name": "up_to_18250_uah",
+          "value": "До 19.250 UAH"
+        },
+        {
+          "name": "up_to_28900_uah",
+          "value": "До 28.900 UAH"
+        },
+        {
+          "name": "up_to_38500_uah",
+          "value": "До 38.500 UAH"
+        }
+      ]
+    },
+    {
+      "title": "Пробіг кілометрів ",
+      "elements": [
+        {
+          "name": "no_limit",
+          "value": "Без обмежень"
+        }
+      ]
+    }
+  ]
+}

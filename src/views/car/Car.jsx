@@ -17,14 +17,14 @@ function Car() {
         picker.element.find('input:first').val(
             picker.startDate.format('dd, D MMMM, HH:mm')
         );
-        setStartDate(picker.startDate.format('YYYYMMDDThhmm'));
+        setStartDate(picker.startDate.format('YYYYMMDDTHHmm'));
     };
 
     const handleApplyEndDate = (event, picker) => {
         picker.element.find('input:first').val(
             picker.endDate.format('dd, D MMMM, HH:mm')
         );
-        setEndDate(picker.endDate.format('YYYYMMDDThhmm'));
+        setEndDate(picker.endDate.format('YYYYMMDDTHHmm'));
     };
 
     function handleFocus(e) {

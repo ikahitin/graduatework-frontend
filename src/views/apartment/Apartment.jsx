@@ -12,9 +12,9 @@ import QuantityInputs from "../../components/QuantityInputs";
 function Apartment() {
     const navigate = useNavigate();
 
-    const [detailQuantity, setDetailQuantity] = useState(['0', '0', '0']);
-    const [detailsInputValue, setDetailsInputValue] = React.useState('')
-    const [showResults, setShowResults] = React.useState(false)
+    const [detailQuantity, setDetailQuantity] = useState(['0', '0']);
+    const [detailsInputValue, setDetailsInputValue] = useState(null)
+    const [showResults, setShowResults] = useState(false)
     const [tabIndex, setTabIndex] = useState(0);
     const [destination, setDestination] = useState();
     const [startDate, setStartDate] = useState(null);
@@ -103,7 +103,7 @@ function Apartment() {
                                     onApply={handleApply}>
                                     <div className="input-group">
                                         <input type="text" className="form-control step-control with-icon calendar-icon"
-                                               placeholder="Оберіть заплановану дату" required readOnly ref={dateInput}
+                                               placeholder="Оберіть заплановану дату" required ref={dateInput}
                                                onBlur={handleFocus}/>
                                         <span className="dots two">···</span>
                                         <span className="dots">···</span>
@@ -114,14 +114,15 @@ function Apartment() {
                         <div className="col-sm position-relative">
                             <div className="input-group">
                                 <input className="form-control step-control with-icon person-icon"
-                                       placeholder="Вкажіть кількість осіб" size="1" required readOnly
+                                       placeholder="Вкажіть кількість осіб" size="1" required
                                        ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick}
                                        value={detailsInputValue}/>
                                 <span className="dots three">···</span>
                                 <span className="dots">···</span>
                             </div>
                             {showResults ?
-                                <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/> : null}
+                                <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/>
+                                : null}
                         </div>
                     </div>
                     <div className="col-auto inputs-search">

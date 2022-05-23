@@ -18,7 +18,9 @@ import PaymentLoading from "./views/PaymentLoading";
 import Trips from "./views/profile/Trips";
 import PrivateRouter from "./components/PrivateRouter";
 import localization from 'moment/locale/uk'
+import moment from "moment";
 
+moment().locale("uk", localization).format('LLL')
 const root = createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
@@ -27,7 +29,7 @@ root.render(
                 <Route path="/" element={<App/>}>
                     <Route path="booking" element={<Booking/>}>
                         <Route path="apartments" element={<Apartment/>}/>
-                        <Route path="apartments/search" element={<ApartmentResult/>}/>
+                        <Route path="apartments/search" element={<ApartmentResult itemsPerPage={8}/>}/>
                         <Route path="apartments/:apartment_id" element={<ApartmentUnit/>}/>
                         <Route path="apartments/:apartment_id/booking" element={<ApartmentBooking/>}/>
                         <Route path="apartments/:apartment_id/booking/confirmation" element={<ApartmentBookingConfirmation/>}/>

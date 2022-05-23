@@ -1,25 +1,41 @@
 import {NavLink, useNavigate, useSearchParams} from "react-router-dom";
 import '../../styles/apartmentresults.css'
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import moment from "moment/moment";
 import Filters from "../../components/Filters";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import ScrollToTop from "../../components/ScrollToTop";
 import Email from "../../components/Email";
 import API from "../../api";
-import {getNumberOfNights, getStars, getTotalPrice} from "../../components/helpers";
+import ReactPaginate from 'react-paginate';
+import ApartmentItems from "../../components/ApartmentItems";
+import QuantityInputs from "../../components/QuantityInputs";
 
-export default function ApartmentResult() {
+export default function ApartmentResult({itemsPerPage}) {
     const navigate = useNavigate();
 
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const [items, setItems] = useState(null);
+
     const [searchParams] = useSearchParams();
+    const quantityInputRef = useRef(null);
+    const detailsInput = useRef(null);
+    const [showResults, setShowResults] = useState(false)
     const [destination, setDestination] = useState(searchParams.get("destination"));
     const [startDate, setStartDate] = useState(searchParams.get("start"));
     const [endDate, setEndDate] = useState(searchParams.get("end"));
-    const adults = searchParams.get("adults")
-    const children = searchParams.get("children")
-    const quantity = `${adults} дорослих, ${children} дітей`
-    const [results, setResults] = React.useState([]);
+    const [adults, setAdults] = useState(searchParams.get("adults"));
+    const [children, setChildren] = useState(searchParams.get("children"));
+    const [results, setResults] = useState([]);
+    const [detailsInputValue, setDetailsInputValue] = useState(`${adults} дорослих, ${children} дітей`)
+    const [detailQuantity, setDetailQuantity] = useState([adults, children]);
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % items.length;
+        window.scrollTo(0, 0);
+        setItemOffset(newOffset);
+    };
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -30,12 +46,33 @@ export default function ApartmentResult() {
         window.location.reload(false);
     }
 
-    function handleStartCallback(start, end, label) {
-        setStartDate(start.format('YYYY-MM-DD'));
+    function handleStartCallback(date) {
+        setStartDate(date.format('YYYY-MM-DD'));
     }
 
-    function handleEndCallback(start, end, label) {
-        setEndDate(end.format('YYYY-MM-DD'));
+    function handleEndCallback(start, date) {
+        setEndDate(date.format('YYYY-MM-DD'));
+    }
+
+    const onClick = () => setShowResults(true)
+
+    function handleDetailsBlur(e) {
+        if (e.relatedTarget !== null) {
+            detailsInput.current.focus();
+        } else {
+            const isZero = (currentValue) => currentValue === '0';
+            const inputValues = Object.values(quantityInputRef.current.getValues());
+            setDetailQuantity(inputValues)
+            if (inputValues.every(isZero)) {
+                setDetailsInputValue('');
+            } else {
+                const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина`;
+                setDetailsInputValue(inputString);
+                setAdults(inputValues[0]);
+                setChildren(inputValues[1])
+            }
+            setShowResults(false);
+        }
     }
 
     React.useEffect(() => {
@@ -48,14 +85,19 @@ export default function ApartmentResult() {
             try {
                 const response = await API.get(url);
                 const json = await response.data;
-                setResults(json)
+                setItems(json)
+                const endOffset = itemOffset + itemsPerPage;
+                setResults(json.slice(itemOffset, endOffset));
+                setPageCount(Math.ceil(json.length / itemsPerPage));
             } catch (error) {
                 console.log("error", error);
             }
         };
 
-        fetchData();
-    }, []);
+        fetchData()
+
+
+    }, [itemOffset, itemsPerPage]);
 
     return (
         <div className="container col-10 search">
@@ -73,7 +115,7 @@ export default function ApartmentResult() {
                             <div className="input-block">
                                 <span className="input-tip">Місце</span>
                                 <input type="text" className="form-control simple house-icon-dark"
-                                       defaultValue={destination}
+                                       defaultValue={destination} required
                                        list="datalistOptions" onChange={e => setDestination(e.target.value)}/>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
@@ -94,7 +136,7 @@ export default function ApartmentResult() {
                                                      }
                                                  }}>
                                     <input type="text" className="form-control simple calendar-icon-dark"
-                                           placeholder="Вкажіть дату заїзду"
+                                           placeholder="Вкажіть дату заїзду" required
                                            onChange={e => setStartDate(e.target.value)}/>
                                 </DateRangePicker>
                             </div>
@@ -111,106 +153,46 @@ export default function ApartmentResult() {
                                         }
                                     }}>
                                     <input type="text" className="form-control simple calendar-icon-dark"
-                                           placeholder="Вкажіть дату виїзду"/>
+                                           placeholder="Вкажіть дату виїзду" required/>
                                 </DateRangePicker>
                             </div>
                             <div className="input-block">
                                 <span className="input-tip">Кількість людей</span>
                                 <input type="text" className="form-control simple person-icon-dark"
-                                       placeholder="Вкажіть дату виїзду"
-                                       defaultValue={quantity}/>
+                                       placeholder="Вкажіть кількість осіб" size="1" required
+                                       ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick}
+                                       value={detailsInputValue}/>
                             </div>
+                            {showResults ?
+                                <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/>
+                                : null}
                         </div>
                         <button type="submit" className="btn btn-blue w-100" onClick={handleSubmit}>Знайти</button>
                     </div>
-                    <Filters/>
+                    <Filters type={"apartment"}/>
                 </div>
                 {results.length > 0 &&
                     <div className="results">
                         <div className="results-len">
-                            Знайдено: <span className="len">{results.length} результатів</span>
+                            Знайдено: <span className="len">{items.length} результатів</span>
                         </div>
                         <div className="result-cards">
-                            {results.map((item, key) =>
-                                <div className="result-card-cover" key={key}>
-                                    <div className="result-card">
-                                        <div className="image-side">
-                                            <div className="image-content"
-                                                 style={{backgroundImage: `url("${item.images && item.images[0]}")`}}>
-                                                <div className="favourite">
-                                                    <img src={`${process.env.PUBLIC_URL}/heart.png`} alt="favourite"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="content-side">
-                                            <div className="top-part">
-                                                <div className="name">
-                                                    <NavLink end={true} to={{
-                                                        pathname: `/booking/apartments/${item.id}`
-                                                    }}>{item.name}</NavLink>
-                                                </div>
-                                                <div className="location">
-                                                    <div className="location-city">
-                                                        <a href="src/views/apartment/ApartmentResult#">{item.city}</a>
-                                                    </div>
-                                                    <div className="show-on-map">
-                                                        <a href="src/views/apartment/ApartmentResult#">Показати на
-                                                            карті</a>
-                                                    </div>
-                                                    <div className="centre-distance">{item.distance_from_center} км від
-                                                        центру
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="bottom-part">
-                                                <div className="room-desc">{item.short_description}
-                                                </div>
-                                                <div className="bottom-content">
-                                                    <div className="left-content">
-                                                        <div className="bed-desc">
-                                                            2 односпальні ліжка
-                                                        </div>
-                                                        <div className="room-rating">
-                                                            <span>{item.rating}</span>
-                                                            <div className="stars">
-                                                                {getStars(item.rating)}
-                                                            </div>
-                                                            {/*<img src={`${process.env.PUBLIC_URL}/half-star-rating.svg`} alt="star"/>*/}
-                                                        </div>
-                                                        <div className="reviews">
-                                                            <div className="reviews-images">
-                                                                <div className="img"
-                                                                     style={{backgroundImage: `url("/profile-pic.jpeg")`}}/>
-                                                                <div className="img"
-                                                                     style={{backgroundImage: `url("/profile-pic2.jpeg")`}}/>
-                                                                <div className="img"
-                                                                     style={{backgroundImage: `url("/profile-pic3.jpeg")`}}/>
-                                                            </div>
-                                                            <span>18 відгуків</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="right-content">
-                                                        <div className="price">UAH {getTotalPrice(item.price, startDate, endDate)}</div>
-                                                        <div
-                                                            className="duration">{getNumberOfNights(startDate, endDate)} ночей, {adults} дорослих
-                                                        </div>
-                                                        <div className="book">
-                                                            <NavLink to={{
-                                                                pathname: `/booking/apartments/${item.id}/booking`
-                                                            }} state={{startDate: startDate, endDate: endDate}}
-                                                                     className="btn btn-light arrow">Забронювати</NavLink>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
+                            <ApartmentItems currentItems={results} startDate={startDate} endDate={endDate}
+                                            adults={adults}/>
                         </div>
                     </div>
                 }
             </div>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                className="pagination"
+            />
             <Email/>
         </div>
     )
