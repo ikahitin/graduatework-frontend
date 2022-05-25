@@ -6,8 +6,7 @@ let accessToken = localStorage.getItem('accessToken');
 
 if (accessToken && accessToken !== '') {
     headers.Authorization = accessToken;
-
-};
+}
 
 const instance = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}`,
@@ -15,18 +14,14 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use((response) => {
-    if(response.status === 401) {
-        alert("You are not authorized");
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
-        window.location.href = "";
-    }
     return response;
 }, (error) => {
     if (error.response && error.response.data) {
-        // localStorage.removeItem('accessToken');
-        // localStorage.removeItem('user');
-        // window.location.href = "";
+        if (error.response.status === 401){
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('user');
+            window.location.href = "";
+        }
         return Promise.reject(error.response.data);
     }
     return Promise.reject(error.message);

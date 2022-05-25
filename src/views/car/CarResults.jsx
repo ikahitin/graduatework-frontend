@@ -6,7 +6,7 @@ import Filters from "../../components/Filters";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import ScrollToTop from "../../components/ScrollToTop";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import CarList from "../../components/CarList";
+import CarItems from "../../components/CarItems";
 import Email from "../../components/Email";
 
 export default function CarResult() {
@@ -149,22 +149,22 @@ export default function CarResult() {
                             </Tab>
                         </TabList>
                         <TabPanel>
-                            <CarList category={"small_car"} itemsPerPage={3}/>
+                            <CarItems category={"small_car"} itemsPerPage={3}/>
                         </TabPanel>
                         <TabPanel>
-                            <CarList category={"middle_class_car"} itemsPerPage={3}/>
+                            <CarItems category={"middle_class_car"} itemsPerPage={3}/>
                         </TabPanel>
                         <TabPanel>
-                            <CarList category={"multi_seat_car"} itemsPerPage={3}/>
+                            <CarItems category={"multi_seat_car"} itemsPerPage={3}/>
                         </TabPanel>
                         <TabPanel>
-                            <CarList category={"premium_class_car"} itemsPerPage={3}/>
+                            <CarItems category={"premium_class_car"} itemsPerPage={3}/>
                         </TabPanel>
                         <TabPanel>
-                            <CarList category={"suv"} itemsPerPage={3}/>
+                            <CarItems category={"suv"} itemsPerPage={3}/>
                         </TabPanel>
                         <TabPanel>
-                            <CarList category={"station_wagon"} itemsPerPage={3}/>
+                            <CarItems category={"station_wagon"} itemsPerPage={3}/>
                         </TabPanel>
                     </Tabs>
                 </div>

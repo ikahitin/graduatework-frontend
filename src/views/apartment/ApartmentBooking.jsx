@@ -5,7 +5,7 @@ import ScrollToTop from "../../components/ScrollToTop";
 import moment from "moment/moment";
 import API from "../../api";
 import amenities from "../../utils/amenities.json";
-import {getNumberOfNights, getStars, getTotalPrice} from "../../components/helpers";
+import {getNumberOfNights, getStars, getTotalPrice} from "../../utils/helpers";
 
 export default function ApartmentBooking() {
     const navigate = useNavigate();
@@ -165,7 +165,7 @@ export default function ApartmentBooking() {
                                     <img src={`${process.env.PUBLIC_URL}/yellow-apartment.svg`} alt=""/>
                                     <div>
                                         <div className="info-h">Загальний термін перебування:</div>
-                                        <div className="info-text">{getNumberOfNights()} ночей</div>
+                                        <div className="info-text">{getNumberOfNights(startDate, endDate)} ночей</div>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@ export default function ApartmentBooking() {
                             <div>
                                 <div className="info-h">Номер</div>
                                 <div className="info-text">{apartment.short_description}</div>
-                                <div className="detail-price">UAH {getTotalPrice(apartment.price)}</div>
+                                <div className="detail-price">UAH {getTotalPrice(apartment.price, startDate, endDate)}</div>
                             </div>
                         </div>
                         <div className="detail-row">

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import moment from "moment/moment";
 import API from "../../api";
-import {getNumberOfNights, getStars} from "../helpers";
+import {getNumberOfNights, getStars} from "../../utils/helpers";
 
 export default function ApartmentTrip(data) {
     const [isLoading, setIsLoading] = useState(true);
@@ -85,7 +85,7 @@ export default function ApartmentTrip(data) {
                                                 <div className="room-rating">
                                                     <span>{item.apartment.rating}</span>
                                                     <div className="stars">
-                                                        {getStars(2)}
+                                                        {getStars(item.apartment.rating)}
                                                     </div>
                                                 </div>
                                                 <div className="reviews">

@@ -1,6 +1,6 @@
 import ScrollToTop from "./ScrollToTop";
 import {NavLink} from "react-router-dom";
-import {getNumberOfNights, getStars, getTotalPrice} from "./helpers";
+import {getNumberOfNights, getStars, getTotalPrice} from "../utils/helpers";
 import React from "react";
 
 export default function ApartmentItems({currentItems, startDate, endDate, adults}) {
@@ -22,9 +22,9 @@ export default function ApartmentItems({currentItems, startDate, endDate, adults
                             <div className="content-side">
                                 <div className="top-part">
                                     <div className="name">
-                                        <NavLink end={true} to={{
-                                            pathname: `/booking/apartments/${item.id}`
-                                        }}>{item.name}</NavLink>
+                                        <NavLink end={true} to={{pathname: `/booking/apartments/${item.id}`}}>
+                                            {item.name}
+                                        </NavLink>
                                     </div>
                                     <div className="location">
                                         <div className="location-city">
@@ -52,18 +52,19 @@ export default function ApartmentItems({currentItems, startDate, endDate, adults
                                                 <div className="stars">
                                                     {getStars(item.rating)}
                                                 </div>
-                                                {/*<img src={`${process.env.PUBLIC_URL}/half-star-rating.svg`} alt="star"/>*/}
                                             </div>
                                             <div className="reviews">
-                                                <div className="reviews-images">
-                                                    <div className="img"
-                                                         style={{backgroundImage: `url("/profile-pic.jpeg")`}}/>
-                                                    <div className="img"
-                                                         style={{backgroundImage: `url("/profile-pic2.jpeg")`}}/>
-                                                    <div className="img"
-                                                         style={{backgroundImage: `url("/profile-pic3.jpeg")`}}/>
-                                                </div>
-                                                <span>18 відгуків</span>
+                                                {item.reviews.length > 0 &&
+                                                    <div className="reviews-images">
+                                                        <div className="img"
+                                                             style={{backgroundImage: `url("/profile-pic.jpeg")`}}/>
+                                                        <div className="img"
+                                                             style={{backgroundImage: `url("/profile-pic2.jpeg")`}}/>
+                                                        <div className="img"
+                                                             style={{backgroundImage: `url("/profile-pic3.jpeg")`}}/>
+                                                    </div>
+                                                }
+                                                <span>{item.reviews.length} відгуків</span>
                                             </div>
                                         </div>
                                         <div className="right-content">

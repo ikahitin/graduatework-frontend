@@ -4,7 +4,7 @@ import moment from "moment/moment";
 import API from "../api";
 import ReactPaginate from "react-paginate";
 
-export default function CarList({category, itemsPerPage}) {
+export default function CarItems({category, itemsPerPage}) {
     const [isLoading, setIsLoading] = React.useState(true);
     const [cars, setCars] = React.useState([]);
     const [searchParams] = useSearchParams();

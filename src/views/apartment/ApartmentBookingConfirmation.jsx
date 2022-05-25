@@ -3,7 +3,7 @@ import '../../styles/apartmentbooking.css'
 import React, {useState} from "react";
 import ScrollToTop from "../../components/ScrollToTop";
 import API from "../../api";
-import {getTotalPrice} from "../../components/helpers";
+import {getTotalPrice} from "../../utils/helpers";
 
 export default function ApartmentBookingConfirmation() {
     const navigate = useNavigate();

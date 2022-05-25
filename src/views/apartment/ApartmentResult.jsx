@@ -89,6 +89,7 @@ export default function ApartmentResult({itemsPerPage}) {
                 const endOffset = itemOffset + itemsPerPage;
                 setResults(json.slice(itemOffset, endOffset));
                 setPageCount(Math.ceil(json.length / itemsPerPage));
+                console.log(json)
             } catch (error) {
                 console.log("error", error);
             }

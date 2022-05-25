@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import moment from "moment/moment";
 import API from "../../api";
 import amenities from "../../utils/amenities.json"
-import {getStars} from "../../components/helpers";
+import {getStars} from "../../utils/helpers";
 
 export default function ApartmentUnit() {
     const {apartment_id} = useParams();
@@ -60,13 +60,15 @@ export default function ApartmentUnit() {
                     <button className="btn btn-light arrow">Забронювати</button>
                 </div>
             </div>
-            <div className="images">
-                {apartment.images.map((item, key) =>
-                    <div className="apartment-img" key={key}>
-                        <div className="apartment-img-inner" style={{backgroundImage: `url("${item}")`}}></div>
-                    </div>
-                )}
-            </div>
+            {apartment.images !== null &&
+                <div className="images">
+                    {apartment.images.map((item, key) =>
+                        <div className="apartment-img" key={key}>
+                            <div className="apartment-img-inner" style={{backgroundImage: `url("${item}")`}}></div>
+                        </div>
+                    )}
+                </div>
+            }
             <div className="apartment-desc">
                 <div className="desc">
                     <div className="small-heading">Опис</div>
