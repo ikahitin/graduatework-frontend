@@ -1,30 +1,27 @@
 import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
-import '../../styles/apartmentbooking.css'
 import React, {useState} from "react";
 import ScrollToTop from "../../components/ScrollToTop";
 import API from "../../api";
 import {getTotalPrice} from "../../utils/helpers";
 
-export default function ApartmentBookingConfirmation() {
+export default function CarBookingConfirmation() {
     const navigate = useNavigate();
     const location = useLocation()
-    const {startDate, endDate, name, phone, email, comment, arrivingHour} = location.state
+    const {startDate, endDate, name, phone, email} = location.state
 
-    const {apartment_id} = useParams();
-    const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
+    const {car_id} = useParams();
+    const [car, setCar] = useState({images: [], amenities: [], reviews: [], insurance: []});
 
     function handleBooking(e) {
         e.preventDefault()
-        const url = `apartment/${apartment_id}/reservation`;
+        const url = `car/${car_id}/reservation`;
         const data = {
             "from_date": startDate,
             "to_date": endDate,
-            "guest_name": name,
-            "guest_phone": phone,
+            "user_name": name,
+            "user_phone": phone,
             "user_email": email,
-            "comment": comment,
-            "arriving_hour": arrivingHour,
-            "apartment_id": Number(apartment_id)
+            "car_id": Number(car_id)
         }
         const makeReservation = async () => {
             try {
@@ -45,13 +42,13 @@ export default function ApartmentBookingConfirmation() {
     }
 
     React.useEffect(() => {
-        const url = `apartment/${apartment_id}`;
+        const url = `car/${car_id}`;
 
         const fetchData = async () => {
             try {
                 const response = await API.get(url);
                 const json = await response.data;
-                setApartment(json)
+                setCar(json)
             } catch (error) {
                 console.log("error", error);
             }
@@ -65,16 +62,13 @@ export default function ApartmentBookingConfirmation() {
             <ScrollToTop/>
             <div className="breadcrumb">
                 <NavLink end to="/">Головна</NavLink>
-                <NavLink end={true} to="/booking/apartments">Житло</NavLink>
-                <NavLink end={true} to="/booking/apartments/search">Результати пошуку</NavLink>
+                <NavLink end={true} to="/booking/cars">Оренда автомобіля</NavLink>
+                <NavLink end={true} to="/booking/cars/search">Результати пошуку</NavLink>
                 <NavLink end={true} to={{
-                    pathname: `/booking/apartments/${apartment_id}`
-                }}>{apartment.name}</NavLink>
+                    pathname: `/booking/cars/${car_id}/booking`
+                }}>Бронювання</NavLink>
                 <NavLink end={true} to={{
-                    pathname: `/booking/apartments/${apartment_id}/booking`
-                }} state={{startDate: startDate, endDate: endDate}}>Бронювання</NavLink>
-                <NavLink end={true} to={{
-                    pathname: `/booking/apartments/${apartment_id}/booking/confirmation`
+                    pathname: `/booking/cars/${car_id}/booking/confirmation`
                 }}>Оплата</NavLink>
             </div>
             <div className="booking-info">
@@ -103,8 +97,8 @@ export default function ApartmentBookingConfirmation() {
                         </div>
                         <div className="edit-data">
                             <NavLink to={{
-                                pathname: `/booking/apartments/${apartment.id}/booking`
-                            }} state={{startDate, endDate, name, phone, email, comment, arrivingHour}}>Змінити
+                                pathname: `/booking/cars/${car.id}/booking`
+                            }} state={{startDate, endDate, phone, email}}>Змінити
                                 данні</NavLink>
                         </div>
                     </div>
@@ -114,24 +108,24 @@ export default function ApartmentBookingConfirmation() {
                     <div className="total-amount">
                         <img src={`${process.env.PUBLIC_URL}/price-amount.svg`} alt=""/>
                         <span>Загальна сума</span>
-                        <span className="amount">UAH {getTotalPrice(apartment.price, startDate, endDate) + 70}</span>
+                        <span className="amount">UAH {getTotalPrice(car.price, startDate, endDate) + 1500}</span>
                     </div>
                     <div className="price-heading">Ціна включає в себе оплату за:</div>
                     <div className="price-details">
                         <div className="detail-row">
                             <img src={`${process.env.PUBLIC_URL}/yellow-apartment.svg`} alt=""/>
                             <div>
-                                <div className="info-h">Номер</div>
-                                <div className="info-text">{apartment.short_description}</div>
-                                <div className="detail-price">UAH {getTotalPrice(apartment.price, startDate, endDate)}</div>
+                                <div className="info-h">Автомобіль</div>
+                                <div className="info-text">{car.name}</div>
+                                <div className="detail-price">UAH {getTotalPrice(car.price, startDate, endDate)}</div>
                             </div>
                         </div>
                         <div className="detail-row">
                             <img src={`${process.env.PUBLIC_URL}/yellow-apartment.svg`} alt=""/>
                             <div>
-                                <div className="info-h">Туристичний збір</div>
-                                <div className="info-text">{apartment.short_description}</div>
-                                <div className="detail-price">UAH 70</div>
+                                <div className="info-h">Страхування</div>
+                                <div className="info-text">На випадок крадіжки автомобіля/ДТП</div>
+                                <div className="detail-price">UAH 1500</div>
                             </div>
                         </div>
                     </div>

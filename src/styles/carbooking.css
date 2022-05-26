@@ -1,0 +1,17 @@
+.apartment-details.form {
+    position: relative;
+    padding: 0;
+    border-radius: 0;
+    left: auto;
+    box-shadow: none;
+}
+
+.apartment-details.form .input-row {
+    border-bottom: 0.2px solid #C4C4C4;
+    padding: 1.4rem 0;
+}
+
+.apartment-details.form .input-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}

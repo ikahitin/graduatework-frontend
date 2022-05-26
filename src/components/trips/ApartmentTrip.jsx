@@ -4,13 +4,13 @@ import moment from "moment/moment";
 import API from "../../api";
 import {getNumberOfNights, getStars} from "../../utils/helpers";
 
-export default function ApartmentTrip(data) {
+export default function ApartmentTrip({status}) {
     const [isLoading, setIsLoading] = useState(true);
     const token = localStorage.getItem('accessToken');
     const [reservations, setReservations] = useState([]);
 
     React.useEffect(() => {
-        let url = `reservation?reservation_status=${data["status"]}&reservation_type=apartment`;
+        let url = `reservation?reservation_status=${status}&reservation_type=apartment`;
         const fetchData = async () => {
             try {
                 const response = await API({

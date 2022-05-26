@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {NavLink, useSearchParams} from "react-router-dom";
-import moment from "moment/moment";
 import API from "../api";
 import ReactPaginate from "react-paginate";
+import {getNumberOfDays} from "../utils/helpers";
 
 export default function CarItems({category, itemsPerPage}) {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -21,16 +21,8 @@ export default function CarItems({category, itemsPerPage}) {
         setItemOffset(newOffset);
     };
 
-    function getNumberOfDays() {
-        if (startDate !== null && endDate !== null) {
-            const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
-            return Math.ceil(timeDiff / (1000 * 3600 * 24));
-        }
-
-    }
-
     function getTotalPrice(price) {
-        return getNumberOfDays() * price
+        return getNumberOfDays(startDate, endDate) * price
     }
 
     React.useEffect(() => {
@@ -146,10 +138,13 @@ export default function CarItems({category, itemsPerPage}) {
                                     <div className="right-content">
                                         <div className="price">UAH {getTotalPrice(car.price)}</div>
                                         <div
-                                            className="duration">Ціна за {getNumberOfDays()} днів
+                                            className="duration">Ціна за {getNumberOfDays(startDate, endDate)} днів
                                         </div>
                                         <div className="book">
-                                            <button className="btn btn-light arrow">Забронювати</button>
+                                            <NavLink to={{
+                                                pathname: `/booking/cars/${car.id}/booking`
+                                            }} state={{startDate: startDate, endDate: endDate}}
+                                                     className="btn btn-light arrow">Забронювати</NavLink>
                                         </div>
                                     </div>
                                 </div>

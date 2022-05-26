@@ -23,3 +23,11 @@ export function getStars(rating) {
         return stars
     }
 }
+
+export function getNumberOfDays(startDate, endDate) {
+    if (startDate !== null && endDate !== null) {
+        const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
+        return Math.ceil(timeDiff / (1000 * 3600 * 24));
+    }
+
+}

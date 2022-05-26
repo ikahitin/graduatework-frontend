@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import ApartmentTrip from "./ApartmentTrip";
+import CarTrip from "./CarTrip";
 
-export default function TripPanel(data) {
+export default function TripPanel({status}) {
     const [tripTypeIndex, setTripTypeIndex] = useState(0);
-
     return(
         <div>
             <Tabs selectedIndex={tripTypeIndex} onSelect={index => setTripTypeIndex(index)} className="trip-panel">
@@ -41,10 +41,10 @@ export default function TripPanel(data) {
                     </Tab>
                 </TabList>
                 <TabPanel>
-                    <ApartmentTrip status={data["status"]}></ApartmentTrip>
+                    <ApartmentTrip status={status}></ApartmentTrip>
                 </TabPanel>
                 <TabPanel>
-                    2
+                    <CarTrip status={status}></CarTrip>
                 </TabPanel>
             </Tabs>
         </div>

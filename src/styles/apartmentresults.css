@@ -139,8 +139,18 @@
 }
 
 .form-check-input:checked {
-    background-color: #3D86F5;
-    border-color: #3D86F5;
+    border-color: #00BF13;
+}
+
+.form-check-input:checked {
+    background-color: #FFF;
+    border-color: #00BF13;
+}
+
+.form-check-input:checked[type=checkbox] {
+    background-image: url("../../public/green_tick.svg");
+    background-size: 75%;
+    background-position: center;
 }
 
 .checkbox-row:last-child {
