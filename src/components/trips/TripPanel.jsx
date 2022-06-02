@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import ApartmentTrip from "./ApartmentTrip";
 import CarTrip from "./CarTrip";
+import TaxiTrip from "./TaxiTrips";
 
 export default function TripPanel({status}) {
     const [tripTypeIndex, setTripTypeIndex] = useState(0);
@@ -45,6 +46,9 @@ export default function TripPanel({status}) {
                 </TabPanel>
                 <TabPanel>
                     <CarTrip status={status}></CarTrip>
+                </TabPanel>
+                <TabPanel>
+                    <TaxiTrip status={status}></TaxiTrip>
                 </TabPanel>
             </Tabs>
         </div>

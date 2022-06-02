@@ -70,7 +70,10 @@ function Taxi() {
                                     <Autocomplete
                                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                                         onPlaceSelected={(place) => {
-                                            setEndAddress(place.formatted_address);
+                                            const arr = place.formatted_address.split(',');
+                                            arr.splice(arr.length - 3, 3);
+                                            const address = arr.join(', ');
+                                            setEndAddress(address);
                                             setEndLocation([
                                                 place.geometry.location.lat(),
                                                 place.geometry.location.lng()]);
@@ -88,7 +91,10 @@ function Taxi() {
                                     <Autocomplete
                                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                                         onPlaceSelected={(place) => {
-                                            setStartAddress(place.formatted_address);
+                                            const arr = place.formatted_address.split(',');
+                                            arr.splice(arr.length - 3, 3);
+                                            const address = arr.join(', ');
+                                            setStartAddress(address);
                                             setStartLocation([
                                                 place.geometry.location.lat(),
                                                 place.geometry.location.lng()]);

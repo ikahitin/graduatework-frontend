@@ -17,6 +17,8 @@ export default function TaxiConfirmation() {
         const data = {
             "from_date": reservationDate,
             "to_date": reservationDate,
+            "start_address": startAddress,
+            "end_address": endAddress,
             "user_name": name,
             "user_phone": phone,
             "user_email": email,

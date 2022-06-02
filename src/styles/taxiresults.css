@@ -96,4 +96,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.trip-panel .taxi-details {
+    padding: 3.1rem 0;
+}
+
+.taxi-details .down-content {
+    gap: 2.2rem;
 }
