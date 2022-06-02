@@ -86,7 +86,7 @@ function Taxi() {
                                     />
                                     <div className="vertical-line">&nbsp;</div>
                                     <Autocomplete
-                                        apiKey="AIzaSyDmSC4qZInakAyKd1UqdrbZlu0qg8RGzSw"
+                                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                                         onPlaceSelected={(place) => {
                                             setStartAddress(place.formatted_address);
                                             setStartLocation([
