@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import API from '../api';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import {NavLink} from "react-router-dom";
 
 export default function SimpleSlider(data) {
     const place = {
@@ -32,7 +33,7 @@ export default function SimpleSlider(data) {
         };
 
         fetchData();
-    }, []);
+    }, [data]);
     const settings = {
         dots: false,
         infinite: true,
@@ -46,7 +47,7 @@ export default function SimpleSlider(data) {
             <Slider {...settings}>
                 {ideas.map((item, key) =>
                     <div className="card-cover" key={key}>
-                        <a href="">
+                        <NavLink to="">
                             <div className="card">
                                 <div className="rating">
                                     <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" className="star"/>
@@ -61,7 +62,7 @@ export default function SimpleSlider(data) {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
                 )}
             </Slider>

@@ -2,18 +2,25 @@ import DateRangePicker from "react-bootstrap-daterangepicker";
 import React, {useRef, useState} from "react";
 import '../../styles/taxi.css'
 import Email from "../../components/Email";
+import Autocomplete from "react-google-autocomplete";
+import {useNavigate} from "react-router-dom";
 
 function Taxi() {
-    const [destination, setDestination] = useState();
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const navigate = useNavigate();
+
+    const [startLocation, setStartLocation] = useState([]);
+    const [endLocation, setEndLocation] = useState([]);
+    const [startAddress, setStartAddress] = useState();
+    const [endAddress, setEndAddress] = useState();
+    const [reservationDate, setReservationDate] = useState(null);
+    const [peopleQuantity, setPeopleQuantity] = useState();
     const dateInput = useRef();
 
     const handleApply = (event, picker) => {
         picker.element.find('input:first').val(
             picker.startDate.format('dd, D MMMM, HH:mm')
         );
-        setStartDate(picker.startDate.format('dd, D MMMM, HH:mm'));
+        setReservationDate(picker.startDate.format('YYYY-MM-DDTHH:mm:ss'));
     };
 
     function handleFocus(e) {
@@ -22,10 +29,24 @@ function Taxi() {
         }
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        const addresses = `start_address=${startAddress}&end_address=${endAddress}`
+        const date = `&date=${reservationDate}`
+        const people = `&people=${peopleQuantity}`
+        const stateObj = {
+            startLat: startLocation[0],
+            startLng: startLocation[1],
+            endLat: endLocation[0],
+            endLng: endLocation[1],
+        };
+        navigate(`/booking/taxi/search?${addresses}${date}${people}`, {state: stateObj});
+    }
+
     return (
         <div className="container-xxl p-0 c-child">
             <div className="search-block container px-0">
-                <form className="row gx-3 gy-2 align-items-center">
+                <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="taxi-type-row">
                         <div className="taxi-type">
                             <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
@@ -46,22 +67,41 @@ function Taxi() {
                         <div className="inputs inputs-search p-0">
                             <div className="col-sm fill-width">
                                 <div className="input-group">
-                                    <input className="form-control step-control with-icon location-icon-gray right-half"
-                                           list="datalistOptions"
-                                           placeholder="Місце подачі" size="1"
-                                           onChange={e => setDestination(e.target.value)} required/>
+                                    <Autocomplete
+                                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                                        onPlaceSelected={(place) => {
+                                            setEndAddress(place.formatted_address);
+                                            setEndLocation([
+                                                place.geometry.location.lat(),
+                                                place.geometry.location.lng()]);
+                                        }}
+                                        language="uk"
+                                        options={{
+                                            types: [],
+                                            componentRestrictions: {country: "ua"},
+                                        }}
+                                        size="1"
+                                        placeholder='Місце призначення'
+                                        className='form-control step-control with-icon location-icon-gray right-half'
+                                    />
                                     <div className="vertical-line">&nbsp;</div>
-                                    <input className="form-control step-control with-icon location-icon-gray left-half"
-                                           list="datalistOptions"
-                                           placeholder="Місце призначення" size="1"
-                                           onChange={e => setDestination(e.target.value)} required/>
+                                    <Autocomplete
+                                        apiKey="AIzaSyDmSC4qZInakAyKd1UqdrbZlu0qg8RGzSw"
+                                        onPlaceSelected={(place) => {
+                                            setStartAddress(place.formatted_address);
+                                            setStartLocation([
+                                                place.geometry.location.lat(),
+                                                place.geometry.location.lng()]);
+                                        }}
+                                        options={{
+                                            types: [],
+                                            componentRestrictions: {country: "ua"},
+                                        }}
+                                        size="1"
+                                        placeholder='Місце подачі'
+                                        className='form-control step-control with-icon location-icon-gray left-half'
+                                    />
                                     <span className="dots one">···</span>
-                                    <datalist id="datalistOptions">
-                                        <option value="Одеса"/>
-                                        <option value="Славське"/>
-                                        <option value="Джарилгач"/>
-                                        <option value="Яремче"/>
-                                    </datalist>
                                 </div>
                             </div>
                             <div className="col-sm">
@@ -100,14 +140,16 @@ function Taxi() {
                                     <input className="extra-small form-control step-control with-icon car-icon"
                                            list="datalistOptionss"
                                            placeholder="1" size="1"
-                                           onChange={e => setDestination(e.target.value)} required/>
+                                           onChange={e => setPeopleQuantity(e.target.value)} required/>
                                     <span className="dots three">···</span>
                                     <span className="dots">···</span>
                                     <datalist id="datalistOptionss">
                                         <option value="1"/>
                                         <option value="2"/>
                                         <option value="3"/>
-                                        <option value="4"/>
+                                        <option value="5"/>
+                                        <option value="6"/>
+                                        <option value="7"/>
                                     </datalist>
                                 </div>
                             </div>

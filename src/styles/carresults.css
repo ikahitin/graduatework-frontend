@@ -164,7 +164,7 @@
 }
 
 .location-icon-dark {
-    background: url("../../public/dark_location.svg") #fff;
+    background: url("../images/dark_location.svg") #fff;
     background-size: 1.25rem;
 }
 

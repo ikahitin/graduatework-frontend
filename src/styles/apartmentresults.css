@@ -71,18 +71,18 @@
 }
 
 .house-icon-dark {
-    background: url("../../public/fa6-solid_house-dark.svg") #fff;
+    background: url("../images/fa6-solid_house-dark.svg") #fff;
     background-size: 1.25rem;
 }
 
 .calendar-icon-dark {
-    background: url("../../public/bi_calendar-event-fill-dark.svg") #fff ;
+    background: url("../images/bi_calendar-event-fill-dark.svg") #fff ;
     background-size: 1rem;
     background-position: 1rem 0.7rem!important;
 }
 
 .person-icon-dark {
-    background: url("../../public/person-dark.svg") #fff ;
+    background: url("../images/person-dark.svg") #fff ;
     background-size: 1rem;
 }
 
@@ -148,7 +148,7 @@
 }
 
 .form-check-input:checked[type=checkbox] {
-    background-image: url("../../public/green_tick.svg");
+    background-image: url("../images/green_tick.svg");
     background-size: 75%;
     background-position: center;
 }
@@ -181,7 +181,6 @@
 
 .image-content {
     position: relative;
-    background-image: url("../../public/room.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -234,6 +233,7 @@
 .price {
     color: #404040;
     font-size: 1.25rem;
+    font-weight: 500;
 }
 
 .duration {
@@ -264,9 +264,9 @@
 }
 
 .arrow:after {
-    content: url("../../public/arrow-right.svg");
+    content: url("../images/arrow-right.svg");
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     padding-left: 0.5rem;
     width: 0.38rem;
 }

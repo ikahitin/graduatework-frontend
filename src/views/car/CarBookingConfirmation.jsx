@@ -55,7 +55,7 @@ export default function CarBookingConfirmation() {
         };
 
         fetchData();
-    }, []);
+    }, [car_id]);
 
     return (
         <div className="container col-10 search">
@@ -99,7 +99,7 @@ export default function CarBookingConfirmation() {
                             <NavLink to={{
                                 pathname: `/booking/cars/${car.id}/booking`
                             }} state={{startDate, endDate, phone, email}}>Змінити
-                                данні</NavLink>
+                                дані</NavLink>
                         </div>
                     </div>
                 </div>

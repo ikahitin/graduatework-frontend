@@ -58,7 +58,7 @@ export default function ApartmentBookingConfirmation() {
         };
 
         fetchData();
-    }, []);
+    }, [apartment_id]);
 
     return (
         <div className="container col-10 search">
@@ -105,7 +105,7 @@ export default function ApartmentBookingConfirmation() {
                             <NavLink to={{
                                 pathname: `/booking/apartments/${apartment.id}/booking`
                             }} state={{startDate, endDate, name, phone, email, comment, arrivingHour}}>Змінити
-                                данні</NavLink>
+                                дані</NavLink>
                         </div>
                     </div>
                 </div>

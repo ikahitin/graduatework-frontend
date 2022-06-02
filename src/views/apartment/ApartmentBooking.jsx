@@ -45,7 +45,7 @@ export default function ApartmentBooking() {
         };
 
         fetchData();
-    }, []);
+    }, [apartment_id]);
 
     return (
         <div className="container col-10 search">

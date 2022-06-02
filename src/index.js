@@ -21,6 +21,8 @@ import localization from 'moment/locale/uk'
 import moment from "moment";
 import CarBooking from "./views/car/CarBooking";
 import CarBookingConfirmation from "./views/car/CarBookingConfirmation";
+import TaxiResult from "./views/taxi/TaxiResult";
+import TaxiConfirmation from "./views/taxi/TaxiConfirmation";
 
 moment().locale("uk", localization).format('LLL')
 const root = createRoot(document.getElementById("root"));
@@ -40,6 +42,8 @@ root.render(
                         <Route path="cars/:car_id/booking" element={<CarBooking/>}/>
                         <Route path="cars/:car_id/booking/confirmation" element={<CarBookingConfirmation/>}/>
                         <Route path="taxi" element={<Taxi/>}/>
+                        <Route path="taxi/search" element={<TaxiResult/>}/>
+                        <Route path="taxi/search/:taxi_type/confirmation" element={<TaxiConfirmation/>}/>
                         <Route path="vacation" element={<ExchangeVacation/>}/>
                     </Route>
                     <Route path="profile" element={<PrivateRouter/>}>

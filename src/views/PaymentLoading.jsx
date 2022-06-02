@@ -6,11 +6,13 @@ import ScrollToTop from "../components/ScrollToTop";
 export default function PaymentLoading() {
     const [isLoading, setIsLoading] = useState(true);
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    const changeState = async () => {
-        await delay(15000);
-        setIsLoading(false);
-    };
+
     React.useEffect(() => {
+        const changeState = async () => {
+            await delay(15000);
+            setIsLoading(false);
+        };
+
         changeState();
     }, []);
     if (!isLoading) {

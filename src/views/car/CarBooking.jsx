@@ -43,7 +43,7 @@ export default function CarBooking() {
         };
 
         fetchData();
-    }, []);
+    }, [car_id]);
 
     return (
         <div className="container col-10 search">

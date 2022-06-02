@@ -1,5 +1,5 @@
 .car-icon {
-    background: url("../../public/fa6-solid_car_gray.svg") 1rem 1rem;
+    background: url("../images/fa6-solid_car_gray.svg") 1rem 1rem;
     background-size: 1.25rem;
 }
 
@@ -28,7 +28,7 @@
 .features-list {
     display: flex;
     height: 10rem;
-    background-image: url("../../public/curve.svg");
+    background-image: url("../images/curve.svg");
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: 5.5rem;

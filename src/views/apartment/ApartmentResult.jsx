@@ -89,16 +89,13 @@ export default function ApartmentResult({itemsPerPage}) {
                 const endOffset = itemOffset + itemsPerPage;
                 setResults(json.slice(itemOffset, endOffset));
                 setPageCount(Math.ceil(json.length / itemsPerPage));
-                console.log(json)
             } catch (error) {
                 console.log("error", error);
             }
         };
 
         fetchData()
-
-
-    }, [itemOffset, itemsPerPage]);
+    }, [adults, children, destination, startDate, endDate, itemOffset, itemsPerPage]);
 
     return (
         <div className="container col-10 search">

@@ -30,7 +30,7 @@ export default function ApartmentTrip({status}) {
         };
 
         fetchData();
-    }, []);
+    }, [status, token]);
 
     if (isLoading) {
         return (
@@ -63,14 +63,13 @@ export default function ApartmentTrip({status}) {
                                         </div>
                                         <div className="location">
                                             <div className="location-city">
-                                                <a href="#">{item.apartment.city}</a>
+                                                <NavLink to="#">{item.apartment.city}</NavLink>
                                             </div>
                                             <div className="show-on-map">
-                                                <a href="#">Показати на карті</a>
+                                                <NavLink to="#">Показати на карті</NavLink>
                                             </div>
-                                            <div className="centre-distance">{item.apartment.distance_from_center} км
-                                                від
-                                                центру
+                                            <div className="centre-distance">
+                                                {item.apartment.distance_from_center} км від центру
                                             </div>
                                         </div>
                                     </div>
@@ -173,9 +172,9 @@ export default function ApartmentTrip({status}) {
                             </div>
                             <div className="map">
                                 <div className="blur"></div>
-                                <a href="#" className="show-map-btn">
+                                <NavLink to="#" className="show-map-btn">
                                     Показати на карті
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

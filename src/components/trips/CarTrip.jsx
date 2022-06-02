@@ -30,7 +30,7 @@ export default function CarTrip({status}) {
         };
 
         fetchData();
-    }, []);
+    }, [status, token]);
 
     if (isLoading) {
         return (

@@ -34,7 +34,7 @@ export default function ApartmentUnit() {
         };
 
         fetchData();
-    }, []);
+    }, [apartment_id]);
     return (
         <div className="container col-10 search">
             <div className="breadcrumb">

@@ -587,7 +587,7 @@ body {
 }
 
 .background {
-  background-image: url("../public/background.png");
+  background-image: url("images/background.png");
   background-position-y: 70%;
   background-size: cover;
   width: 100%;
@@ -642,7 +642,7 @@ body {
 }
 
 .ukraine {
-  background-image: url("../public/Ukraine.svg");
+  background-image: url("images/Ukraine.svg");
   width: 2.9rem;
   height: 2.6rem;
   background-size: contain;
@@ -666,12 +666,12 @@ body {
 }
 
 .form-switch .form-check-input {
-  background-image: url("../public/light_theme.svg");
+  background-image: url("images/light_theme.svg");
 }
 
 
 .form-switch .form-check-input:focus {
-  background-image: url("../public/light_theme.svg");
+  background-image: url("images/light_theme.svg");
 }
 
 .nav-pills {
@@ -712,23 +712,23 @@ body {
 }
 
 .house {
-  background-image: url("../public/house_panel.svg");
+  background-image: url("images/house_panel.svg");
 }
 
 .car {
-  background-image: url("../public/car_panel.svg");
+  background-image: url("images/car_panel.svg");
 }
 
 .taxi {
-  background-image: url("../public/taxi_panel.svg");
+  background-image: url("images/taxi_panel.svg");
 }
 
 .travel {
-  background-image: url("../public/travel_panel.svg");
+  background-image: url("images/travel_panel.svg");
 }
 
 .event {
-  background-image: url("../public/calendar_panel.svg");
+  background-image: url("images/calendar_panel.svg");
 }
 
 .nav-pills {
@@ -758,19 +758,19 @@ body {
 }
 
 .house-gray {
-  background-image: url("../public/fa6-solid_house_gray.svg");
+  background-image: url("images/fa6-solid_house_gray.svg");
   width: 1.6rem;
   height: 1.4rem;
 }
 
 .event-gray{
-  background-image: url("../public/bi_calendar-event-fill_gray.svg");
+  background-image: url("images/bi_calendar-event-fill_gray.svg");
   width: 1.25rem;
   height: 1.25rem;
 }
 
 .person-gray{
-  background-image: url("../public/bi_person-fill.svg");
+  background-image: url("images/bi_person-fill.svg");
   width: 1.4rem;
   height: 1.4rem;
 }
@@ -880,15 +880,15 @@ form.row {
 }
 
 /*.slick-prev:before {*/
-/*  content: url("../public/bxs_down-arrow.svg")!important;*/
+/*  content: url("images/bxs_down-arrow.svg")!important;*/
 /*}*/
 
 /*.slick-next:before {*/
-/*  content: url("../public/arrow_next.svg")!important;*/
+/*  content: url("images/arrow_next.svg")!important;*/
 /*}*/
 
 .slick-prev:before {
-  content: url("../public/arrow-prev.svg")!important;
+  content: url("images/arrow-prev.svg")!important;
   width: 44px!important;
   height: 38px!important;
 }
@@ -896,7 +896,7 @@ form.row {
 .slick-next:before {
   width: 44px!important;
   height: 38px!important;
-  content: url("../public/arrow-next.svg")!important;
+  content: url("images/arrow-next.svg")!important;
 }
 
 .slider {
@@ -926,7 +926,7 @@ form.row {
 .location-icon {
   width: 1.3rem;
   height: 1.3rem;
-  background-image: url("../public/carbon_location-filled.svg");
+  background-image: url("images/carbon_location-filled.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -994,7 +994,7 @@ form.row {
 /*.random-button::before {*/
 /*  width: 4rem;*/
 /*  height: 4rem;*/
-/*  content: url("../public/ion_dice.svg");*/
+/*  content: url("images/ion_dice.svg");*/
 /*}*/
 
 .random-button {
@@ -1064,7 +1064,7 @@ footer a:hover {
 }
 
 .background-email {
-  background-image: url("../public/email.png");
+  background-image: url("images/email.png");
   position: relative;
 }
 
@@ -1074,7 +1074,7 @@ footer a:hover {
 }
 
 /*.lang:before {*/
-/*  content: url("../public/ic_outline-language.svg");*/
+/*  content: url("images/ic_outline-language.svg");*/
 /*  width: 1.20rem;*/
 /*  height: 1.20rem;*/
 /*  margin-right: 15px;*/
@@ -1082,7 +1082,7 @@ footer a:hover {
 
 .lang:after {
   border: none;
-  content: url("../public/lang_arrow.svg");
+  content: url("images/lang_arrow.svg");
   padding-bottom: 4px;
   height: 1.5rem;
 }
@@ -1348,7 +1348,7 @@ button.show {
   width: 1.56em;
   height: 1.56em;
   color: #000;
-  background: transparent url("../public/close.svg") center/1.56em auto no-repeat;
+  background: transparent url("images/close.svg") center/1.56em auto no-repeat;
   border: 0;
   border-radius: 0.25rem;
   opacity: .7;
@@ -1531,7 +1531,7 @@ input::-webkit-calendar-picker-indicator {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../public/profile.jpeg");
+  background-image: url("images/profile.jpeg");
   height: 0.875rem;
   width: 0.875rem;
   margin-right: 0.6rem;
@@ -1551,7 +1551,7 @@ input::-webkit-calendar-picker-indicator {
   background-position: center;
   background-size: 1.3rem 1.3rem;
   background-repeat: no-repeat;
-  background-image: url("../public/profile.jpeg");
+  background-image: url("images/profile.jpeg");
   height: 1.3rem;
   width: 1.3rem;
   margin-right: 0.6rem;
@@ -1631,22 +1631,22 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .house-icon {
-  background: url("../public/fa6-solid_house_gray.svg") 1rem 1rem;
+  background: url("images/fa6-solid_house_gray.svg") 1rem 1rem;
   background-size: 1.25rem;
 }
 
 .email-icon{
-  background: url("../public/email.svg") 1rem 1.2rem;
+  background: url("images/email.svg") 1rem 1.2rem;
   background-size: 1.25rem;
 }
 
 .calendar-icon {
-  background: url("../public/bi_calendar-event-fill_gray.svg") 1rem 1rem;
+  background: url("images/bi_calendar-event-fill_gray.svg") 1rem 1rem;
   background-size: 1.1rem;
 }
 
 .person-icon {
-  background: url("../public/bi_person-fill.svg") 1rem 1rem;
+  background: url("images/bi_person-fill.svg") 1rem 1rem;
   background-size: 1.25rem;
 }
 
@@ -1862,7 +1862,7 @@ form.row {
 }
 
 .location-icon-gray {
-  background: url("../public/location_gray.svg") 1rem 1rem;
+  background: url("images/location_gray.svg") 1rem 1rem;
   background-size: 1.25rem;
 }
 
