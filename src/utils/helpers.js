@@ -29,5 +29,4 @@ export function getNumberOfDays(startDate, endDate) {
         const timeDiff = Math.abs(moment(startDate).toDate().getTime() - moment(endDate).toDate().getTime());
         return Math.ceil(timeDiff / (1000 * 3600 * 24));
     }
-
 }

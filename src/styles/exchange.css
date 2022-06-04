@@ -1,0 +1,26 @@
+.exchange .middle-part {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.exchange .up-content, .exchange .down-content {
+    flex-direction: column;
+}
+
+.details-specs {
+    width: 30%;
+}
+
+.green {
+    color: #00BF13;
+}
+
+.ap-detail img{
+    width: 1.4rem;
+    margin-right: 0.7rem;
+}
+
+.ap-detail {
+    padding-bottom: 0.6rem;
+}

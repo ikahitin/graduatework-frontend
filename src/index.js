@@ -23,6 +23,8 @@ import CarBooking from "./views/car/CarBooking";
 import CarBookingConfirmation from "./views/car/CarBookingConfirmation";
 import TaxiResult from "./views/taxi/TaxiResult";
 import TaxiConfirmation from "./views/taxi/TaxiConfirmation";
+import ExchangeVacationResult from "./views/exchangeVacation/ExchangeVacationResult";
+import ExchangeApartmentUnit from "./views/exchangeVacation/ExchangeApartmentUnit";
 
 moment().locale("uk", localization).format('LLL')
 const root = createRoot(document.getElementById("root"));
@@ -45,6 +47,8 @@ root.render(
                         <Route path="taxi/search" element={<TaxiResult/>}/>
                         <Route path="taxi/search/:taxi_type/confirmation" element={<TaxiConfirmation/>}/>
                         <Route path="vacation" element={<ExchangeVacation/>}/>
+                        <Route path="vacation/apartments/:apartment_id" element={<ExchangeApartmentUnit/>}/>
+                        <Route path="vacation/search" element={<ExchangeVacationResult itemsPerPage={8}/>}/>
                     </Route>
                     <Route path="profile" element={<PrivateRouter/>}>
                         <Route path="trips" element={<Trips/>}/>

@@ -4,19 +4,36 @@ import '../../styles/taxi.css'
 import Email from "../../components/Email";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import SimpleSlider from "../../components/Slider";
+import QuantityInputs from "../../components/QuantityInputs";
+import {useNavigate} from "react-router-dom";
 
 function ExchangeVacation() {
+    const navigate = useNavigate();
+
     const [destination, setDestination] = useState();
+    const [proposedCity, setProposedCity] = useState();
     const [tabIndex, setTabIndex] = useState(0);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-    const dateInput = useRef();
+
+    const quantityInputRef = useRef(null);
+    const detailsInput = useRef(null);
+    const [detailQuantity, setDetailQuantity] = useState(['0', '0']);
+    const [detailsInputValue, setDetailsInputValue] = useState(null);
+    const [showDetails, setShowDetails] = useState(false);
+
+    const dateInput = useRef(null);
+
+    const onClick = () => setShowDetails(true)
 
     const handleApply = (event, picker) => {
         picker.element.find('input:first').val(
-            picker.startDate.format('dd, D MMMM, HH:mm')
+            picker.startDate.format('dd, D MMMM') +
+            ' - ' +
+            picker.endDate.format('ddd, D MMMM')
         );
-        setStartDate(picker.startDate.format('dd, D MMMM, HH:mm'));
+        setStartDate(picker.startDate.format('YYYY-MM-DD'));
+        setEndDate(picker.endDate.format('YYYY-MM-DD'));
     };
 
     function handleFocus(e) {
@@ -25,10 +42,35 @@ function ExchangeVacation() {
         }
     }
 
+    function handleDetailsBlur(e) {
+        if (e.relatedTarget !== null) {
+            detailsInput.current.focus();
+        } else {
+            const isZero = (currentValue) => currentValue === '0';
+            const inputValues = Object.values(quantityInputRef.current.getValues());
+            setDetailQuantity(inputValues)
+            if (inputValues.every(isZero)) {
+                setDetailsInputValue('');
+            } else {
+                const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина`;
+                setDetailsInputValue(inputString);
+            }
+            setShowDetails(false);
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const locations = `city=${destination}&proposed_city=${proposedCity}`
+        const dateRange = `&start=${startDate}&end=${endDate}`
+        const details = `&adults=${detailQuantity[0]}&children=${detailQuantity[1]}`
+        navigate(`/booking/vacation/search?${locations}${dateRange}${details}`);
+    }
+
     return (
         <div className="container-xxl p-0 c-child">
             <div className="search-block container px-0">
-                <form className="row gx-3 gy-2 align-items-center">
+                <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
                     <div className="inputs inputs-search p-0">
                         <div className="col-sm fill-width">
                             <div className="input-group">
@@ -40,7 +82,7 @@ function ExchangeVacation() {
                                 <input className="form-control step-control with-icon location-icon-gray left-half"
                                        list="datalistOptions"
                                        placeholder="Запропоноване місце" size="1"
-                                       onChange={e => setDestination(e.target.value)} required/>
+                                       onChange={e => setProposedCity(e.target.value)} required/>
                                 <span className="dots one">···</span>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
@@ -56,10 +98,7 @@ function ExchangeVacation() {
                                 <DateRangePicker
                                     initialSettings={{
                                         autoUpdateInput: false,
-                                        singleDatePicker: true,
-                                        timePicker: true,
                                         opens: 'center',
-                                        timePicker24Hour: true,
                                         locale: {
                                             applyLabel: "Прийняти",
                                             cancelLabel: 'Скасувати',
@@ -80,20 +119,18 @@ function ExchangeVacation() {
                                 </DateRangePicker>
                             </div>
                         </div>
-                        <div className="col-sm min-width">
+                        <div className="col-sm position-relative">
                             <div className="input-group">
-                                <input className="form-control step-control with-icon car-icon" list="datalistOptionss"
-                                       placeholder="Кількість осіб" size="1"
-                                       onChange={e => setDestination(e.target.value)} required/>
+                                <input className="form-control step-control with-icon person-icon"
+                                       placeholder="Вкажіть кількість осіб" size="1" required
+                                       ref={detailsInput} onBlur={handleDetailsBlur} onClick={onClick}
+                                       value={detailsInputValue}/>
                                 <span className="dots three">···</span>
                                 <span className="dots">···</span>
-                                <datalist id="datalistOptionss">
-                                    <option value="1"/>
-                                    <option value="2"/>
-                                    <option value="3"/>
-                                    <option value="4"/>
-                                </datalist>
                             </div>
+                            {showDetails ?
+                                <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/>
+                                : null}
                         </div>
                     </div>
                     <div className="col-auto inputs-search">

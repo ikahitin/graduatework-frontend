@@ -13,8 +13,8 @@ function Apartment() {
     const navigate = useNavigate();
 
     const [detailQuantity, setDetailQuantity] = useState(['0', '0']);
-    const [detailsInputValue, setDetailsInputValue] = useState(null)
-    const [showResults, setShowResults] = useState(false)
+    const [detailsInputValue, setDetailsInputValue] = useState(null);
+    const [showDetails, setShowDetails] = useState(false);
     const [tabIndex, setTabIndex] = useState(0);
     const [destination, setDestination] = useState();
     const [startDate, setStartDate] = useState(null);
@@ -24,7 +24,7 @@ function Apartment() {
     const detailsInput = useRef(null);
     const dateInput = useRef(null);
 
-    const onClick = () => setShowResults(true)
+    const onClick = () => setShowDetails(true)
 
     const handleApply = (event, picker) => {
         picker.element.find('input:first').val(
@@ -55,7 +55,7 @@ function Apartment() {
                 const inputString = `${inputValues[0]} дорослих - ${inputValues[1]} дитина`;
                 setDetailsInputValue(inputString);
             }
-            setShowResults(false);
+            setShowDetails(false);
         }
     }
 
@@ -120,7 +120,7 @@ function Apartment() {
                                 <span className="dots three">···</span>
                                 <span className="dots">···</span>
                             </div>
-                            {showResults ?
+                            {showDetails ?
                                 <QuantityInputs detailQuantity={detailQuantity} ref={quantityInputRef}/>
                                 : null}
                         </div>

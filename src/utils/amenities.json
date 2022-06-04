@@ -1,5 +1,15 @@
 {
   "Безкоштовна парковка": "parking.svg",
   "Обслуговування номерів": "service.svg",
-  "Безкоштовний WI-FI": "wifi.svg"
+  "Безкоштовний WI-FI": "wifi.svg",
+  "Парковка": "parking.svg",
+  "Сад": "garden.svg",
+  "Велосипед": "bike.svg",
+  "Комп’ютер": "pc.svg",
+  "Ліфт": "elevator.svg",
+  "Охорона": "guard.svg",
+  "Дозволено з дітьми": "child.svg",
+  "Дозволено з тваринами": "animal.svg",
+  "Заборонено куріння": "no_smoking.svg"
+
 }

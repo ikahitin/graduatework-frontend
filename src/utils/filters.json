@@ -237,5 +237,53 @@
         }
       ]
     }
+  ],
+  "exchange": [
+    {
+      "title": "Додаткові опції",
+      "elements": [
+        {
+          "name": "with_children",
+          "value": "З дітьми"
+        },
+        {
+          "name": "withou_children",
+          "value": "Без дітей"
+        },
+        {
+          "name": "with_animals",
+          "value": "З тваринами"
+        },
+        {
+          "name": "without_animals",
+          "value": "Без тварин"
+        },
+        {
+          "name": "car_exchange",
+          "value": "Обмін автомобіля"
+        }
+      ]
+    },
+    {
+      "title": "Тип помешкання",
+      "elements": [
+        {
+          "name": "flat",
+          "value": "Квартира"
+        },
+        {
+          "name": "house",
+          "value": "Дім"
+        },
+        {
+          "name": "penthouse",
+          "value": "Пентхаус"
+        },
+        {
+          "name": "guest_house",
+          "value": "Гостьові будинки"
+        }
+      ]
+    }
   ]
 }

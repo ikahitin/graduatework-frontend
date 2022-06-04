@@ -109,28 +109,29 @@ export default function TaxiConfirmation() {
                         </div>
                     </div>
                     <div className="taxi-details">
-                       <div className="up-content">
-                           <div className="detail-row">
-                               <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
-                               <div>
-                                   <div className="info-h">Місце подачі</div>
-                                   <div className="info-text">{startAddress}</div>
-                               </div>
-                           </div>
-                           <div className="detail-row">
-                               <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
-                               <div>
-                                   <div className="info-h">Місце призначення</div>
-                                   <div className="info-text">{endAddress}</div>
-                               </div>
-                           </div>
-                       </div>
+                        <div className="up-content">
+                            <div className="detail-row">
+                                <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
+                                <div>
+                                    <div className="info-h">Місце подачі</div>
+                                    <div className="info-text">{startAddress}</div>
+                                </div>
+                            </div>
+                            <div className="detail-row">
+                                <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
+                                <div>
+                                    <div className="info-h">Місце призначення</div>
+                                    <div className="info-text">{endAddress}</div>
+                                </div>
+                            </div>
+                        </div>
                         <div className="down-content">
                             <div className="detail-row">
                                 <img src={`${process.env.PUBLIC_URL}/yellow-calendar.svg`} alt=""/>
                                 <div>
                                     <div className="info-h">Дата</div>
-                                    <div className="info-text">{moment(reservationDate).format('ddd, D MMM. YYYY')}</div>
+                                    <div
+                                        className="info-text">{moment(reservationDate).format('ddd, D MMM. YYYY')}</div>
                                 </div>
                             </div>
                             <div className="detail-row">
