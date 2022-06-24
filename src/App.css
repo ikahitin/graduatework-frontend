@@ -620,7 +620,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
-
 }
 
 .c-child + .nav {
@@ -748,6 +747,7 @@ body {
   background-color: #fff;
   border-radius: 0 0 2.81rem 2.81rem;
   padding-top: 1rem;
+  margin: auto;
 }
 
 .search-block form{
@@ -1822,25 +1822,25 @@ form.row {
 }
 
 @media (min-width: 576px){
-  .c-child + .nav {
+  .c-child + .nav, .search-block {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px){
-  .c-child + .nav {
+  .c-child + .nav, .search-block {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px){
-  .c-child + .nav {
+  .c-child + .nav, .search-block {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px){
-  .c-child + .nav {
+  .c-child + .nav, .search-block {
     max-width: 1140px;
   }
 }

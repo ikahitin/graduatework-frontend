@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useLocation, useParams} from "react-router-dom";
 import '../../styles/apartmentunit.css'
 import API from "../../api";
 import amenities from "../../utils/amenities.json"
 
 export default function ExchangeApartmentUnit() {
+    const location = useLocation()
+    const {startDate, endDate} = location.state
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], details: [], nearby: [], rooms: {room: {quantity: 0}, bathroom:{quantity: 0}}});
     const sliderSettings = {
@@ -52,7 +54,10 @@ export default function ExchangeApartmentUnit() {
                     </div>
                 </div>
                 <div className="book">
-                    <button className="btn btn-light arrow">Забронювати</button>
+                    <NavLink to={{
+                        pathname: `/booking/vacation/${apartment.id}/confirmation`
+                    }} state={{startDate: startDate, endDate: endDate}}
+                             className="btn btn-light arrow">Забронювати</NavLink>
                 </div>
             </div>
             {apartment.images !== null &&
