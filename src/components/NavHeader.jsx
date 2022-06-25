@@ -149,7 +149,8 @@ export default function NavHeader() {
                         <ul className="navbar-nav mb-2 mb-lg-0 additional">
                             <li className="nav-item">
                                 <NavLink className="nav-link text-white" to="/booking/apartments">
-                                    Logo
+                                    <img src={`${process.env.PUBLIC_URL}/logo.png`}
+                                         alt="logo" className="logo"/>
                                 </NavLink>
                             </li>
                         </ul>
