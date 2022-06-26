@@ -2,12 +2,14 @@ import Header from "./Header";
 import React, {useState} from "react";
 import {loginUser, registerUser} from "../utils/auth";
 import {NavLink} from "react-router-dom";
+import { ThemeContext, themes } from '../theme/themeContext';
 
 export default function NavHeader() {
     const token = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
+    const [darkMode, setDarkMode] = React.useState(false);
 
     const handleLogin = async e => {
         e.preventDefault();
@@ -176,13 +178,22 @@ export default function NavHeader() {
                                 </li>
                                 <li className="nav-item">
                                     <div className="form-check form-switch">
+
                                         <input type="checkbox" id="theme-switch"/>
-                                        <label className="switch" htmlFor="theme-switch">
+                                        <ThemeContext.Consumer>
+                                            {({ changeTheme }) => (
+                                        <label className="switch" htmlFor="theme-switch" onClick={() => {
+                                            setDarkMode(!darkMode);
+                                            changeTheme(darkMode ? themes.light : themes.dark);
+                                        }}>
                                             <div className="input-slider round">
                                                 <img src={`${process.env.PUBLIC_URL}/light_theme.svg`}
                                                      alt="light theme switch" className="input-slider-img"/>
                                             </div>
                                         </label>
+                                                )}
+                                        </ThemeContext.Consumer>
+
                                     </div>
                                 </li>
                                 {token ?

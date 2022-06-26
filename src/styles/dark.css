@@ -1,0 +1,108 @@
+.dark-content {
+    background: #212121!important;
+    color: #fff!important;
+}
+
+.dark-content * {
+    color: #fff;
+}
+
+.dark-content .search-block, .dark-content .search-block form, .dark-content .nav {
+    background: #404040;
+}
+
+.dark-content .active .nav-link {
+    background-color: #5A5A5A;
+}
+
+.dark-content .search-block input::placeholder, .dark-content .search-block input, .dark-content .search-block select, .dark-content .email-block input, .dark-content .email-block input::placeholder {
+    color: #FFFFFF;
+}
+
+.dark-content .email-form {
+    background: #404040;
+}
+
+.dark-content .accordion-header, .dark-content .accordion-button, .dark-content .accordion-body, .dark-content .accordion-item {
+    background: #404040;
+}
+
+.dark-content .card, .dark-content .result-card, .dark-content .filter {
+    background: #404040;
+}
+
+.dark-content .name a {
+    color: #fff;
+}
+
+.dark-content .result-card .btn-light {
+    background: #404040;
+}
+
+.dark-content .btn:hover {
+    color: #fff;
+}
+
+.dark-content .dropdown-menu, .dark-content .apartment-specifics {
+    background: #404040;
+}
+
+.dark-content .top-info .btn-light {
+    background: #212121;
+}
+
+.dark-content .breadcrumb>a.active {
+    color: #fff;
+}
+
+.dark-content .slider button {
+    background: #404040;
+}
+
+.dark-content .nav-link.yellow span {
+    color: #404040;
+}
+
+.dark-content .modal-content {
+    background: #404040;
+}
+
+.dark-content .inputs-search .form-control:focus, .dark-content .inputs-search .form-control:focus::placeholder {
+    color: #fff;
+    background: #404040;
+}
+
+.dark-content .step-control:not(:placeholder-shown) {
+    color: #fff!important;
+}
+
+.dark-content .daterangepicker, .dark-content .calendar-table {
+    background: #404040;
+    border-bottom-color: #404040;
+    border-right-color: #404040;
+    border-top-color: #404040;
+    border-left-color: #404040;
+}
+
+.dark-content .daterangepicker td.off {
+    background: #404040;
+}
+
+.dark-content .apartment-details, .dark-content .apartment-details span {
+    background: #404040;
+    color: #fff!important;
+}
+
+.dark-content .apartment-details button {
+    color: #404040;
+}
+
+.dark-content .filters .form-control {
+    background: #5A5A5A;
+    color: #fff;
+}
+
+.dark-content .modal-content input, .dark-content .modal-content input::placeholder {
+    background: #404040;
+    color: #fff!important;
+}

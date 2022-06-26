@@ -26,10 +26,12 @@ import TaxiConfirmation from "./views/taxi/TaxiConfirmation";
 import ExchangeVacationResult from "./views/exchangeVacation/ExchangeVacationResult";
 import ExchangeApartmentUnit from "./views/exchangeVacation/ExchangeApartmentUnit";
 import ExchangeApartmentBooking from "./views/exchangeVacation/ExchangeApartmentBooking";
+import ThemeContextWrapper from "./theme/themeWrapper";
 
 moment().locale("uk", localization).format('LLL')
 const root = createRoot(document.getElementById("root"));
 root.render(
+    <ThemeContextWrapper>
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
@@ -67,6 +69,7 @@ root.render(
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
+        </ThemeContextWrapper>
 );
 
 // If you want to start measuring performance in your app, pass a function
