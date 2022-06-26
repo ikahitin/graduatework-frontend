@@ -1,4 +1,4 @@
-import {NavLink, useNavigate, useSearchParams} from "react-router-dom";
+import {NavLink, useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import '../../styles/carresults.css'
 import React, {useState} from "react";
 import moment from "moment/moment";
@@ -14,9 +14,11 @@ export default function CarResult() {
     const [searchParams] = useSearchParams();
     const [carCategory, setCarCategory] = useState(0);
 
-    const [location, setLocation] = useState(searchParams.get("location"));
+    const [carLocation, setCarLocation] = useState(searchParams.get("location"));
     const [startDate, setStartDate] = useState(searchParams.get("start"));
     const [endDate, setEndDate] = useState(searchParams.get("end"));
+    const location = useLocation()
+    const [bookingState, setBookingState] = useState();
 
     function handleStartCallback(date) {
         setStartDate(date.format('YYYYMMDDTHHmm'));
@@ -28,11 +30,20 @@ export default function CarResult() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const loc = `location=${location}`
+        const loc = `location=${carLocation}`
         const dateRange = `&start=${startDate}&end=${endDate}`
-        navigate(`/booking/cars/search?${loc}${dateRange}`);
+        navigate(`/booking/cars/search?${loc}${dateRange}`, {state: bookingState});
         window.location.reload(false);
     }
+
+    React.useEffect(() => {
+        if (location.state !== null) {
+            console.log(location.state)
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
+    }, []);
 
     return (
         <div className="container col-10 search">
@@ -50,8 +61,8 @@ export default function CarResult() {
                             <div className="input-block">
                                 <span className="input-tip">Місце</span>
                                 <input type="text" className="form-control simple location-icon-dark"
-                                       defaultValue={location}
-                                       list="datalistOptions" onChange={e => setLocation(e.target.value)}/>
+                                       defaultValue={carLocation}
+                                       list="datalistOptions" onChange={e => setCarLocation(e.target.value)}/>
                                 <datalist id="datalistOptions">
                                     <option value="Одеса"/>
                                     <option value="Славське"/>

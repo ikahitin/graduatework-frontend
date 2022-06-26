@@ -1,4 +1,4 @@
-import {NavLink, useNavigate, useSearchParams} from "react-router-dom";
+import {NavLink, useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import '../../styles/apartmentresults.css'
 import React, {useRef, useState} from "react";
 import moment from "moment/moment";
@@ -30,6 +30,8 @@ export default function ApartmentResult({itemsPerPage}) {
     const [results, setResults] = useState([]);
     const [detailsInputValue, setDetailsInputValue] = useState(`${adults} дорослих, ${children} дітей`)
     const [detailQuantity, setDetailQuantity] = useState([adults, children]);
+    const location = useLocation()
+    const [bookingState, setBookingState] = useState();
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -42,7 +44,7 @@ export default function ApartmentResult({itemsPerPage}) {
         const dest = `destination=${destination}`
         const dateRange = `&start=${startDate}&end=${endDate}`
         const details = `&adults=${adults}&children=${children}`
-        navigate(`/booking/apartments/search?${dest}${dateRange}${details}`);
+        navigate(`/booking/apartments/search?${dest}${dateRange}${details}`, {state: bookingState});
         window.location.reload(false);
     }
 
@@ -76,6 +78,12 @@ export default function ApartmentResult({itemsPerPage}) {
     }
 
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
+
         const city = `city=${destination}`
         const dates = `start=${startDate}&end=${moment(endDate).format('YYYY-MM-DD')}`
         const details = `adults=${adults}&children=${children}`

@@ -33,7 +33,7 @@ export default function CarBookingConfirmation() {
                         'Content-Type': 'application/json'
                     }
                 });
-                navigate("/payment");
+                navigate("/payment", {state: bookingState});
             } catch (error) {
                 console.log("error", error);
             }
@@ -41,7 +41,14 @@ export default function CarBookingConfirmation() {
         makeReservation();
     }
 
+    const [bookingState, setBookingState] = useState()
+
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
         const url = `car/${car_id}`;
 
         const fetchData = async () => {

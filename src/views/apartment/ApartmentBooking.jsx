@@ -15,6 +15,15 @@ export default function ApartmentBooking() {
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
 
+    const [bookingState, setBookingState] = useState()
+    React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
+    }, []);
+
     function handleSubmit(e) {
         e.preventDefault()
         const form = e.target;
@@ -25,7 +34,8 @@ export default function ApartmentBooking() {
             phone: form.phone.value,
             email: form.email.value,
             comment: form.comment.value,
-            arrivingHour: form.arrivingHour.value
+            arrivingHour: form.arrivingHour.value,
+            ...bookingState
         };
 
         navigate(`/booking/apartments/${apartment_id}/booking/confirmation`, {state: stateObj});

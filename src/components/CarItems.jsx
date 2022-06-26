@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {NavLink, useSearchParams} from "react-router-dom";
+import {NavLink, useLocation, useSearchParams} from "react-router-dom";
 import API from "../api";
 import ReactPaginate from "react-paginate";
 import {getNumberOfDays} from "../utils/helpers";
@@ -14,6 +14,8 @@ export default function CarItems({category, itemsPerPage}) {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     const [results, setResults] = useState()
+    const location = useLocation()
+    const [bookingState, setBookingState] = useState()
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % cars.length;
@@ -26,6 +28,11 @@ export default function CarItems({category, itemsPerPage}) {
     }
 
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
         let url = `car?car_classification=${category}`;
         const fetchData = async () => {
             try {
@@ -143,7 +150,7 @@ export default function CarItems({category, itemsPerPage}) {
                                         <div className="book">
                                             <NavLink to={{
                                                 pathname: `/booking/cars/${car.id}/booking`
-                                            }} state={{startDate: startDate, endDate: endDate}}
+                                            }} state={{startDate: startDate, endDate: endDate, ...bookingState}}
                                                      className="btn btn-light arrow">Забронювати</NavLink>
                                         </div>
                                     </div>

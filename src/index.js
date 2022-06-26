@@ -27,6 +27,7 @@ import ExchangeVacationResult from "./views/exchangeVacation/ExchangeVacationRes
 import ExchangeApartmentUnit from "./views/exchangeVacation/ExchangeApartmentUnit";
 import ExchangeApartmentBooking from "./views/exchangeVacation/ExchangeApartmentBooking";
 import ThemeContextWrapper from "./theme/themeWrapper";
+import OneStepBooking from "./views/oneStepBooking/OneStepBooking";
 
 moment().locale("uk", localization).format('LLL')
 const root = createRoot(document.getElementById("root"));
@@ -53,6 +54,7 @@ root.render(
                         <Route path="vacation/apartments/:apartment_id" element={<ExchangeApartmentUnit/>}/>
                         <Route path="vacation/search" element={<ExchangeVacationResult itemsPerPage={8}/>}/>
                         <Route path="vacation/:apartment_id/confirmation" element={<ExchangeApartmentBooking/>}/>
+                        <Route path="one-step" element={<OneStepBooking/>}/>
                     </Route>
                     <Route path="profile" element={<PrivateRouter/>}>
                         <Route path="trips" element={<Trips/>}/>

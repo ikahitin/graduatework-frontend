@@ -17,6 +17,7 @@ export default function TaxiResult() {
     const [peopleQuantity, setPeopleQuantity] = useState(searchParams.get("people"));
     const [results, setResults] = useState([]);
     const {startLat, startLng, endLat, endLng} = location.state
+    const [bookingState, setBookingState] = useState();
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -31,6 +32,7 @@ export default function TaxiResult() {
             name: form.first_name.value + " " + form.last_name.value,
             phone: form.phone.value,
             email: form.email.value,
+            ...bookingState,
         };
         navigate(`/booking/taxi/search/${form.taxiType.value}/confirmation`, {state: stateObj});
     }
@@ -40,6 +42,11 @@ export default function TaxiResult() {
     }
 
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
         const url = `taxi`;
 
         const fetchData = async () => {

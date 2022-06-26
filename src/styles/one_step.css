@@ -1,0 +1,135 @@
+.yellow-item.active button {
+    background: #E7E7E7!important;
+}
+
+.step-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+}
+
+.step-number {
+    font-size: 0.94rem;
+    background: #fff;
+    box-shadow: 0px 4px 20px rgba(16, 16, 16, 0.1);
+    border-radius: 50%;
+    width: 2.13rem;
+    height: 2.13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-step {
+    display: flex;
+    align-items: start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.step-entity {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.4rem;
+}
+
+.dots-space {
+    padding: 1rem 0 1rem 1rem;
+}
+
+.booking-step .search-block {
+    width: 100%;
+}
+
+.booking-process .step-control+span:before {
+    padding-left: 6px;
+}
+
+.active-step .step-number {
+    color: #404040;
+    background: #FEEE9E;
+}
+
+.hidden .search-block, .hidden .edit-data {
+    display: none;
+}
+
+.booking-step .search-block {
+    max-width: 1140px;
+}
+
+.booking-step .search-block .form-control, .booking-step .search-block select{
+    border: none;
+    min-width: 6rem!important;
+}
+
+.booking-step .search-block input.extra-small {
+    min-width: 5rem!important;
+}
+
+.edit-booking {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 2.2rem;
+}
+
+.edit-booking img {
+    padding-left: 0.3rem;
+    padding-right: 0.5rem;
+}
+
+.edit-booking div {
+    margin-left: 3.1rem;
+}
+
+.booked .step-number {
+    color: #404040;
+    background: #FFD500;
+}
+
+.icon-booking-step .step-entity {
+    flex-direction: row;
+}
+
+.booking-buttons>a {
+    border-radius: 2.50rem;
+    padding: 0.8rem 2.3rem;
+    border: 1px solid #3D86F5;
+    text-decoration: none;
+    color: #404040;
+    font-weight: 500;
+}
+
+.booking-continue {
+    font-weight: 700!important;
+    background: #3D86F5;
+    color: #fff!important;
+}
+
+.booking-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.message {
+    display: flex;
+    align-items: start;
+    max-width: 24.63rem;
+    gap: 0.4rem;
+}
+
+.booking-result {
+    display: flex;
+    gap: 3.3rem;
+    align-items: center;
+    padding-left: 0.3rem;
+    padding-top: 3.8rem;
+}
+
+.booking-result a {
+    font-weight: 600;
+    color: #3D86F5;
+    text-decoration: underline;
+}

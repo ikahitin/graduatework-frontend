@@ -1,9 +1,18 @@
 import ScrollToTop from "./ScrollToTop";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {getNumberOfNights, getStars, getTotalPrice} from "../utils/helpers";
-import React from "react";
+import React, {useState} from "react";
 
 export default function ApartmentItems({currentItems, startDate, endDate, adults}) {
+    const location = useLocation()
+    const [bookingState, setBookingState] = useState()
+    React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
+    }, []);
     return (
         <>
             {currentItems &&
@@ -76,7 +85,7 @@ export default function ApartmentItems({currentItems, startDate, endDate, adults
                                             <div className="book">
                                                 <NavLink to={{
                                                     pathname: `/booking/apartments/${item.id}/booking`
-                                                }} state={{startDate: startDate, endDate: endDate}}
+                                                }} state={{startDate: startDate, endDate: endDate, ...bookingState}}
                                                          className="btn btn-light arrow">Забронювати</NavLink>
                                             </div>
                                         </div>

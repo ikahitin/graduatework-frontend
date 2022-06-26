@@ -13,6 +13,15 @@ export default function ApartmentBookingConfirmation() {
     const {apartment_id} = useParams();
     const [apartment, setApartment] = useState({images: [], amenities: [], reviews: []});
 
+    const [bookingState, setBookingState] = useState()
+    React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
+    }, []);
+
     function handleBooking(e) {
         e.preventDefault()
         const url = `apartment/${apartment_id}/reservation`;
@@ -36,7 +45,7 @@ export default function ApartmentBookingConfirmation() {
                         'Content-Type': 'application/json'
                     }
                 });
-                navigate("/payment");
+                navigate("/payment", {state: bookingState});
             } catch (error) {
                 console.log("error", error);
             }

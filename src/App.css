@@ -1904,3 +1904,22 @@ form.row {
 .logo {
   width: 4.6rem;
 }
+
+.icon-booking-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dots-space.horizontal {
+  padding: 0 1rem 0 1rem;
+}
+
+.nav-process {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem!important;
+  filter: none;
+  justify-content: center;
+}

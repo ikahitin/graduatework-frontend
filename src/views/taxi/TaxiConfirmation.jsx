@@ -10,6 +10,7 @@ export default function TaxiConfirmation() {
     const {reservationDate, startAddress, endAddress, locationObj, appeal, name, phone, email} = location.state
     const {taxi_type} = useParams();
     const [taxi, setTaxi] = useState({});
+    const [bookingState, setBookingState] = useState()
 
     function handleBooking(e) {
         e.preventDefault()
@@ -41,7 +42,7 @@ export default function TaxiConfirmation() {
                         'Content-Type': 'application/json'
                     }
                 });
-                navigate("/payment");
+                navigate("/payment", {state: bookingState});
             } catch (error) {
                 console.log("error", error);
             }
@@ -50,6 +51,11 @@ export default function TaxiConfirmation() {
     }
 
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
         const url = `taxi/${taxi_type}`;
 
         const fetchData = async () => {

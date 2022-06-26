@@ -14,6 +14,7 @@ export default function CarBooking() {
 
     const {car_id} = useParams();
     const [car, setCar] = useState({images: [], amenities: [], reviews: [], insurance: []});
+    const [bookingState, setBookingState] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -23,13 +24,19 @@ export default function CarBooking() {
             endDate: endDate,
             name: form.first_name.value + " " + form.last_name.value,
             phone: form.phone.value,
-            email: form.email.value
+            email: form.email.value,
+            ...bookingState
         };
 
         navigate(`/booking/cars/${car_id}/booking/confirmation`, {state: stateObj});
     }
 
     React.useEffect(() => {
+        if (location.state !== null) {
+            if (location.state.hasOwnProperty('booking')) {
+                setBookingState({"booking": location.state.booking})
+            }
+        }
         const url = `car/${car_id}`;
 
         const fetchData = async () => {
