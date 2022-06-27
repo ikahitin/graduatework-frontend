@@ -48,7 +48,7 @@ export default function ApartmentTrip({status}) {
                     <div className="left-trip-side">
                         <div className="trip-image-side">
                             <div className="image-content"
-                                 style={{backgroundImage: `url("${item?.apartment?.images && item?.apartment?.images[0]}")`}}>
+                                 style={{backgroundImage: `url("${item.apartment.images && item.apartment.images[0]}")`}}>
                             </div>
                         </div>
                         <div className="trip-content">
@@ -72,7 +72,7 @@ export default function ApartmentTrip({status}) {
                                 {item.apartment?.city}
                             </div>
                             <div className="trip-address">
-                                <span className="bold">Адреса</span> {item?.apartment?.location}
+                                <span className="bold">Адреса</span> {item.apartment?.location}
                             </div>
                         </div>
                     </div>

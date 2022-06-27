@@ -1958,6 +1958,10 @@ form.row {
   width: 11.56rem;
 }
 
+.trip-image-side {
+  margin-right: 1.1rem;
+}
+
 .trip-block {
   display: flex;
   background: #FFFFFF;
@@ -1972,6 +1976,7 @@ form.row {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 0.7rem 0;
 }
 
 .trip-utils {
@@ -1979,4 +1984,8 @@ form.row {
   flex-direction: column;
   justify-content: space-around;
   align-items: end;
+}
+
+.left-trip-side {
+  display: flex;
 }
