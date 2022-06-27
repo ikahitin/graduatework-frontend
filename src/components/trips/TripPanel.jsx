@@ -10,6 +10,8 @@ export default function TripPanel({status}) {
         <div>
             <ApartmentTrip status={"active"}></ApartmentTrip>
             <ApartmentTrip status={"planned"}></ApartmentTrip>
+            <CarTrip status={"active"}></CarTrip>
+            <CarTrip status={"planned"}></CarTrip>
         </div>
     )
 }
