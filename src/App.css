@@ -1923,3 +1923,60 @@ form.row {
   filter: none;
   justify-content: center;
 }
+
+.trip-info span {
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.trip-unit-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-left: 1.1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.trip-info {
+  display: flex;
+  align-items: center;
+}
+
+.trip-status {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #00BF13;
+}
+
+.trip-status.planned {
+  color: #3D86F5;
+}
+
+.left-trip-side .image-content {
+  width: 11.56rem;
+}
+
+.trip-block {
+  display: flex;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 7px rgba(45, 45, 45, 0.25);
+  border-radius: 1.25rem;
+  margin: 1rem 0;
+  padding: 0.68rem;
+  justify-content: space-between;
+}
+
+.trip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.trip-utils {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: end;
+}
