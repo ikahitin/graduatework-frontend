@@ -48,7 +48,7 @@ export default function ApartmentTrip({status}) {
                     <div className="left-trip-side">
                         <div className="trip-image-side">
                             <div className="image-content"
-                                 style={{backgroundImage: `url("${item.apartment?.images && item.apartment?.images[0]}")`}}>
+                                 style={{backgroundImage: `url("${item?.apartment?.images && item?.apartment?.images[0]}")`}}>
                             </div>
                         </div>
                         <div className="trip-content">
@@ -65,14 +65,14 @@ export default function ApartmentTrip({status}) {
                                 <div className="trip-unit-name">{item.apartment?.name}</div>
                             </div>
                             <div className="trip-desc">
-                                <span className="bold">Заїзд </span> {moment(item.from_date).format('ddd, D MMM.')} <span className="bold">з </span> {moment(item.from_date).format('hh:mm')}
+                                <span className="bold">Заїзд </span> {moment(item?.from_date).format('ddd, D MMM.')} <span className="bold">з </span> {moment(item?.from_date).format('hh:mm')}
                                 <span className="bold"> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; </span>
-                                <span className="bold"> Виїзд </span> {moment(item.to_date).format('ddd, D MMM.')} <span className="bold">до </span> {moment(item.to_date).format('hh:mm')}
+                                <span className="bold"> Виїзд </span> {moment(item?.to_date).format('ddd, D MMM.')} <span className="bold">до </span> {moment(item?.to_date).format('hh:mm')}
                                 <span className="bold"> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; </span>
-                                {item.apartment.city}
+                                {item.apartment?.city}
                             </div>
                             <div className="trip-address">
-                                <span className="bold">Адреса</span> {item.apartment.location}
+                                <span className="bold">Адреса</span> {item?.apartment?.location}
                             </div>
                         </div>
                     </div>

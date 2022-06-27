@@ -45,74 +45,47 @@ export default function TaxiTrip({status}) {
     return (
         <div>
             {reservations.map((taxi, key) =>
-                <div className="reservation-block" key={key}>
-                    <div className="general-info apartment-info taxi-info">
-                        <div className="taxi-card">
-                            <div className="taxi-type-block">
-                                <div className="taxi-img">
-                                    <img src={taxi.taxi.image_url} alt={taxi.type}/>
-                                </div>
-                                <div className="type">{taxi.taxi.type}</div>
-                                <div className="taxi-desc">{taxi.taxi.description}</div>
-                                <div className="taxi-capacity">
-                                    <div className="people-capacity">
-                                        <img src={`${process.env.PUBLIC_URL}/yellow_person.svg`}
-                                             alt="person"/>
-                                        {taxi.taxi.capacity}
-                                    </div>
-                                    <div className="luggage-capacity">
-                                        <img src={`${process.env.PUBLIC_URL}/yellow_suitcase.svg`}
-                                             alt="person"/>
-                                        {taxi.taxi.luggage_capacity}
-                                    </div>
-                                </div>
-                                <div className="price">UAH {taxi.ride_price}</div>
+                <div className={"trip-block"}>
+                    <div className="left-trip-side">
+                        <div className="trip-image-side">
+                            <div className="image-content"
+                                 style={{backgroundImage: `url("${taxi?.taxi?.image_url}")`}}>
                             </div>
                         </div>
-                        <div className="taxi-details">
-                            <div className="up-content">
-                                <div className="detail-row">
-                                    <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
-                                    <div>
-                                        <div className="info-h">Місце подачі</div>
-                                        <div className="info-text">{taxi.start_address}</div>
-                                    </div>
-                                </div>
-                                <div className="detail-row">
-                                    <img src={`${process.env.PUBLIC_URL}/location-yellow.svg`} alt=""/>
-                                    <div>
-                                        <div className="info-h">Місце призначення</div>
-                                        <div className="info-text">{taxi.end_address}</div>
-                                    </div>
-                                </div>
+                        <div className="trip-content">
+                            <div className="trip-status">
+                                {status === "active" ?
+                                    <div className="trip-status">Діюча подорож</div>
+                                    :
+                                    <div className="trip-status planned">Запланована подорож</div>
+                                }
                             </div>
-                            <div className="down-content">
-                                <div className="detail-row">
-                                    <img src={`${process.env.PUBLIC_URL}/yellow-calendar.svg`} alt=""/>
-                                    <div>
-                                        <div className="info-h">Дата</div>
-                                        <div className="info-text">{moment(taxi.from_date).format('ddd, D MMM. YYYY')}</div>
-                                    </div>
-                                </div>
-                                <div className="detail-row">
-                                    <img src={`${process.env.PUBLIC_URL}/yellow-clock.svg`} alt=""/>
-                                    <div>
-                                        <div className="info-h">Час</div>
-                                        <div className="info-text">{moment(taxi.from_date).format('HH:mm')}</div>
-                                    </div>
-                                </div>
-                                <div className="detail-row">
-                                    <img src={`${process.env.PUBLIC_URL}/phone-yellow.svg`} alt=""/>
-                                    <div>
-                                        <div className="info-h">Номер телефону водія</div>
-                                        <div className="info-text">096 584 32 40</div>
-                                    </div>
-                                </div>
+                            <div className="trip-info">
+                                <div className="nav-icon taxi"/>
+                                <span>Таксі</span>
+                                <div className="trip-unit-name">{taxi?.taxi?.type}</div>
+                            </div>
+                            <div className="trip-desc">
+                                <span className="bold">Подача </span> {moment(taxi?.from_date).format('ddd, D MMM.')}
+                                <span className="bold"> о </span> {moment(taxi?.from_date).format('hh:mm')}
+                                <span className="bold"> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; </span>
+                                <span className="bold"> Призначення </span> {moment(taxi?.to_date).format('ddd, D MMM.')}
+                                <span
+                                    className="bold">о </span> {moment(taxi?.to_date).format('HH:mm')}
+                            </div>
+                            <div className="trip-address">
+                                <span className="bold">Маршрут</span> {taxi?.start_address} - {taxi.end_address}
                             </div>
                         </div>
                     </div>
-                    <div className="cancel-block">
-                        <button className="btn btn-light no-arrow">Скасувати</button>
+                    <div className="trip-utils">
+                        <div className="trip-menu">
+                            <NavLink to="#"><img src={`${process.env.PUBLIC_URL}/trip_dots.svg`} alt=""/></NavLink>
+                        </div>
+                        <NavLink to="chat" className="chat-link">
+                            <img src={`${process.env.PUBLIC_URL}/chat.svg`} alt="chat"/>
+                            Чат
+                        </NavLink>
                     </div>
                 </div>
             )}
