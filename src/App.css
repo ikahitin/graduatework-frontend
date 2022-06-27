@@ -1989,3 +1989,7 @@ form.row {
 .left-trip-side {
   display: flex;
 }
+
+.trip-block.car .image-content {
+  background-size: contain;
+}

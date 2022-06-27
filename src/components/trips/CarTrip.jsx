@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import moment from "moment/moment";
 import API from "../../api";
-import {getNumberOfNights} from "../../utils/helpers";
 
 export default function CarTrip({status}) {
     const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +44,7 @@ export default function CarTrip({status}) {
     return (
         <div>
             {reservations.map((item, key) =>
-                <div className={"trip-block"}>
+                <div className="trip-block car">
                     <div className="left-trip-side">
                         <div className="trip-image-side">
                             <div className="image-content"
